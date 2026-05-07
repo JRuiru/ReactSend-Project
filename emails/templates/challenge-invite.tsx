@@ -4,6 +4,7 @@ import {
   Row,
   Column,
   Hr,
+  Img,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -11,15 +12,25 @@ import { PrimaryButton } from "../components/PrimaryButton";
 import { SecondaryButton } from "../components/SecondaryButton";
 
 const BASE_URL = "https://seemyhealth.ai";
+const CHALLENGE_IMG = "https://storage.googleapis.com/seemyhealth-email-assets/challenge-fitness.jpg";
 
 export default function ChallengeInviteEmail() {
   return (
     <EmailLayout preview="{{inviter_name}} challenged you: {{challenge_name}}">
 
-      {/* ── Banner ── */}
-      <Section style={banner}>
-        <Text style={bannerIcon}>&#x1F525;</Text>
-        <Text style={bannerTitle}>You've Been Challenged!</Text>
+      {/* ── Hero image + banner ── */}
+      <Section style={heroSection}>
+        <Img
+          src={CHALLENGE_IMG}
+          alt="Fitness challenge"
+          width="560"
+          style={heroImage}
+        />
+        <Section style={heroBanner}>
+          <Text style={heroIcon}>&#x1F525;</Text>
+          <Text style={heroTitle}>You've Been Challenged!</Text>
+          <Text style={heroSubtitle}>Are you ready to compete?</Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
@@ -145,25 +156,42 @@ export default function ChallengeInviteEmail() {
 
 // ── Styles ──
 
-const banner = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 40%, #7c3aed 70%, #a855f7 100%)",
-  borderRadius: "16px",
-  padding: "36px 24px",
-  textAlign: "center" as const,
+const heroSection = {
   marginBottom: "24px",
 };
 
-const bannerIcon = {
-  fontSize: "44px",
-  margin: "0 0 8px 0",
+const heroImage = {
+  width: "100%",
+  height: "auto",
+  display: "block" as const,
+  borderRadius: "16px 16px 0 0",
+};
+
+const heroBanner = {
+  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 50%, #7c3aed 100%)",
+  padding: "24px 24px 28px 24px",
+  textAlign: "center" as const,
+  borderRadius: "0 0 16px 16px",
+};
+
+const heroIcon = {
+  fontSize: "36px",
+  margin: "0 0 6px 0",
   lineHeight: "1",
 };
 
-const bannerTitle = {
+const heroTitle = {
   fontSize: "26px",
   fontWeight: "bold" as const,
   color: "#ffffff",
+  margin: "0 0 4px 0",
+};
+
+const heroSubtitle = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.8)",
   margin: "0",
+  fontWeight: "500" as const,
 };
 
 const heading = {
