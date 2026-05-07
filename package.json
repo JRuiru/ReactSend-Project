@@ -1,12 +1,12 @@
 {
-  "name": "reactsend-project",
+  "name": "seemyhealth-emails",
   "version": "1.0.0",
-  "description": "",
+  "description": "SeeMyHealth email templates — React Email + SendGrid",
   "main": "index.js",
   "scripts": {
     "dev": "email dev --dir emails",
     "build": "email export --dir emails --outDir dist",
-    "upload": "tsx scripts/upload-to-sendgrid.ts"
+    "deploy": "tsx scripts/deploy.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,12 +14,16 @@
   "type": "commonjs",
   "dependencies": {
     "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.0.8",
     "@sendgrid/client": "^8.1.6",
+    "dotenv": "^17.4.2",
     "react": "^19.2.6",
-    "react-email": "^6.1.1"
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
+    "@react-email/ui": "^6.1.1",
     "@types/react": "^19.2.14",
+    "react-email": "^6.1.1",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3"
   }

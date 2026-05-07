@@ -1,0 +1,8 @@
+{
+  "welcome": {
+    "name": "Welcome Email",
+    "subject": "Welcome to SeeMyHealth",
+    "module": "welcome",
+    "sendgrid_template_id": null
+  }
+}
