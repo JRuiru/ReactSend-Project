@@ -4,5 +4,47 @@
     "subject": "Welcome to SeeMyHealth",
     "module": "welcome",
     "sendgrid_template_id": null
+  },
+  "appointment-reminder": {
+    "name": "Appointment Reminder",
+    "subject": "Reminder: {{doctor_name}} on {{appointment_date}}",
+    "module": "appointment-reminder",
+    "sendgrid_template_id": null
+  },
+  "challenge-won": {
+    "name": "Challenge Won",
+    "subject": "You won the {{challenge_name}} challenge!",
+    "module": "challenge-won",
+    "sendgrid_template_id": null
+  },
+  "family-invite": {
+    "name": "Family Invite",
+    "subject": "{{inviter_name}} wants to share health data with you",
+    "module": "family-invite",
+    "sendgrid_template_id": null
+  },
+  "password-reset": {
+    "name": "Password Reset",
+    "subject": "Reset your SeeMyHealth password",
+    "module": "password-reset",
+    "sendgrid_template_id": null
+  },
+  "health-report": {
+    "name": "Health Report",
+    "subject": "Your {{report_period}} health report is ready",
+    "module": "health-report",
+    "sendgrid_template_id": null
+  },
+  "device-connected": {
+    "name": "Device Connected",
+    "subject": "{{device_name}} is now connected to SeeMyHealth",
+    "module": "device-connected",
+    "sendgrid_template_id": null
+  },
+  "challenge-invite": {
+    "name": "Challenge Invite",
+    "subject": "{{inviter_name}} challenged you: {{challenge_name}}",
+    "module": "challenge-invite",
+    "sendgrid_template_id": null
   }
 }

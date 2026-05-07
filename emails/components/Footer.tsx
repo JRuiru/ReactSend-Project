@@ -16,7 +16,7 @@ export const Footer = () => (
 );
 
 const hr = {
-  borderColor: "#e5e7eb",
+  borderColor: "rgba(124, 58, 237, 0.12)",
   margin: "32px 0 16px 0",
 };
 
@@ -28,6 +28,6 @@ const footerText = {
 };
 
 const link = {
-  color: "#9ca3af",
+  color: "#7c3aed",
   textDecoration: "underline",
 };

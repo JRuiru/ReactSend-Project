@@ -13,13 +13,14 @@ export const PrimaryButton = ({ href, children }: PrimaryButtonProps) => (
 );
 
 const button = {
-  backgroundColor: "#000000",
+  background: "linear-gradient(135deg, #7c3aed, #a855f7)",
   color: "#ffffff",
-  padding: "12px 24px",
-  borderRadius: "8px",
-  fontSize: "14px",
+  padding: "14px 28px",
+  borderRadius: "10px",
+  fontSize: "15px",
   fontWeight: "bold" as const,
   textDecoration: "none",
   textAlign: "center" as const,
   display: "inline-block",
+  boxShadow: "0 4px 14px rgba(124, 58, 237, 0.35)",
 };

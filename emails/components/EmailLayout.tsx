@@ -1,4 +1,4 @@
-import { Html, Head, Body, Container, Preview } from "@react-email/components";
+import { Html, Head, Body, Container, Preview, Section } from "@react-email/components";
 import * as React from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -14,25 +14,38 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
     <Head />
     <Preview>{preview}</Preview>
     <Body style={main}>
-      <Container style={container}>
-        <Header title={title} />
-        {children}
-        <Footer />
-      </Container>
+      <Section style={gradientBg}>
+        <Container style={glassContainer}>
+          <Header title={title} />
+          {children}
+          <Footer />
+        </Container>
+      </Section>
     </Body>
   </Html>
 );
 
 const main = {
-  backgroundColor: "#f9fafb",
+  backgroundColor: "#1a0533",
   fontFamily:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  margin: "0",
+  padding: "0",
 };
 
-const container = {
-  backgroundColor: "#ffffff",
-  margin: "40px auto",
+const gradientBg = {
+  background: "linear-gradient(160deg, #1a0533 0%, #2d1654 30%, #4c1d95 60%, #1a0533 100%)",
+  padding: "40px 16px",
+};
+
+const glassContainer = {
+  backgroundColor: "rgba(255, 255, 255, 0.96)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  margin: "0 auto",
   padding: "40px",
   maxWidth: "560px",
-  borderRadius: "12px",
+  borderRadius: "16px",
+  border: "1px solid rgba(124, 58, 237, 0.1)",
+  boxShadow: "0 8px 32px rgba(76, 29, 149, 0.15)",
 };
