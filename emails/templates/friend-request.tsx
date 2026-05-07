@@ -37,7 +37,7 @@ export default function FriendRequestEmail() {
 
       {/* ── Requester card ── */}
       <Section style={requesterCard}>
-        <Text style={avatarCircle}>{"{{requester_initial}}"}</Text>
+        <Text style={avatarEmoji}>&#x1F44B;</Text>
         <Text style={requesterName}>{"{{requester_name}}"}</Text>
         <Text style={requesterBio}>{"{{requester_bio}}"}</Text>
 
@@ -137,18 +137,11 @@ const requesterCard = {
   border: "1px solid rgba(124, 58, 237, 0.1)",
 };
 
-const avatarCircle = {
-  backgroundColor: "#7c3aed",
-  color: "#ffffff",
-  width: "56px",
-  height: "56px",
-  borderRadius: "50%",
+const avatarEmoji = {
+  fontSize: "48px",
   textAlign: "center" as const,
-  lineHeight: "56px",
-  fontSize: "24px",
-  fontWeight: "bold" as const,
-  margin: "0 auto 12px auto",
-  display: "block" as const,
+  margin: "0 0 8px 0",
+  lineHeight: "1",
 };
 
 const requesterName = {
