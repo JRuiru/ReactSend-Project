@@ -87,7 +87,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1F634;</Text>
               <Text style={permName}>Sleep</Text>
-              <Text style={permDesc}>Patterns, quality, duration</Text>
+              <Text style={permDesc}>Patterns, quality, duration tracking</Text>
             </Section>
           </Column>
           <Column style={permSpacer} />
@@ -95,7 +95,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1F3C3;</Text>
               <Text style={permName}>Activity</Text>
-              <Text style={permDesc}>Steps, exercise, fitness metrics</Text>
+              <Text style={permDesc}>Steps, exercise, daily fitness metrics</Text>
             </Section>
           </Column>
         </Row>
@@ -107,7 +107,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1F957;</Text>
               <Text style={permName}>Nutrition</Text>
-              <Text style={permDesc}>Meals, calories, dietary info</Text>
+              <Text style={permDesc}>Meals, calories, dietary tracking</Text>
             </Section>
           </Column>
           <Column style={permSpacer} />
@@ -115,7 +115,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1F9E0;</Text>
               <Text style={permName}>Mental Health</Text>
-              <Text style={permDesc}>Mood, stress, journal entries</Text>
+              <Text style={permDesc}>Mood, stress, journal wellness</Text>
             </Section>
           </Column>
         </Row>
@@ -127,7 +127,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1FA78;</Text>
               <Text style={permName}>Blood Health</Text>
-              <Text style={permDesc}>Glucose, haemoglobin, lipids</Text>
+              <Text style={permDesc}>Glucose, haemoglobin, lipid levels</Text>
             </Section>
           </Column>
           <Column style={permSpacer} />
@@ -135,7 +135,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1F4CB;</Text>
               <Text style={permName}>Medical Records</Text>
-              <Text style={permDesc}>History, diagnoses, test results</Text>
+              <Text style={permDesc}>History, diagnoses, lab test results</Text>
             </Section>
           </Column>
         </Row>
@@ -147,7 +147,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1F4C5;</Text>
               <Text style={permName}>Appointments</Text>
-              <Text style={permDesc}>Upcoming medical visits</Text>
+              <Text style={permDesc}>Upcoming visits, doctor schedules</Text>
             </Section>
           </Column>
           <Column style={permSpacer} />
@@ -155,7 +155,7 @@ export default function FamilyInviteEmail() {
             <Section style={permCard}>
               <Text style={permIcon}>&#x1F3AF;</Text>
               <Text style={permName}>Goals</Text>
-              <Text style={permDesc}>Health goals and progress</Text>
+              <Text style={permDesc}>Health goals, targets, progress</Text>
             </Section>
           </Column>
         </Row>
@@ -439,6 +439,7 @@ const permCard = {
   borderRadius: "10px",
   padding: "14px 12px",
   border: "1px solid rgba(124, 58, 237, 0.08)",
+  height: "80px",
 };
 
 const permIcon = {
