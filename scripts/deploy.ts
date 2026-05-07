@@ -60,17 +60,39 @@ async function deployTemplate(key: string, entry: TemplateEntry) {
     console.log(`  Updating template "${entry.name}" (${templateId})`);
   }
 
-  // Create a new active version
-  await sgClient.request({
-    method: "POST",
-    url: `/v3/templates/${templateId}/versions`,
-    body: {
-      active: 1,
-      name: `${key} — ${new Date().toISOString()}`,
-      subject: entry.subject,
-      html_content: html,
-    },
+  // Get existing versions to update instead of creating duplicates
+  const [, templateData] = await sgClient.request({
+    method: "GET",
+    url: `/v3/templates/${templateId}`,
   });
+  const versions = (templateData as any).versions || [];
+  const activeVersion = versions.find((v: any) => v.active === 1);
+
+  if (activeVersion) {
+    // Update existing active version
+    await sgClient.request({
+      method: "PATCH",
+      url: `/v3/templates/${templateId}/versions/${activeVersion.id}`,
+      body: {
+        active: 1,
+        name: `${key} — ${new Date().toISOString()}`,
+        subject: entry.subject,
+        html_content: html,
+      },
+    });
+  } else {
+    // No active version yet — create one
+    await sgClient.request({
+      method: "POST",
+      url: `/v3/templates/${templateId}/versions`,
+      body: {
+        active: 1,
+        name: `${key} — ${new Date().toISOString()}`,
+        subject: entry.subject,
+        html_content: html,
+      },
+    });
+  }
 
   console.log(`  ✓ Deployed "${entry.name}"`);
   return templateId!;
