@@ -162,7 +162,7 @@ const requesterCard = {
 };
 
 const avatarCircle = {
-  background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+  backgroundColor: "#7c3aed",
   color: "#ffffff",
   width: "56px",
   height: "56px",
@@ -172,6 +172,7 @@ const avatarCircle = {
   fontSize: "24px",
   fontWeight: "bold" as const,
   margin: "0 auto 12px auto",
+  display: "block" as const,
 };
 
 const requesterName = {

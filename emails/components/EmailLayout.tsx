@@ -18,9 +18,19 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
             padding: 24px 16px !important;
             border-radius: 0 !important;
             margin: 0 !important;
+            max-width: 100% !important;
+            width: 100% !important;
           }
           .email-bg {
             padding: 0 !important;
+          }
+          table, td, div, p, a, span {
+            max-width: 100% !important;
+            word-break: break-word !important;
+          }
+          img {
+            max-width: 100% !important;
+            height: auto !important;
           }
         }
       `}} />
