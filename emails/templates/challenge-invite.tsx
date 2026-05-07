@@ -4,7 +4,6 @@ import {
   Row,
   Column,
   Hr,
-  Img,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -36,60 +35,54 @@ export default function ChallengeInviteEmail() {
 
       <Hr style={divider} />
 
-      {/* ── Fitness image + challenge details ── */}
-      <Section style={challengeHero}>
-        <Img
-          src={CHALLENGE_IMG}
-          alt="Fitness challenge"
-          width="560"
-          style={challengeImage}
-        />
-      </Section>
-      <Section style={challengeCard}>
-        <Text style={categoryBadge}>{"{{challenge_category}}"}</Text>
-        <Text style={challengeName}>{"{{challenge_name}}"}</Text>
-        <Text style={challengeDesc}>{"{{challenge_description}}"}</Text>
+      {/* ── Challenge details — image bg + glass card ── */}
+      <Section style={challengeBgSection}>
+        <Section style={glassCard}>
+          <Text style={categoryBadge}>{"{{challenge_category}}"}</Text>
+          <Text style={challengeName}>{"{{challenge_name}}"}</Text>
+          <Text style={challengeDesc}>{"{{challenge_description}}"}</Text>
 
-        <Hr style={cardDivider} />
+          <Hr style={cardDivider} />
 
-        <Section style={detailRow}>
-          <Row>
-            <Column style={detailIconCol}><Text style={iconText}>&#x1F3AF;</Text></Column>
-            <Column>
-              <Text style={detailLabel}>Goal</Text>
-              <Text style={detailValue}>{"{{challenge_goal}}"}</Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={detailRow}>
+            <Row>
+              <Column style={detailIconCol}><Text style={iconText}>&#x1F3AF;</Text></Column>
+              <Column>
+                <Text style={detailLabel}>Goal</Text>
+                <Text style={detailValue}>{"{{challenge_goal}}"}</Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={detailRow}>
-          <Row>
-            <Column style={detailIconCol}><Text style={iconText}>&#x1F4C5;</Text></Column>
-            <Column>
-              <Text style={detailLabel}>Duration</Text>
-              <Text style={detailValue}>{"{{start_date}}"} — {"{{end_date}}"} ({"{{duration}}"})</Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={detailRow}>
+            <Row>
+              <Column style={detailIconCol}><Text style={iconText}>&#x1F4C5;</Text></Column>
+              <Column>
+                <Text style={detailLabel}>Duration</Text>
+                <Text style={detailValue}>{"{{start_date}}"} — {"{{end_date}}"} ({"{{duration}}"})</Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={detailRow}>
-          <Row>
-            <Column style={detailIconCol}><Text style={iconText}>&#x1F465;</Text></Column>
-            <Column>
-              <Text style={detailLabel}>Participants</Text>
-              <Text style={detailValue}>{"{{participant_count}}"} joined so far</Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={detailRow}>
+            <Row>
+              <Column style={detailIconCol}><Text style={iconText}>&#x1F465;</Text></Column>
+              <Column>
+                <Text style={detailLabel}>Participants</Text>
+                <Text style={detailValue}>{"{{participant_count}}"} joined so far</Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={detailRow}>
-          <Row>
-            <Column style={detailIconCol}><Text style={iconText}>&#x1F3C5;</Text></Column>
-            <Column>
-              <Text style={detailLabel}>Winning Criteria</Text>
-              <Text style={detailValue}>{"{{goal_type}}"}</Text>
-            </Column>
-          </Row>
+          <Section style={detailRow}>
+            <Row>
+              <Column style={detailIconCol}><Text style={iconText}>&#x1F3C5;</Text></Column>
+              <Column>
+                <Text style={detailLabel}>Winning Criteria</Text>
+                <Text style={detailValue}>{"{{goal_type}}"}</Text>
+              </Column>
+            </Row>
+          </Section>
         </Section>
       </Section>
 
@@ -176,16 +169,7 @@ const bannerTitle = {
   margin: "0",
 };
 
-const challengeHero = {
-  marginBottom: "0",
-};
-
-const challengeImage = {
-  width: "100%",
-  height: "auto",
-  display: "block" as const,
-  borderRadius: "14px 14px 0 0",
-};
+// (challengeHero and challengeImage removed — using bg image now)
 
 const heading = {
   fontSize: "24px",
@@ -206,14 +190,22 @@ const divider = {
   margin: "24px 0",
 };
 
-// ── Challenge card ──
+// ── Challenge bg + glass card ──
 
-const challengeCard = {
-  background: "linear-gradient(135deg, #1a0533 0%, #2d1654 50%, #4c1d95 100%)",
-  borderRadius: "0 0 14px 14px",
+const challengeBgSection = {
+  backgroundImage: `url(${CHALLENGE_IMG})`,
+  backgroundSize: "cover" as const,
+  backgroundPosition: "center top" as const,
+  backgroundColor: "#1a0533",
+  borderRadius: "16px",
+  padding: "32px 16px",
+};
+
+const glassCard = {
+  backgroundColor: "rgba(26, 5, 51, 0.75)",
+  borderRadius: "14px",
   padding: "28px 24px",
-  border: "1px solid rgba(124, 58, 237, 0.2)",
-  borderTop: "none" as const,
+  border: "1px solid rgba(167, 139, 250, 0.2)",
 };
 
 const categoryBadge = {
