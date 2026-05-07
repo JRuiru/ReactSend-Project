@@ -19,7 +19,7 @@ import { SecondaryButton } from "../components/SecondaryButton";
 // ---------------------------------------------------------------
 const IMAGES = {
   ringOne: "https://storage.googleapis.com/seemyhealth-email-assets/ring-one.jpg",
-  scale: "https://placehold.co/480x220/1a0533/3b82f6?text=The+Scale",
+  scale: "https://storage.googleapis.com/seemyhealth-email-assets/scale.jpg",
   bpMonitor: "https://placehold.co/480x220/1a0533/ef4444?text=The+BP+Monitor",
   hydraOne: "https://storage.googleapis.com/seemyhealth-email-assets/hydra-one.png",
   hemaOne: "https://placehold.co/480x220/1a0533/a855f7?text=Hema+One",
