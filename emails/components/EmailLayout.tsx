@@ -11,11 +11,24 @@ interface EmailLayoutProps {
 
 export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
   <Html>
-    <Head />
+    <Head>
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media only screen and (max-width: 600px) {
+          .email-container {
+            padding: 24px 16px !important;
+            border-radius: 0 !important;
+            margin: 0 !important;
+          }
+          .email-bg {
+            padding: 0 !important;
+          }
+        }
+      `}} />
+    </Head>
     <Preview>{preview}</Preview>
     <Body style={main}>
-      <Section style={gradientBg}>
-        <Container style={glassContainer}>
+      <Section style={gradientBg} className="email-bg">
+        <Container style={glassContainer} className="email-container">
           <Header title={title} />
           {children}
           <Footer />

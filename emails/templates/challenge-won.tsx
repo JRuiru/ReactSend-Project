@@ -58,20 +58,39 @@ export default function ChallengeWonEmail() {
 
         <Hr style={cardDivider} />
 
-        {/* Stats grid */}
-        <Section style={statsGrid}>
+        {/* Stats — stacked for mobile responsiveness */}
+        <Section style={statBlock}>
           <Row>
-            <Column style={statCell}>
-              <Text style={statValue}>{"{{final_rank}}"}</Text>
+            <Column style={statIconCol}>
+              <Text style={iconText}>&#x1F947;</Text>
+            </Column>
+            <Column>
               <Text style={statLabel}>Final Rank</Text>
+              <Text style={statValue}>{"{{final_rank}}"}</Text>
             </Column>
-            <Column style={statCell}>
-              <Text style={statValue}>{"{{your_score}}"}</Text>
+          </Row>
+        </Section>
+
+        <Section style={statBlock}>
+          <Row>
+            <Column style={statIconCol}>
+              <Text style={iconText}>&#x1F4AF;</Text>
+            </Column>
+            <Column>
               <Text style={statLabel}>Your Score</Text>
+              <Text style={statValue}>{"{{your_score}}"}</Text>
             </Column>
-            <Column style={statCell}>
-              <Text style={statValue}>{"{{total_participants}}"}</Text>
+          </Row>
+        </Section>
+
+        <Section style={statBlock}>
+          <Row>
+            <Column style={statIconCol}>
+              <Text style={iconText}>&#x1F465;</Text>
+            </Column>
+            <Column>
               <Text style={statLabel}>Participants</Text>
+              <Text style={statValue}>{"{{total_participants}}"}</Text>
             </Column>
           </Row>
         </Section>
@@ -309,21 +328,13 @@ const cardDivider = {
 
 // ── Stats ──
 
-const statsGrid = {
-  textAlign: "center" as const,
+const statBlock = {
+  marginBottom: "10px",
 };
 
-const statCell = {
-  width: "33.33%",
-  textAlign: "center" as const,
-};
-
-const statValue = {
-  fontSize: "28px",
-  fontWeight: "bold" as const,
-  color: "#7c3aed",
-  margin: "0",
-  lineHeight: "1.2",
+const statIconCol = {
+  width: "36px",
+  verticalAlign: "middle" as const,
 };
 
 const statLabel = {
@@ -331,8 +342,16 @@ const statLabel = {
   color: "#9ca3af",
   textTransform: "uppercase" as const,
   letterSpacing: "0.5px",
-  margin: "4px 0 0 0",
+  margin: "0",
   fontWeight: "600" as const,
+};
+
+const statValue = {
+  fontSize: "20px",
+  fontWeight: "bold" as const,
+  color: "#7c3aed",
+  margin: "2px 0 0 0",
+  lineHeight: "1.2",
 };
 
 // ── Details ──

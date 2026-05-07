@@ -3,48 +3,78 @@
     "name": "Welcome Email",
     "subject": "Welcome to SeeMyHealth",
     "module": "welcome",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-d3a2c264613a490bbec73d732eaf5e04"
   },
   "appointment-reminder": {
     "name": "Appointment Reminder",
     "subject": "Reminder: {{doctor_name}} on {{appointment_date}}",
     "module": "appointment-reminder",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-1d247a43f50847f19ebc2004d8f72c5d"
   },
   "challenge-won": {
     "name": "Challenge Won",
     "subject": "You won the {{challenge_name}} challenge!",
     "module": "challenge-won",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-3ecc64bdcd4c4e879866828321f3c8a4"
   },
   "family-invite": {
     "name": "Family Invite",
     "subject": "{{inviter_name}} wants to share health data with you",
     "module": "family-invite",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-f60257d5cb68483ab99557f1669474b5"
   },
   "password-reset": {
     "name": "Password Reset",
     "subject": "Reset your SeeMyHealth password",
     "module": "password-reset",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-c054b1bfbd604458afce68f5f2c5ac5e"
   },
   "health-report": {
     "name": "Health Report",
     "subject": "Your {{report_period}} health report is ready",
     "module": "health-report",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-fe610f23d31d4d2498464786c29f1027"
   },
   "device-connected": {
     "name": "Device Connected",
     "subject": "{{device_name}} is now connected to SeeMyHealth",
     "module": "device-connected",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-8fc649b18b484a368367bca2976bfe14"
   },
   "challenge-invite": {
     "name": "Challenge Invite",
     "subject": "{{inviter_name}} challenged you: {{challenge_name}}",
     "module": "challenge-invite",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-ae531334a08f42a49e7480eb352bece3"
+  },
+  "achievement-unlocked": {
+    "name": "Achievement Unlocked",
+    "subject": "Achievement unlocked: {{achievement_name}}",
+    "module": "achievement-unlocked",
+    "sendgrid_template_id": "d-63a791a6492244f0931d2fdfe92d4a0b"
+  },
+  "streak-milestone": {
+    "name": "Streak Milestone",
+    "subject": "You hit a {{streak_count}}-day streak!",
+    "module": "streak-milestone",
+    "sendgrid_template_id": "d-f3596feddc7540529c8249983f8b09df"
+  },
+  "re-engagement": {
+    "name": "Re-engagement",
+    "subject": "We miss you, {{first_name}} — here's what's new",
+    "module": "re-engagement",
+    "sendgrid_template_id": "d-64fcd751993b47afa5e36d51872aae84"
+  },
+  "friend-request": {
+    "name": "Friend Request",
+    "subject": "{{requester_name}} wants to be friends on SeeMyHealth",
+    "module": "friend-request",
+    "sendgrid_template_id": "d-c29c2b0df1974554960d8aa89cb3fde7"
+  },
+  "group-invite": {
+    "name": "Group Invite",
+    "subject": "{{inviter_name}} invited you to join {{group_name}}",
+    "module": "group-invite",
+    "sendgrid_template_id": "d-a457866fc49740ef82502bd2309968b2"
   }
 }
