@@ -181,7 +181,7 @@ const TEST_DATA: Record<string, Record<string, string>> = {
   "friend-request": {
     first_name: "John",
     requester_name: "Sarah Kimani",
-    requester_initial: "S",
+    requester_avatar_url: "https://storage.googleapis.com/seemyhealth-email-assets/logo.png",
     requester_bio: "Fitness enthusiast on a wellness journey",
     requester_challenges: "8",
     requester_achievements: "15",

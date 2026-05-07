@@ -5,6 +5,7 @@ import {
   Column,
   Hr,
   Button,
+  Img,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -37,7 +38,13 @@ export default function FriendRequestEmail() {
 
       {/* ── Requester card ── */}
       <Section style={requesterCard}>
-        <Text style={avatarEmoji}>&#x1F44B;</Text>
+        <Img
+          src="{{requester_avatar_url}}"
+          alt="{{requester_name}}"
+          width="72"
+          height="72"
+          style={avatarImage}
+        />
         <Text style={requesterName}>{"{{requester_name}}"}</Text>
         <Text style={requesterBio}>{"{{requester_bio}}"}</Text>
 
@@ -137,11 +144,10 @@ const requesterCard = {
   border: "1px solid rgba(124, 58, 237, 0.1)",
 };
 
-const avatarEmoji = {
-  fontSize: "48px",
-  textAlign: "center" as const,
-  margin: "0 0 8px 0",
-  lineHeight: "1",
+const avatarImage = {
+  borderRadius: "50%",
+  display: "block" as const,
+  margin: "0 auto 12px auto",
 };
 
 const requesterName = {
