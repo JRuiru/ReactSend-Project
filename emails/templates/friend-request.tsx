@@ -44,43 +44,19 @@ export default function FriendRequestEmail() {
         <Hr style={cardDivider} />
 
         <Section style={statRow}>
-          <Row>
-            <Column style={statIconCol}>
-              <Text style={statIcon}>&#x1F3AF;</Text>
-            </Column>
-            <Column>
-              <Text style={statLabel}>Challenges</Text>
-            </Column>
-            <Column style={statValueCol}>
-              <Text style={statValue}>{"{{requester_challenges}}"}</Text>
-            </Column>
-          </Row>
+          <Text style={statLine}>
+            &#x1F3AF;&nbsp;&nbsp;Challenges&nbsp;&nbsp;<strong style={statHighlight}>{"{{requester_challenges}}"}</strong>
+          </Text>
         </Section>
         <Section style={statRow}>
-          <Row>
-            <Column style={statIconCol}>
-              <Text style={statIcon}>&#x1F3C6;</Text>
-            </Column>
-            <Column>
-              <Text style={statLabel}>Achievements</Text>
-            </Column>
-            <Column style={statValueCol}>
-              <Text style={statValue}>{"{{requester_achievements}}"}</Text>
-            </Column>
-          </Row>
+          <Text style={statLine}>
+            &#x1F3C6;&nbsp;&nbsp;Achievements&nbsp;&nbsp;<strong style={statHighlight}>{"{{requester_achievements}}"}</strong>
+          </Text>
         </Section>
         <Section style={statRow}>
-          <Row>
-            <Column style={statIconCol}>
-              <Text style={statIcon}>&#x1F465;</Text>
-            </Column>
-            <Column>
-              <Text style={statLabel}>Friends</Text>
-            </Column>
-            <Column style={statValueCol}>
-              <Text style={statValue}>{"{{requester_friends}}"}</Text>
-            </Column>
-          </Row>
+          <Text style={statLine}>
+            &#x1F465;&nbsp;&nbsp;Friends&nbsp;&nbsp;<strong style={statHighlight}>{"{{requester_friends}}"}</strong>
+          </Text>
         </Section>
       </Section>
 
@@ -194,37 +170,20 @@ const cardDivider = {
 };
 
 const statRow = {
-  marginBottom: "8px",
+  marginBottom: "4px",
 };
 
-const statIconCol = {
-  width: "28px",
-  verticalAlign: "middle" as const,
-};
-
-const statIcon = {
-  fontSize: "16px",
-  margin: "0",
-  lineHeight: "1",
-};
-
-const statValueCol = {
-  width: "40px",
-  textAlign: "right" as const,
-};
-
-const statValue = {
-  fontSize: "16px",
-  fontWeight: "bold" as const,
-  color: "#7c3aed",
-  margin: "0",
-};
-
-const statLabel = {
+const statLine = {
   fontSize: "14px",
   color: "#374151",
   margin: "0",
-  fontWeight: "500" as const,
+  textAlign: "center" as const,
+  lineHeight: "24px",
+};
+
+const statHighlight = {
+  color: "#7c3aed",
+  fontWeight: "bold" as const,
 };
 
 // ── Actions ──
