@@ -4,30 +4,37 @@ import {
   Row,
   Column,
   Hr,
+  Img,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 
 const BASE_URL = "https://seemyhealth.ai";
+const RING_IMG = "https://storage.googleapis.com/seemyhealth-email-assets/ring-peekaboo.jpg";
 
 export default function ReEngagementEmail() {
   return (
-    <EmailLayout preview="We miss you, {{first_name}} — here's what's new">
+    <EmailLayout preview="We'd love to see you back, {{first_name}}">
 
-      {/* ── Banner ── */}
-      <Section style={banner}>
-        <Text style={bannerIcon}>&#x1F49C;</Text>
-        <Text style={bannerTitle}>We miss you!</Text>
+      {/* ── Editorial hero ── */}
+      <Section style={heroWrapper}>
+        <Img
+          src={RING_IMG}
+          alt="We'd love to see you back"
+          width="560"
+          style={heroImage}
+        />
+        <Section style={heroTitleCard}>
+          <Text style={heroTitle}>We'd Love to See You Back</Text>
+          <Text style={heroSubtitle}>
+            Looking for you, {"{{first_name}}"} — it's been {"{{days_inactive}}"} days
+          </Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
-      <Text style={heading}>
-        Hey {"{{first_name}}"}, it's been a while
-      </Text>
-
       <Text style={paragraph}>
-        We noticed you haven't checked in for <strong>{"{{days_inactive}}"} days</strong>.
         Your health journey is still here waiting for you — and here's what
         you've been missing.
       </Text>
@@ -145,32 +152,37 @@ export default function ReEngagementEmail() {
 
 // ── Styles ──
 
-const banner = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 40%, #7c3aed 70%, #a855f7 100%)",
-  borderRadius: "16px",
-  padding: "40px 24px",
-  textAlign: "center" as const,
+// ── Editorial hero ──
+
+const heroWrapper = {
   marginBottom: "24px",
 };
 
-const bannerIcon = {
-  fontSize: "48px",
-  margin: "0 0 8px 0",
-  lineHeight: "1",
+const heroImage = {
+  width: "100%",
+  height: "auto",
+  display: "block" as const,
+  borderRadius: "16px 16px 0 0",
 };
 
-const bannerTitle = {
-  fontSize: "28px",
-  fontWeight: "bold" as const,
-  color: "#ffffff",
-  margin: "0",
+const heroTitleCard = {
+  background: "linear-gradient(135deg, #1a0533 0%, #2d1654 50%, #4c1d95 100%)",
+  padding: "24px 24px",
+  textAlign: "center" as const,
+  borderRadius: "0 0 16px 16px",
 };
 
-const heading = {
+const heroTitle = {
   fontSize: "24px",
   fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 8px 0",
+  color: "#ffffff",
+  margin: "0 0 6px 0",
+};
+
+const heroSubtitle = {
+  fontSize: "14px",
+  color: "rgba(196, 181, 253, 0.8)",
+  margin: "0",
 };
 
 const paragraph = {
