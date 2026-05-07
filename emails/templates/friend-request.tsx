@@ -45,17 +45,40 @@ export default function FriendRequestEmail() {
 
         <Section style={statRow}>
           <Row>
-            <Column style={statCol}>
-              <Text style={statValue}>{"{{requester_challenges}}"}</Text>
+            <Column style={statIconCol}>
+              <Text style={statIcon}>&#x1F3AF;</Text>
+            </Column>
+            <Column>
               <Text style={statLabel}>Challenges</Text>
             </Column>
-            <Column style={statCol}>
-              <Text style={statValue}>{"{{requester_achievements}}"}</Text>
+            <Column style={statValueCol}>
+              <Text style={statValue}>{"{{requester_challenges}}"}</Text>
+            </Column>
+          </Row>
+        </Section>
+        <Section style={statRow}>
+          <Row>
+            <Column style={statIconCol}>
+              <Text style={statIcon}>&#x1F3C6;</Text>
+            </Column>
+            <Column>
               <Text style={statLabel}>Achievements</Text>
             </Column>
-            <Column style={statCol}>
-              <Text style={statValue}>{"{{requester_friends}}"}</Text>
+            <Column style={statValueCol}>
+              <Text style={statValue}>{"{{requester_achievements}}"}</Text>
+            </Column>
+          </Row>
+        </Section>
+        <Section style={statRow}>
+          <Row>
+            <Column style={statIconCol}>
+              <Text style={statIcon}>&#x1F465;</Text>
+            </Column>
+            <Column>
               <Text style={statLabel}>Friends</Text>
+            </Column>
+            <Column style={statValueCol}>
+              <Text style={statValue}>{"{{requester_friends}}"}</Text>
             </Column>
           </Row>
         </Section>
@@ -170,28 +193,37 @@ const cardDivider = {
 };
 
 const statRow = {
-  textAlign: "center" as const,
+  marginBottom: "8px",
 };
 
-const statCol = {
-  width: "33.33%",
-  textAlign: "center" as const,
+const statIconCol = {
+  width: "28px",
+  verticalAlign: "middle" as const,
+};
+
+const statIcon = {
+  fontSize: "16px",
+  margin: "0",
+  lineHeight: "1",
+};
+
+const statValueCol = {
+  width: "40px",
+  textAlign: "right" as const,
 };
 
 const statValue = {
-  fontSize: "18px",
+  fontSize: "16px",
   fontWeight: "bold" as const,
   color: "#7c3aed",
   margin: "0",
 };
 
 const statLabel = {
-  fontSize: "11px",
-  color: "#9ca3af",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.5px",
-  margin: "2px 0 0 0",
-  fontWeight: "600" as const,
+  fontSize: "14px",
+  color: "#374151",
+  margin: "0",
+  fontWeight: "500" as const,
 };
 
 // ── Actions ──
