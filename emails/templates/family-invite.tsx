@@ -4,22 +4,31 @@ import {
   Row,
   Column,
   Hr,
+  Img,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 
 const BASE_URL = "https://seemyhealth.ai";
+const FAMILY_IMG = "https://storage.googleapis.com/seemyhealth-email-assets/family-share.jpg";
 
 export default function FamilyInviteEmail() {
   return (
     <EmailLayout preview="{{inviter_name}} wants to share health data with you on SeeMyHealth">
 
-      {/* ── Family banner ── */}
-      <Section style={banner}>
-        <Text style={bannerIcon}>&#x1F46A;</Text>
-        <Text style={bannerTitle}>Family Health Sharing</Text>
-        <Text style={bannerSubtitle}>Better health, together</Text>
+      {/* ── Editorial hero: image + title card ── */}
+      <Section style={heroWrapper}>
+        <Img
+          src={FAMILY_IMG}
+          alt="Family & friends sharing health"
+          width="560"
+          style={heroImage}
+        />
+        <Section style={heroTitleCard}>
+          <Text style={heroLabel}>FAMILY HEALTH SHARING</Text>
+          <Text style={heroTitle}>Better Health, Together</Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
@@ -336,30 +345,39 @@ export default function FamilyInviteEmail() {
 
 // ── Styles ──
 
-const banner = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 40%, #7c3aed 70%, #a855f7 100%)",
-  borderRadius: "16px",
-  padding: "40px 24px",
-  textAlign: "center" as const,
+// ── Editorial hero ──
+
+const heroWrapper = {
   marginBottom: "24px",
 };
 
-const bannerIcon = {
-  fontSize: "48px",
-  margin: "0 0 8px 0",
-  lineHeight: "1",
+const heroImage = {
+  width: "100%",
+  height: "auto",
+  display: "block" as const,
+  borderRadius: "16px 16px 0 0",
 };
 
-const bannerTitle = {
-  fontSize: "28px",
+const heroTitleCard = {
+  background: "linear-gradient(135deg, #1a0533 0%, #2d1654 50%, #4c1d95 100%)",
+  padding: "28px 24px",
+  textAlign: "center" as const,
+  borderRadius: "0 0 16px 16px",
+};
+
+const heroLabel = {
+  fontSize: "11px",
+  fontWeight: "bold" as const,
+  color: "rgba(196, 181, 253, 0.7)",
+  letterSpacing: "2px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 8px 0",
+};
+
+const heroTitle = {
+  fontSize: "26px",
   fontWeight: "bold" as const,
   color: "#ffffff",
-  margin: "0 0 4px 0",
-};
-
-const bannerSubtitle = {
-  fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.7)",
   margin: "0",
 };
 
