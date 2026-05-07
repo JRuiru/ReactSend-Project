@@ -18,19 +18,10 @@ export default function ChallengeInviteEmail() {
   return (
     <EmailLayout preview="{{inviter_name}} challenged you: {{challenge_name}}">
 
-      {/* ── Hero image + banner ── */}
-      <Section style={heroSection}>
-        <Img
-          src={CHALLENGE_IMG}
-          alt="Fitness challenge"
-          width="560"
-          style={heroImage}
-        />
-        <Section style={heroBanner}>
-          <Text style={heroIcon}>&#x1F525;</Text>
-          <Text style={heroTitle}>You've Been Challenged!</Text>
-          <Text style={heroSubtitle}>Are you ready to compete?</Text>
-        </Section>
+      {/* ── Banner ── */}
+      <Section style={banner}>
+        <Text style={bannerIcon}>&#x1F525;</Text>
+        <Text style={bannerTitle}>You've Been Challenged!</Text>
       </Section>
 
       {/* ── Greeting ── */}
@@ -45,7 +36,15 @@ export default function ChallengeInviteEmail() {
 
       <Hr style={divider} />
 
-      {/* ── Challenge details card ── */}
+      {/* ── Fitness image + challenge details ── */}
+      <Section style={challengeHero}>
+        <Img
+          src={CHALLENGE_IMG}
+          alt="Fitness challenge"
+          width="560"
+          style={challengeImage}
+        />
+      </Section>
       <Section style={challengeCard}>
         <Text style={categoryBadge}>{"{{challenge_category}}"}</Text>
         <Text style={challengeName}>{"{{challenge_name}}"}</Text>
@@ -156,42 +155,36 @@ export default function ChallengeInviteEmail() {
 
 // ── Styles ──
 
-const heroSection = {
+const banner = {
+  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 40%, #7c3aed 70%, #a855f7 100%)",
+  borderRadius: "16px",
+  padding: "36px 24px",
+  textAlign: "center" as const,
   marginBottom: "24px",
 };
 
-const heroImage = {
-  width: "100%",
-  height: "auto",
-  display: "block" as const,
-  borderRadius: "16px 16px 0 0",
-};
-
-const heroBanner = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 50%, #7c3aed 100%)",
-  padding: "24px 24px 28px 24px",
-  textAlign: "center" as const,
-  borderRadius: "0 0 16px 16px",
-};
-
-const heroIcon = {
-  fontSize: "36px",
-  margin: "0 0 6px 0",
+const bannerIcon = {
+  fontSize: "44px",
+  margin: "0 0 8px 0",
   lineHeight: "1",
 };
 
-const heroTitle = {
+const bannerTitle = {
   fontSize: "26px",
   fontWeight: "bold" as const,
   color: "#ffffff",
-  margin: "0 0 4px 0",
+  margin: "0",
 };
 
-const heroSubtitle = {
-  fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.8)",
-  margin: "0",
-  fontWeight: "500" as const,
+const challengeHero = {
+  marginBottom: "0",
+};
+
+const challengeImage = {
+  width: "100%",
+  height: "auto",
+  display: "block" as const,
+  borderRadius: "14px 14px 0 0",
 };
 
 const heading = {
@@ -216,20 +209,21 @@ const divider = {
 // ── Challenge card ──
 
 const challengeCard = {
-  background: "linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(168,85,247,0.06) 100%)",
-  borderRadius: "14px",
+  background: "linear-gradient(135deg, #1a0533 0%, #2d1654 50%, #4c1d95 100%)",
+  borderRadius: "0 0 14px 14px",
   padding: "28px 24px",
-  border: "1px solid rgba(124, 58, 237, 0.1)",
+  border: "1px solid rgba(124, 58, 237, 0.2)",
+  borderTop: "none" as const,
 };
 
 const categoryBadge = {
   fontSize: "11px",
   fontWeight: "bold" as const,
-  color: "#7c3aed",
+  color: "#c4b5fd",
   letterSpacing: "1.5px",
   textTransform: "uppercase" as const,
   margin: "0 0 8px 0",
-  backgroundColor: "rgba(124, 58, 237, 0.08)",
+  backgroundColor: "rgba(167, 139, 250, 0.15)",
   padding: "4px 12px",
   borderRadius: "12px",
   display: "inline-block" as const,
@@ -238,19 +232,19 @@ const categoryBadge = {
 const challengeName = {
   fontSize: "22px",
   fontWeight: "bold" as const,
-  color: "#111827",
+  color: "#ffffff",
   margin: "0 0 4px 0",
 };
 
 const challengeDesc = {
   fontSize: "14px",
-  color: "#6b7280",
+  color: "rgba(255, 255, 255, 0.7)",
   lineHeight: "22px",
   margin: "0",
 };
 
 const cardDivider = {
-  borderColor: "rgba(124, 58, 237, 0.08)",
+  borderColor: "rgba(167, 139, 250, 0.2)",
   margin: "16px 0",
 };
 
@@ -271,7 +265,7 @@ const iconText = {
 
 const detailLabel = {
   fontSize: "11px",
-  color: "#9ca3af",
+  color: "rgba(196, 181, 253, 0.7)",
   textTransform: "uppercase" as const,
   letterSpacing: "0.5px",
   margin: "0",
@@ -280,7 +274,7 @@ const detailLabel = {
 
 const detailValue = {
   fontSize: "14px",
-  color: "#111827",
+  color: "#ffffff",
   margin: "2px 0 0 0",
   fontWeight: "500" as const,
 };
