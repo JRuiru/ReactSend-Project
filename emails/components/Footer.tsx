@@ -3,11 +3,11 @@ import * as React from "react";
 
 export const Footer = () => (
   <Section>
-    <Hr style={hr} />
-    <Text style={footerText}>
+    <Hr style={hr} className="footer-hr" />
+    <Text style={footerText} className="footer-text">
       &copy; {new Date().getFullYear()} SeeMyHealth. All rights reserved.
     </Text>
-    <Text style={footerText}>
+    <Text style={footerText} className="footer-text">
       <Link href="https://seemyhealth.ai" style={link}>
         seemyhealth.ai
       </Link>

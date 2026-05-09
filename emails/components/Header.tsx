@@ -8,13 +8,13 @@ interface HeaderProps {
 }
 
 export const Header = ({ title }: HeaderProps) => (
-  <Section style={header}>
+  <Section style={header} className="header-border">
     <Row>
       <Column style={logoCol}>
         <Img src={LOGO_URL} width="44" height="44" alt="SeeMyHealth" style={logoImg} />
       </Column>
       <Column style={textCol}>
-        <Text style={logoText}>SeeMyHealth</Text>
+        <Text style={logoText} className="logo-text">SeeMyHealth</Text>
         {title && <Text style={titleStyle}>{title}</Text>}
       </Column>
     </Row>

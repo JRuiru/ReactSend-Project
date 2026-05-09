@@ -12,7 +12,38 @@ interface EmailLayoutProps {
 export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
   <Html>
     <Head>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
       <style dangerouslySetInnerHTML={{ __html: `
+        :root { color-scheme: light dark; supported-color-schemes: light dark; }
+        @media (prefers-color-scheme: dark) {
+          .email-bg {
+            background: #1a0533 !important;
+          }
+          .email-container {
+            background-color: #1e1e2e !important;
+            border-color: rgba(167, 139, 250, 0.2) !important;
+          }
+          .email-container h1, .email-container h2, .email-container h3,
+          .email-container p, .email-container td, .email-container span {
+            color: #e4e4e7 !important;
+          }
+          .email-container a {
+            color: #a78bfa !important;
+          }
+          .header-border {
+            border-bottom-color: rgba(167, 139, 250, 0.2) !important;
+          }
+          .footer-hr {
+            border-color: rgba(167, 139, 250, 0.2) !important;
+          }
+          .footer-text {
+            color: #71717a !important;
+          }
+          .logo-text {
+            color: #a78bfa !important;
+          }
+        }
         @media only screen and (max-width: 600px) {
           .email-container {
             padding: 24px 16px !important;
