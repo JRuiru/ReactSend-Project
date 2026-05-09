@@ -18,7 +18,7 @@ export default function ChallengeInviteEmail() {
     <EmailLayout preview="{{inviter_name}} challenged you: {{challenge_name}}">
 
       {/* ── Banner ── */}
-      <Section style={banner}>
+      <Section style={banner} className="dark-safe">
         <Text style={bannerIcon}>&#x1F525;</Text>
         <Text style={bannerTitle}>You've Been Challenged!</Text>
       </Section>
@@ -36,7 +36,7 @@ export default function ChallengeInviteEmail() {
       <Hr style={divider} />
 
       {/* ── Challenge details — image bg + glass card ── */}
-      <Section style={challengeBgSection}>
+      <Section style={challengeBgSection} className="dark-safe">
         <Section style={glassCard}>
           <Text style={categoryBadge}>{"{{challenge_category}}"}</Text>
           <Text style={challengeName}>{"{{challenge_name}}"}</Text>

@@ -25,7 +25,7 @@ export default function ReEngagementEmail() {
           width="560"
           style={heroImage}
         />
-        <Section style={heroTitleCard}>
+        <Section style={heroTitleCard} className="dark-safe">
           <Text style={heroTitle}>We'd Love to See You Back</Text>
           <Text style={heroSubtitle}>
             Looking for you, {"{{first_name}}"} — it's been {"{{days_inactive}}"} days

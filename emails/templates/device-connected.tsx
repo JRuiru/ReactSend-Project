@@ -16,7 +16,7 @@ export default function DeviceConnectedEmail() {
     <EmailLayout preview="{{device_name}} is connected to SeeMyHealth">
 
       {/* ── Success banner ── */}
-      <Section style={banner}>
+      <Section style={banner} className="dark-safe">
         <Text style={bannerIcon}>&#x2705;</Text>
         <Text style={bannerTitle}>Device Connected!</Text>
       </Section>

@@ -41,7 +41,7 @@ export default function WelcomeEmail() {
     <EmailLayout preview="Welcome to SeeMyHealth — your complete health ecosystem">
 
       {/* ── Hero Banner ── */}
-      <Section style={heroBanner}>
+      <Section style={heroBanner} className="dark-safe">
         <Text style={heroTitle}>SeeMyHealth</Text>
         <Text style={heroTagline}>Your wellness, beautifully organized.</Text>
       </Section>
@@ -237,7 +237,7 @@ export default function WelcomeEmail() {
       {/* ══════════════════════════════════════════════════════════
           SECTION 3 — Invite Friends
           ══════════════════════════════════════════════════════════ */}
-      <Section style={shareSection}>
+      <Section style={shareSection} className="dark-safe">
         <Text style={shareHeading}>Invite your friends!</Text>
         <Text style={shareText}>
           Know someone who'd love SeeMyHealth? Share the good news

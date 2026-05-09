@@ -27,7 +27,7 @@ export default function ChallengeWonEmail() {
     <EmailLayout preview="You won the {{challenge_name}} challenge!">
 
       {/* ── Trophy / Celebration ── */}
-      <Section style={celebrationBanner}>
+      <Section style={celebrationBanner} className="dark-safe">
         <Text style={trophyIcon}>&#x1F3C6;</Text>
         <Text style={celebrationTitle}>You did it!</Text>
         <Text style={celebrationSubtitle}>
@@ -179,7 +179,7 @@ export default function ChallengeWonEmail() {
       <Hr style={divider} />
 
       {/* ── Share your win ── */}
-      <Section style={shareSection}>
+      <Section style={shareSection} className="dark-safe">
         <Text style={shareHeading}>Share your win!</Text>
         <Text style={shareText}>
           Let your friends know you're a challenge champion.

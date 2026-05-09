@@ -16,7 +16,7 @@ export default function StreakMilestoneEmail() {
     <EmailLayout preview="You hit a {{streak_count}}-day streak!">
 
       {/* ── Fire banner ── */}
-      <Section style={banner}>
+      <Section style={banner} className="dark-safe">
         <Text style={fireIcon}>&#x1F525;</Text>
         <Text style={streakCount}>{"{{streak_count}}"}</Text>
         <Text style={streakLabel}>Day Streak!</Text>

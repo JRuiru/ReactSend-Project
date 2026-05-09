@@ -25,7 +25,7 @@ export default function FamilyInviteEmail() {
           width="560"
           style={heroImage}
         />
-        <Section style={heroTitleCard}>
+        <Section style={heroTitleCard} className="dark-safe">
           <Text style={heroLabel}>FAMILY HEALTH SHARING</Text>
           <Text style={heroTitle}>Better Health, Together</Text>
         </Section>

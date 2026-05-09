@@ -18,7 +18,7 @@ export default function AppointmentReminderEmail() {
     <EmailLayout preview="Appointment reminder — {{doctor_name}} on {{appointment_date}}">
 
       {/* ── Time badge ── */}
-      <Section style={timeBadge}>
+      <Section style={timeBadge} className="dark-safe">
         <Text style={timeBadgeText}>{"{{time_until}}"} away</Text>
       </Section>
 

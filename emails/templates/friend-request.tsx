@@ -18,7 +18,7 @@ export default function FriendRequestEmail() {
     <EmailLayout preview="{{requester_name}} wants to be friends on SeeMyHealth">
 
       {/* ── Banner ── */}
-      <Section style={banner}>
+      <Section style={banner} className="dark-safe">
         <Text style={bannerIcon}>&#x1F44B;</Text>
         <Text style={bannerTitle}>New Friend Request</Text>
       </Section>

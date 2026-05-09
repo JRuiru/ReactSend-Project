@@ -31,6 +31,10 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
           .email-container a {
             color: #a78bfa !important;
           }
+          .dark-safe p, .dark-safe td, .dark-safe span, .dark-safe a,
+          .dark-safe h1, .dark-safe h2, .dark-safe h3 {
+            color: inherit !important;
+          }
           .header-border {
             border-bottom-color: rgba(167, 139, 250, 0.2) !important;
           }

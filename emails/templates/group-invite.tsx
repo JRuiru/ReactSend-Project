@@ -17,7 +17,7 @@ export default function GroupInviteEmail() {
     <EmailLayout preview="{{inviter_name}} invited you to join {{group_name}}">
 
       {/* ── Banner ── */}
-      <Section style={banner}>
+      <Section style={banner} className="dark-safe">
         <Text style={bannerIcon}>&#x1F46B;</Text>
         <Text style={bannerTitle}>Group Invitation</Text>
       </Section>

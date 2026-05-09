@@ -7,7 +7,7 @@ interface PrimaryButtonProps {
 }
 
 export const PrimaryButton = ({ href, children }: PrimaryButtonProps) => (
-  <Button href={href} style={button}>
+  <Button href={href} style={button} className="dark-safe">
     {children}
   </Button>
 );

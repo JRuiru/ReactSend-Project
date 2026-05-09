@@ -17,7 +17,7 @@ export default function AchievementUnlockedEmail() {
     <EmailLayout preview="Achievement unlocked: {{achievement_name}}">
 
       {/* ── Celebration banner ── */}
-      <Section style={banner}>
+      <Section style={banner} className="dark-safe">
         <Text style={bannerEmoji}>{"{{achievement_icon}}"}</Text>
         <Text style={bannerTitle}>Achievement Unlocked!</Text>
       </Section>
@@ -90,7 +90,7 @@ export default function AchievementUnlockedEmail() {
       <Hr style={divider} />
 
       {/* ── Share ── */}
-      <Section style={shareSection}>
+      <Section style={shareSection} className="dark-safe">
         <Text style={shareHeading}>Show it off!</Text>
         <Text style={shareText}>
           Let your friends know about your latest achievement.

@@ -16,7 +16,7 @@ export default function HealthReportEmail() {
     <EmailLayout preview="Your {{report_period}} health report is ready">
 
       {/* ── Report banner ── */}
-      <Section style={banner}>
+      <Section style={banner} className="dark-safe">
         <Text style={bannerIcon}>&#x1F4CA;</Text>
         <Text style={bannerTitle}>Your Health Report</Text>
         <Text style={bannerPeriod}>{"{{report_period}}"}</Text>
