@@ -22,7 +22,7 @@ const IMAGES = {
   scale: "https://storage.googleapis.com/seemyhealth-email-assets/scale.jpg",
   bpMonitor: "https://placehold.co/480x220/1a0533/ef4444?text=The+BP+Monitor",
   hydraOne: "https://storage.googleapis.com/seemyhealth-email-assets/hydra-one.png",
-  hemaOne: "https://placehold.co/480x220/1a0533/a855f7?text=Hema+One",
+  hemaOne: "https://storage.googleapis.com/seemyhealth-email-assets/hema-one.jpg",
 };
 
 // SwiftUI system color → hex for device accents
