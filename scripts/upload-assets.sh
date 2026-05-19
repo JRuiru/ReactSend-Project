@@ -53,7 +53,7 @@ compress_and_upload() {
     gcloud storage cp "$FILE" "$BUCKET/$FILENAME" >/dev/null 2>&1
   fi
 
-  echo "  ✓ https://storage.googleapis.com/seemyhealth-email-assets/$FILENAME"
+  echo "  ✓ https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/${FILENAME%.*}/public"
 }
 
 echo ""

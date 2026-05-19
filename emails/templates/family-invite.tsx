@@ -11,7 +11,7 @@ import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 
 const BASE_URL = "https://seemyhealth.ai";
-const FAMILY_IMG = "https://storage.googleapis.com/seemyhealth-email-assets/family-share.jpg";
+const FAMILY_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/family-share/public";
 
 export default function FamilyInviteEmail() {
   return (
@@ -42,10 +42,10 @@ export default function FamilyInviteEmail() {
         keep an eye on each other's wellness — on your own terms.
       </Text>
 
-      {/* ── Accept CTA ── */}
+      {/* ── View invite CTA ── */}
       <Section style={ctaSection}>
-        <PrimaryButton href={`${BASE_URL}/family/accept/{{invite_id}}`}>
-          Accept Invitation
+        <PrimaryButton href={`${BASE_URL}/family/invite/{{invite_id}}`}>
+          View Invitation
         </PrimaryButton>
       </Section>
 
@@ -271,9 +271,9 @@ export default function FamilyInviteEmail() {
             <Text style={stepCircle}>1</Text>
           </Column>
           <Column style={stepContent}>
-            <Text style={stepTitle}>Accept the invite</Text>
+            <Text style={stepTitle}>Open the invitation</Text>
             <Text style={stepDesc}>
-              Tap the button above to connect with {"{{inviter_name}}"}.
+              Tap the button above to review the invite from {"{{inviter_name}}"} in the app.
             </Text>
           </Column>
         </Row>
@@ -329,12 +329,12 @@ export default function FamilyInviteEmail() {
 
       <Section style={finalSection}>
         <Text style={finalText}>
-          {"{{inviter_name}}"} is waiting for you. Connect now and start
-          looking after each other's health.
+          {"{{inviter_name}}"} has invited you to share health data.
+          Open the app to review and connect.
         </Text>
         <Section style={ctaSection}>
-          <PrimaryButton href={`${BASE_URL}/family/accept/{{invite_id}}`}>
-            Accept &amp; Connect
+          <PrimaryButton href={`${BASE_URL}/family/invite/{{invite_id}}`}>
+            Open in SeeMyHealth
           </PrimaryButton>
         </Section>
       </Section>

@@ -7,6 +7,7 @@
     "dev": "email dev --dir emails",
     "build": "email export --dir emails --outDir dist",
     "deploy": "tsx scripts/deploy.ts",
+    "deploy:klaviyo": "tsx scripts/deploy-klaviyo.ts",
     "test-send": "tsx scripts/test-send.ts"
   },
   "keywords": [],

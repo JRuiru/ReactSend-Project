@@ -41,6 +41,8 @@
 - **Google Workspace email** — MX records don't change
 - **SendGrid emails** — CNAME records carry over
 - **Firebase** — DKIM and verification records carry over
+- **Klaviyo emails** — DKIM and sending domain records carry over
+- **Shopify store** — shop.seemyhealth.ai CNAME carries over
 - **Website** — brief downtime only when swapping A records to Webflow
 
 ### What to watch out for
@@ -77,6 +79,10 @@
 | em3602 | u60124329.wl080.sendgrid.net | 1 Hour | SendGrid return path |
 | s1._domainkey | s1.domainkey.u60124329.wl080.sendgrid.net | 1 Hour | SendGrid DKIM |
 | s2._domainkey | s2.domainkey.u60124329.wl080.sendgrid.net | 1 Hour | SendGrid DKIM |
+| shop | shops.myshopify.com | 1 Hour | Shopify store |
+| send | 3818916950412715055.klaviyodns.com | 1 Hour | Klaviyo sending domain |
+| kl1._domainkey | kl1._domainkey.3818916950412715055.klaviyodns.com | 1 Hour | Klaviyo DKIM |
+| kl2._domainkey | kl2._domainkey.3818916950412715055.klaviyodns.com | 1 Hour | Klaviyo DKIM |
 
 ## TXT Records
 | Host | Value | TTL | Purpose |
@@ -85,6 +91,7 @@
 | @ | v=spf1 include:_spf.google.com ~all | 1 Hour | SPF for Google Workspace |
 | _dmarc.www | v=DMARC1; p=none; | 1 Hour | DMARC www |
 | _dmarc | v=DMARC1; p=none; | 1 Hour | DMARC root |
+| @ | klaviyo-site-verification=RZWaGg | 1 Hour | Klaviyo site verification |
 
 ## MX Records (Google Workspace)
 | Host | Value | Priority | TTL |

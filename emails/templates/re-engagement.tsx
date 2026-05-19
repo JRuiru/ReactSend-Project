@@ -11,7 +11,7 @@ import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 
 const BASE_URL = "https://seemyhealth.ai";
-const RING_IMG = "https://storage.googleapis.com/seemyhealth-email-assets/ring-peekaboo.jpg";
+const RING_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/ring-peekaboo/public";
 
 export default function ReEngagementEmail() {
   return (

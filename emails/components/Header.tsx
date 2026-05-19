@@ -1,7 +1,7 @@
 import { Img, Section, Text, Row, Column } from "@react-email/components";
 import * as React from "react";
 
-const LOGO_URL = "https://storage.googleapis.com/seemyhealth-email-assets/logo.png";
+const LOGO_URL = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/logo/public";
 
 interface HeaderProps {
   title?: string;

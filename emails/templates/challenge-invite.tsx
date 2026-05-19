@@ -11,7 +11,7 @@ import { PrimaryButton } from "../components/PrimaryButton";
 import { SecondaryButton } from "../components/SecondaryButton";
 
 const BASE_URL = "https://seemyhealth.ai";
-const CHALLENGE_IMG = "https://storage.googleapis.com/seemyhealth-email-assets/challenge-fitness.jpg";
+const CHALLENGE_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/challenge-fitness/public";
 
 export default function ChallengeInviteEmail() {
   return (

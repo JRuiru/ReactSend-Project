@@ -18,11 +18,11 @@ import { SecondaryButton } from "../components/SecondaryButton";
 // Host on CDN / S3 / Cloudinary for production.
 // ---------------------------------------------------------------
 const IMAGES = {
-  ringOne: "https://storage.googleapis.com/seemyhealth-email-assets/ring-one.jpg",
-  scale: "https://storage.googleapis.com/seemyhealth-email-assets/scale.jpg",
-  bpMonitor: "https://placehold.co/480x220/1a0533/ef4444?text=The+BP+Monitor",
-  hydraOne: "https://storage.googleapis.com/seemyhealth-email-assets/hydra-one.png",
-  hemaOne: "https://storage.googleapis.com/seemyhealth-email-assets/hema-one.jpg",
+  ringOne: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/ring-one/public",
+  scale: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/scale/public",
+  bpMonitor: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/bp-black-studio/public",
+  hydraOne: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/hydra-one/public",
+  hemaOne: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/hema-one/public",
 };
 
 // SwiftUI system color → hex for device accents
@@ -79,7 +79,7 @@ export default function WelcomeEmail() {
             — 24/7 on your finger. The smallest health lab you'll ever own.
           </Text>
           <Section style={hardwareCta}>
-            <Button href={`${BASE_URL}/devices/ring-one`} style={deviceButton(DEVICE_COLORS.ring)}>
+            <Button href={`${BASE_URL}/products/ring-one`} style={deviceButton(DEVICE_COLORS.ring)}>
               Explore The Ring One
             </Button>
           </Section>
@@ -97,7 +97,7 @@ export default function WelcomeEmail() {
             and more. Step on, and your data syncs instantly.
           </Text>
           <Section style={hardwareCta}>
-            <Button href={`${BASE_URL}/devices/scale`} style={deviceButton(DEVICE_COLORS.scale)}>
+            <Button href={`${BASE_URL}/products/scale`} style={deviceButton(DEVICE_COLORS.scale)}>
               Explore The Scale
             </Button>
           </Section>
@@ -115,7 +115,7 @@ export default function WelcomeEmail() {
             your health dashboard. Track trends over time.
           </Text>
           <Section style={hardwareCta}>
-            <Button href={`${BASE_URL}/devices/bp-monitor`} style={deviceButton(DEVICE_COLORS.bp)}>
+            <Button href={`${BASE_URL}/products/bp-monitor`} style={deviceButton(DEVICE_COLORS.bp)}>
               Explore The BP Monitor
             </Button>
           </Section>
@@ -133,7 +133,7 @@ export default function WelcomeEmail() {
             with real-time tracking and daily goals.
           </Text>
           <Section style={hardwareCta}>
-            <Button href={`${BASE_URL}/devices/hydra-one`} style={deviceButton(DEVICE_COLORS.hydra)}>
+            <Button href={`${BASE_URL}/products/hydra-one`} style={deviceButton(DEVICE_COLORS.hydra)}>
               Explore Hydra One
             </Button>
           </Section>
@@ -151,7 +151,7 @@ export default function WelcomeEmail() {
             Know your numbers from the comfort of home.
           </Text>
           <Section style={hardwareCta}>
-            <Button href={`${BASE_URL}/devices/hema-one`} style={deviceButton(DEVICE_COLORS.hema)}>
+            <Button href={`${BASE_URL}/products/hema-one`} style={deviceButton(DEVICE_COLORS.hema)}>
               Explore Hema One
             </Button>
           </Section>

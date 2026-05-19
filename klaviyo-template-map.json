@@ -1,0 +1,32 @@
+{
+  "shopify-abandoned-cart": {
+    "name": "Abandoned Cart",
+    "module": "shopify-abandoned-cart",
+    "klaviyo_template_id": "SUjstU"
+  },
+  "shopify-order-confirmation": {
+    "name": "Order Confirmation",
+    "module": "shopify-order-confirmation",
+    "klaviyo_template_id": "UGKjYp"
+  },
+  "shopify-shipping-update": {
+    "name": "Shipping Update",
+    "module": "shopify-shipping-update",
+    "klaviyo_template_id": "YhB6Zm"
+  },
+  "shopify-product-promotion": {
+    "name": "Product Promotion",
+    "module": "shopify-product-promotion",
+    "klaviyo_template_id": "U5JhmL"
+  },
+  "shopify-welcome": {
+    "name": "Welcome to Store",
+    "module": "shopify-welcome",
+    "klaviyo_template_id": "YcXQDX"
+  },
+  "shopify-post-purchase": {
+    "name": "Post-Purchase Follow-up",
+    "module": "shopify-post-purchase",
+    "klaviyo_template_id": "SK4VM8"
+  }
+}

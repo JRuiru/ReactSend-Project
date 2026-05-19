@@ -76,5 +76,17 @@
     "subject": "{{inviter_name}} invited you to join {{group_name}}",
     "module": "group-invite",
     "sendgrid_template_id": "d-a457866fc49740ef82502bd2309968b2"
+  },
+  "enquiry-sales-notification": {
+    "name": "Enquiry Sales Notification",
+    "subject": "New enquiry from {{name}} at {{company}}",
+    "module": "enquiry-sales-notification",
+    "sendgrid_template_id": null
+  },
+  "enquiry-customer-acknowledgment": {
+    "name": "Enquiry Customer Acknowledgment",
+    "subject": "Thanks {{first_name}}, we got your enquiry",
+    "module": "enquiry-customer-acknowledgment",
+    "sendgrid_template_id": null
   }
 }
