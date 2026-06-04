@@ -81,12 +81,12 @@
     "name": "Enquiry Sales Notification",
     "subject": "New enquiry from {{name}} at {{company}}",
     "module": "enquiry-sales-notification",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-4034685f95124c3d99c66e1e5e29ea58"
   },
   "enquiry-customer-acknowledgment": {
     "name": "Enquiry Customer Acknowledgment",
     "subject": "Thanks {{first_name}}, we got your enquiry",
     "module": "enquiry-customer-acknowledgment",
-    "sendgrid_template_id": null
+    "sendgrid_template_id": "d-16be5978a560421da01f664ed3c022b7"
   }
 }

@@ -34,6 +34,17 @@ export default function EnquirySalesNotificationEmail() {
         <Section style={detailRow}>
           <Row>
             <Column style={labelCol}>
+              <Text style={label}>Source</Text>
+            </Column>
+            <Column style={valueCol}>
+              <Text style={value}>{"{{source}}"}</Text>
+            </Column>
+          </Row>
+        </Section>
+
+        <Section style={detailRow}>
+          <Row>
+            <Column style={labelCol}>
               <Text style={label}>Company</Text>
             </Column>
             <Column style={valueCol}>
