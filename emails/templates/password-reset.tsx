@@ -83,6 +83,18 @@ export default function PasswordResetEmail() {
 
       <Hr style={divider} />
 
+      {/* ── While you're here ── */}
+      <Section style={featureCard}>
+        <Text style={featureLabel}>WHILE YOU ARE HERE</Text>
+        <Text style={featureHeading}>Enable biometric login</Text>
+        <Text style={featureText}>
+          Skip the password entirely. Turn on Face ID or Touch ID in the
+          app for faster, more secure access to your health data.
+        </Text>
+      </Section>
+
+      <Hr style={divider} />
+
       <Text style={footerNote}>
         This email was sent to {"{{email}}"}. If you did not request a
         password reset, please contact{" "}
@@ -195,6 +207,38 @@ const tipText = {
   color: "rgba(255, 255, 255, 0.5)",
   margin: "0",
   lineHeight: "22px",
+};
+
+// ── Feature highlight ──
+
+const featureCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "24px",
+  textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const featureLabel = {
+  fontSize: "10px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.3)",
+  letterSpacing: "2px",
+  margin: "0 0 8px 0",
+};
+
+const featureHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+};
+
+const featureText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
 };
 
 const footerNote = {

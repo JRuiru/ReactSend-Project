@@ -5,6 +5,7 @@ import {
   Row,
   Column,
   Hr,
+  Button,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -159,6 +160,22 @@ export default function ChallengeInviteEmail() {
             </Text>
           </Column>
         </Row>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Invite friends ── */}
+      <Section style={inviteCard}>
+        <Text style={inviteHeading}>Bring your crew</Text>
+        <Text style={inviteText}>
+          Challenges are better with friends. Invite someone to join and
+          compete together.
+        </Text>
+        <Section style={inviteCtaCenter}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={inviteButton}>
+            Invite a Friend
+          </Button>
+        </Section>
       </Section>
 
     </EmailLayout>
@@ -339,4 +356,47 @@ const reasonDesc = {
   color: "rgba(255, 255, 255, 0.45)",
   lineHeight: "21px",
   margin: "0",
+};
+
+// ── Invite ──
+
+const inviteCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "28px 24px",
+  textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const inviteHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+};
+
+const inviteText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+};
+
+const inviteCtaCenter = {
+  textAlign: "center" as const,
+  marginTop: "16px",
+};
+
+const inviteButton = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  color: "#f5f5f5",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+  border: "1px solid rgba(255, 255, 255, 0.1)",
 };

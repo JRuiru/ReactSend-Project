@@ -5,6 +5,7 @@ import {
   Row,
   Column,
   Hr,
+  Button,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -140,6 +141,42 @@ export default function GroupInviteEmail() {
             </Text>
           </Column>
         </Row>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Social proof ── */}
+      <Section style={proofSection}>
+        <Text style={proofNumber}>{"{{member_count}}"} members</Text>
+        <Text style={proofText}>
+          are already in this group. Join them and start your health
+          journey together.
+        </Text>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── App download ── */}
+      <Section style={downloadSection}>
+        <Text style={downloadHeading}>New to SeeMyHealth?</Text>
+        <Text style={downloadText}>
+          Download the app to join the group and start participating
+          in challenges.
+        </Text>
+        <Section style={downloadStoreRow}>
+          <Row>
+            <Column align="center" style={downloadStoreCol}>
+              <Button href="https://apps.apple.com/app/seemyhealth" style={downloadStoreButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={downloadStoreCol}>
+              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={downloadStoreButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
+        </Section>
       </Section>
 
     </EmailLayout>
@@ -308,4 +345,69 @@ const benefitDesc = {
   color: "rgba(255, 255, 255, 0.45)",
   lineHeight: "21px",
   margin: "0",
+};
+
+// ── Social proof ──
+
+const proofSection = {
+  textAlign: "center" as const,
+};
+
+const proofNumber = {
+  fontSize: "28px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const proofText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.4)",
+  margin: "4px 0 0 0",
+  textAlign: "center" as const,
+};
+
+// ── Download ──
+
+const downloadSection = {
+  textAlign: "center" as const,
+};
+
+const downloadHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+  textAlign: "center" as const,
+};
+
+const downloadText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const downloadStoreRow = {
+  marginTop: "16px",
+};
+
+const downloadStoreCol = {
+  width: "50%",
+  padding: "0 4px",
+};
+
+const downloadStoreButton = {
+  backgroundColor: "transparent",
+  color: "rgba(255, 255, 255, 0.6)",
+  padding: "10px 20px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
+  letterSpacing: "0.5px",
 };

@@ -5,6 +5,7 @@ import {
   Row,
   Column,
   Hr,
+  Button,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -302,6 +303,48 @@ export default function FamilyInviteEmail() {
 
       <Hr style={divider} />
 
+      {/* ── App download for new users ── */}
+      <Section style={downloadCard}>
+        <Text style={downloadHeading}>New to SeeMyHealth?</Text>
+        <Text style={downloadText}>
+          Download the app to accept the invitation and start sharing
+          health data with your family.
+        </Text>
+        <Section style={storeRow}>
+          <Row>
+            <Column align="center" style={storeCol}>
+              <Button href="https://apps.apple.com/app/seemyhealth" style={storeButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={storeCol}>
+              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={storeButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Device ecosystem ── */}
+      <Section style={ecosystemSection}>
+        <Text style={ecosystemHeading}>Track health together</Text>
+        <Text style={ecosystemText}>
+          SeeMyHealth devices capture sleep, heart rate, blood pressure,
+          hydration, and blood markers. Everything syncs to one app your
+          whole family can use.
+        </Text>
+        <Section style={ctaCenter}>
+          <Button href={`${BASE_URL}/shop`} style={ecosystemButton}>
+            Explore Devices
+          </Button>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
       {/* ── Final CTA ── */}
       <Section style={finalCta}>
         <Text style={finalText}>
@@ -522,6 +565,88 @@ const stepDesc = {
   color: "rgba(255, 255, 255, 0.45)",
   margin: "0",
   lineHeight: "21px",
+};
+
+// ── Download ──
+
+const downloadCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "28px 24px",
+  textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const downloadHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+};
+
+const downloadText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+};
+
+const storeRow = {
+  marginTop: "16px",
+};
+
+const storeCol = {
+  width: "50%",
+  padding: "0 4px",
+};
+
+const storeButton = {
+  backgroundColor: "transparent",
+  color: "rgba(255, 255, 255, 0.6)",
+  padding: "10px 20px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
+  letterSpacing: "0.5px",
+};
+
+// ── Ecosystem ──
+
+const ecosystemSection = {
+  textAlign: "center" as const,
+};
+
+const ecosystemHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+  textAlign: "center" as const,
+};
+
+const ecosystemText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const ecosystemButton = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  color: "#f5f5f5",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+  border: "1px solid rgba(255, 255, 255, 0.1)",
 };
 
 // ── Final CTA ──

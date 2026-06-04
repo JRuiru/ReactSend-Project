@@ -100,6 +100,80 @@ export default function FriendRequestEmail() {
         leaderboards.
       </Text>
 
+      <Hr style={divider} />
+
+      {/* ── What you can do together ── */}
+      <Section style={togetherCard}>
+        <Text style={togetherHeading}>Better together</Text>
+
+        <Section style={togetherItem}>
+          <Row>
+            <Column style={togetherNumCol}>
+              <Text style={togetherNum}>1</Text>
+            </Column>
+            <Column>
+              <Text style={togetherTitle}>Join challenges</Text>
+              <Text style={togetherDesc}>
+                Compete in health challenges and push each other to do more.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
+
+        <Section style={togetherItem}>
+          <Row>
+            <Column style={togetherNumCol}>
+              <Text style={togetherNum}>2</Text>
+            </Column>
+            <Column>
+              <Text style={togetherTitle}>Share milestones</Text>
+              <Text style={togetherDesc}>
+                Celebrate achievements and streaks on each other's feed.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
+
+        <Section style={togetherItem}>
+          <Row>
+            <Column style={togetherNumCol}>
+              <Text style={togetherNum}>3</Text>
+            </Column>
+            <Column>
+              <Text style={togetherTitle}>Leaderboards</Text>
+              <Text style={togetherDesc}>
+                See how you stack up against each other across all metrics.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── App download ── */}
+      <Section style={downloadSection}>
+        <Text style={downloadHeading}>New to SeeMyHealth?</Text>
+        <Text style={downloadText}>
+          Download the app to accept the request and start your health
+          journey.
+        </Text>
+        <Section style={downloadStoreRow}>
+          <Row>
+            <Column align="center" style={downloadStoreCol}>
+              <Button href="https://apps.apple.com/app/seemyhealth" style={downloadStoreButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={downloadStoreCol}>
+              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={downloadStoreButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
+        </Section>
+      </Section>
+
     </EmailLayout>
   );
 }
@@ -242,6 +316,97 @@ const declineButton = {
   textDecoration: "none",
   display: "inline-block",
   border: "1px solid rgba(255, 255, 255, 0.1)",
+};
+
+// ── Together ──
+
+const togetherCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "24px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const togetherHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 20px 0",
+};
+
+const togetherItem = {
+  marginBottom: "14px",
+};
+
+const togetherNumCol = {
+  width: "28px",
+  verticalAlign: "top" as const,
+};
+
+const togetherNum = {
+  fontSize: "14px",
+  fontWeight: "700" as const,
+  color: "rgba(255, 255, 255, 0.12)",
+  margin: "0",
+  lineHeight: "22px",
+};
+
+const togetherTitle = {
+  fontSize: "15px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0 0 2px 0",
+};
+
+const togetherDesc = {
+  fontSize: "13px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "20px",
+  margin: "0",
+};
+
+// ── Download ──
+
+const downloadSection = {
+  textAlign: "center" as const,
+};
+
+const downloadHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+  textAlign: "center" as const,
+};
+
+const downloadText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const downloadStoreRow = {
+  marginTop: "16px",
+};
+
+const downloadStoreCol = {
+  width: "50%",
+  padding: "0 4px",
+};
+
+const downloadStoreButton = {
+  backgroundColor: "transparent",
+  color: "rgba(255, 255, 255, 0.6)",
+  padding: "10px 20px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
+  letterSpacing: "0.5px",
 };
 
 const footerNote = {
