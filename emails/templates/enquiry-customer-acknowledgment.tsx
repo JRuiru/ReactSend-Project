@@ -16,8 +16,8 @@ const BASE_URL = "https://seemyhealth.ai";
 
 const IMAGES = {
   hero: `${CDN}/lifestyle-sun-portrait/public`,
-  ring: `${CDN}/ring-phantom-black-poster/public`,
-  scale: `${CDN}/scale-base-black-config/public`,
+  ring: `${CDN}/ring-face-closeup/public`,
+  scale: `${CDN}/scale-white-portrait/public`,
   bp: `${CDN}/bp-black-poster/public`,
   hydra: `${CDN}/bottle-black-config/public`,
   hema: `${CDN}/hema-black-poster/public`,
