@@ -1,6 +1,7 @@
 import {
   Text,
   Section,
+  Img,
   Row,
   Column,
   Hr,
@@ -9,78 +10,128 @@ import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 
+const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
+
+const IMAGES = {
+  hero: `${CDN}/ring-yoga/public`,
+};
 
 export default function StreakMilestoneEmail() {
   return (
     <EmailLayout preview="You hit a {{streak_count}}-day streak!">
 
-      {/* ── Fire banner ── */}
-      <Section style={banner} className="dark-safe">
-        <Text style={fireIcon}>&#x1F525;</Text>
-        <Text style={streakCount}>{"{{streak_count}}"}</Text>
-        <Text style={streakLabel}>Day Streak!</Text>
+      {/* ── Hero ── */}
+      <Section style={heroSection}>
+        <Img
+          src={IMAGES.hero}
+          width="560"
+          alt="Streak milestone"
+          style={heroImage}
+        />
+        <Section style={heroOverlay} className="force-white">
+          <Text style={heroLabel}>{"{{streak_category}}"}</Text>
+          <Text style={heroCount}>{"{{streak_count}}"}</Text>
+          <Text style={heroSub}>DAY STREAK</Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
       <Text style={heading}>
-        Unstoppable, {"{{first_name}}"}!
+        Unstoppable, {"{{first_name}}"}.
       </Text>
-
       <Text style={paragraph}>
-        You've been consistent for <strong>{"{{streak_count}}"} days straight</strong> with
-        your <strong>{"{{streak_category}}"}</strong> goal. That kind of
-        dedication doesn't go unnoticed.
+        You have been consistent for <strong style={{ color: "#f5f5f5" }}>{"{{streak_count}}"} days
+        straight</strong> with your <strong style={{ color: "#f5f5f5" }}>{"{{streak_category}}"}</strong> goal.
+        That kind of dedication does not go unnoticed.
       </Text>
 
       <Hr style={divider} />
 
-      {/* ── Streak details ── */}
-      <Section style={streakCard}>
-        <Section style={detailRow}>
+      {/* ══════════════════════════════════════════════════════════
+          Streak Stats
+          ══════════════════════════════════════════════════════════ */}
+      <Text style={sectionLabel}>YOUR STREAK</Text>
+
+      <Section style={statsCard}>
+        <Row>
+          <Column style={statCell}>
+            <Text style={statValue}>{"{{streak_goal}}"}</Text>
+            <Text style={statLabel}>DAILY GOAL</Text>
+          </Column>
+        </Row>
+        <Hr style={statDivider} />
+        <Row>
+          <Column style={statCell}>
+            <Text style={statValue}>{"{{streak_start_date}}"}</Text>
+            <Text style={statLabel}>STARTED</Text>
+          </Column>
+          <Column style={statCell}>
+            <Text style={statValue}>{"{{personal_record}}"} days</Text>
+            <Text style={statLabel}>PERSONAL BEST</Text>
+          </Column>
+        </Row>
+        <Hr style={statDivider} />
+        <Row>
+          <Column style={statCell}>
+            <Text style={statValue}>{"{{avg_performance}}"}</Text>
+            <Text style={statLabel}>AVG PERFORMANCE</Text>
+          </Column>
+        </Row>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ══════════════════════════════════════════════════════════
+          Milestone Tracker
+          ══════════════════════════════════════════════════════════ */}
+      <Text style={sectionLabel}>MILESTONES</Text>
+
+      <Section style={milestoneCard}>
+        <Section style={milestoneRow}>
           <Row>
-            <Column style={detailIconCol}>
-              <Text style={iconText}>&#x1F3AF;</Text>
+            <Column style={milestoneIconCol}>
+              <Text style={milestoneIcon}>{"{{milestone_14_icon}}"}</Text>
             </Column>
-            <Column>
-              <Text style={detailLabel}>Goal</Text>
-              <Text style={detailValue}>{"{{streak_goal}}"}</Text>
+            <Column style={milestoneContent}>
+              <Text style={milestoneName}>14 days</Text>
+              <Text style={milestoneSub}>Two weeks strong</Text>
             </Column>
           </Row>
         </Section>
 
-        <Section style={detailRow}>
+        <Section style={milestoneRow}>
           <Row>
-            <Column style={detailIconCol}>
-              <Text style={iconText}>&#x1F4C5;</Text>
+            <Column style={milestoneIconCol}>
+              <Text style={milestoneIcon}>{"{{milestone_30_icon}}"}</Text>
             </Column>
-            <Column>
-              <Text style={detailLabel}>Started</Text>
-              <Text style={detailValue}>{"{{streak_start_date}}"}</Text>
+            <Column style={milestoneContent}>
+              <Text style={milestoneName}>30 days</Text>
+              <Text style={milestoneSub}>Habit formed</Text>
             </Column>
           </Row>
         </Section>
 
-        <Section style={detailRow}>
+        <Section style={milestoneRow}>
           <Row>
-            <Column style={detailIconCol}>
-              <Text style={iconText}>&#x1F3C6;</Text>
+            <Column style={milestoneIconCol}>
+              <Text style={milestoneIcon}>{"{{milestone_60_icon}}"}</Text>
             </Column>
-            <Column>
-              <Text style={detailLabel}>Personal Record</Text>
-              <Text style={detailValue}>{"{{personal_record}}"} days</Text>
+            <Column style={milestoneContent}>
+              <Text style={milestoneName}>60 days</Text>
+              <Text style={milestoneSub}>Lifestyle change</Text>
             </Column>
           </Row>
         </Section>
 
-        <Section style={detailRow}>
+        <Section style={milestoneRowLast}>
           <Row>
-            <Column style={detailIconCol}>
-              <Text style={iconText}>&#x1F4AA;</Text>
+            <Column style={milestoneIconCol}>
+              <Text style={milestoneIcon}>{"{{milestone_100_icon}}"}</Text>
             </Column>
-            <Column>
-              <Text style={detailLabel}>Average</Text>
-              <Text style={detailValue}>{"{{avg_performance}}"}</Text>
+            <Column style={milestoneContent}>
+              <Text style={milestoneName}>100 days</Text>
+              <Text style={milestoneSub}>Legend status</Text>
             </Column>
           </Row>
         </Section>
@@ -88,88 +139,27 @@ export default function StreakMilestoneEmail() {
 
       <Hr style={divider} />
 
-      {/* ── Milestones ahead ── */}
-      <Text style={sectionHeading}>Keep going!</Text>
-
-      <Section style={milestoneRow}>
-        <Row>
-          <Column style={milestoneCheck}>
-            <Text style={checkIcon}>&#x2705;</Text>
-          </Column>
-          <Column>
-            <Text style={milestoneText}>
-              <strong>7 days</strong> — First week down
-            </Text>
-          </Column>
-        </Row>
-      </Section>
-
-      <Section style={milestoneRow}>
-        <Row>
-          <Column style={milestoneCheck}>
-            <Text style={checkIcon}>{"{{milestone_14_icon}}"}</Text>
-          </Column>
-          <Column>
-            <Text style={milestoneText}>
-              <strong>14 days</strong> — Two weeks strong
-            </Text>
-          </Column>
-        </Row>
-      </Section>
-
-      <Section style={milestoneRow}>
-        <Row>
-          <Column style={milestoneCheck}>
-            <Text style={checkIcon}>{"{{milestone_30_icon}}"}</Text>
-          </Column>
-          <Column>
-            <Text style={milestoneText}>
-              <strong>30 days</strong> — Habit formed
-            </Text>
-          </Column>
-        </Row>
-      </Section>
-
-      <Section style={milestoneRow}>
-        <Row>
-          <Column style={milestoneCheck}>
-            <Text style={checkIcon}>{"{{milestone_60_icon}}"}</Text>
-          </Column>
-          <Column>
-            <Text style={milestoneText}>
-              <strong>60 days</strong> — Lifestyle change
-            </Text>
-          </Column>
-        </Row>
-      </Section>
-
-      <Section style={milestoneRow}>
-        <Row>
-          <Column style={milestoneCheck}>
-            <Text style={checkIcon}>{"{{milestone_100_icon}}"}</Text>
-          </Column>
-          <Column>
-            <Text style={milestoneText}>
-              <strong>100 days</strong> — Legend status
-            </Text>
-          </Column>
-        </Row>
-      </Section>
-
-      <Hr style={divider} />
-
-      {/* ── Motivation ── */}
+      {/* ── Quote ── */}
       <Section style={quoteSection}>
+        <Text style={quoteMark}>"</Text>
         <Text style={quoteText}>
-          "Success is the sum of small efforts, repeated day in and day out."
+          Success is the sum of small efforts, repeated day in and day out.
         </Text>
-        <Text style={quoteAuthor}>— Robert Collier</Text>
+        <Text style={quoteAuthor}>Robert Collier</Text>
       </Section>
 
+      <Hr style={divider} />
+
+      {/* ── CTA ── */}
       <Section style={ctaSection}>
-        <PrimaryButton href={`${BASE_URL}/goals`}>
-          Keep the Streak Alive
-        </PrimaryButton>
+        <Text style={ctaText}>
+          Do not break the chain. Open the app and keep it going.
+        </Text>
+        <Section style={ctaCenter}>
+          <PrimaryButton href={`${BASE_URL}/app`}>
+            Keep the Streak Alive
+          </PrimaryButton>
+        </Section>
       </Section>
 
     </EmailLayout>
@@ -178,145 +168,208 @@ export default function StreakMilestoneEmail() {
 
 // ── Styles ──
 
-const banner = {
-  background: "linear-gradient(135deg, #7c2d12 0%, #c2410c 30%, #f97316 60%, #fb923c 100%)",
-  borderRadius: "16px",
-  padding: "36px 24px",
-  textAlign: "center" as const,
-  marginBottom: "24px",
+const heroSection = {
+  position: "relative" as const,
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+  marginBottom: "32px",
 };
 
-const fireIcon = {
-  fontSize: "48px",
+const heroImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+};
+
+const heroOverlay = {
+  position: "absolute" as const,
+  bottom: "0",
+  left: "0",
+  right: "0",
+  padding: "40px 24px 24px",
+  background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)",
+  textAlign: "center" as const,
+};
+
+const heroLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.6)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 4px 0",
+};
+
+const heroCount = {
+  fontSize: "56px",
+  fontWeight: "700" as const,
+  color: "#fb923c",
   margin: "0",
   lineHeight: "1",
 };
 
-const streakCount = {
-  fontSize: "56px",
-  fontWeight: "bold" as const,
-  color: "#ffffff",
+const heroSub = {
+  fontSize: "14px",
+  fontWeight: "700" as const,
+  color: "rgba(255, 255, 255, 0.7)",
+  letterSpacing: "4px",
   margin: "4px 0 0 0",
-  lineHeight: "1",
-};
-
-const streakLabel = {
-  fontSize: "18px",
-  fontWeight: "bold" as const,
-  color: "rgba(255, 255, 255, 0.85)",
-  margin: "4px 0 0 0",
-  textTransform: "uppercase" as const,
-  letterSpacing: "2px",
 };
 
 const heading = {
   fontSize: "24px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 8px 0",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 10px 0",
 };
 
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.6)",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(124, 58, 237, 0.1)",
-  margin: "24px 0",
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "28px 0",
 };
 
-// ── Streak card ──
-
-const streakCard = {
-  background: "linear-gradient(135deg, rgba(249,115,22,0.06) 0%, rgba(251,146,60,0.06) 100%)",
-  borderRadius: "14px",
-  padding: "24px",
-  border: "1px solid rgba(249, 115, 22, 0.12)",
-};
-
-const detailRow = { marginBottom: "12px" };
-const detailIconCol = { width: "32px", verticalAlign: "top" as const };
-
-const iconText = {
-  fontSize: "18px",
-  margin: "0",
-  lineHeight: "1",
-};
-
-const detailLabel = {
+const sectionLabel = {
   fontSize: "11px",
-  color: "#9ca3af",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.5px",
-  margin: "0",
   fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.35)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 16px 0",
 };
 
-const detailValue = {
-  fontSize: "15px",
-  color: "#111827",
-  margin: "2px 0 0 0",
-  fontWeight: "500" as const,
+// ── Stats card ──
+
+const statsCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "20px 24px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+  textAlign: "center" as const,
+};
+
+const statCell = {
+  width: "50%",
+  textAlign: "center" as const,
+  padding: "8px 0",
+};
+
+const statValue = {
+  fontSize: "16px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0 0 4px 0",
+};
+
+const statLabel = {
+  fontSize: "10px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.3)",
+  letterSpacing: "1.5px",
+  margin: "0",
+};
+
+const statDivider = {
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "8px 0",
 };
 
 // ── Milestones ──
 
-const sectionHeading = {
-  fontSize: "18px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 16px 0",
+const milestoneCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "8px 24px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
-const milestoneRow = { marginBottom: "10px" };
+const milestoneRow = {
+  borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+  padding: "14px 0",
+};
 
-const milestoneCheck = {
-  width: "28px",
+const milestoneRowLast = {
+  padding: "14px 0",
+};
+
+const milestoneIconCol = {
+  width: "32px",
   verticalAlign: "middle" as const,
 };
 
-const checkIcon = {
+const milestoneIcon = {
   fontSize: "16px",
   margin: "0",
   lineHeight: "1",
 };
 
-const milestoneText = {
+const milestoneContent = {
+  verticalAlign: "middle" as const,
+};
+
+const milestoneName = {
   fontSize: "14px",
-  color: "#374151",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
   margin: "0",
-  lineHeight: "22px",
+};
+
+const milestoneSub = {
+  fontSize: "13px",
+  color: "rgba(255, 255, 255, 0.35)",
+  margin: "2px 0 0 0",
 };
 
 // ── Quote ──
 
 const quoteSection = {
-  background: "linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(168,85,247,0.06) 100%)",
-  borderRadius: "12px",
-  padding: "24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(124, 58, 237, 0.08)",
-  marginBottom: "24px",
+};
+
+const quoteMark = {
+  fontSize: "48px",
+  color: "rgba(255, 255, 255, 0.1)",
+  margin: "0",
+  lineHeight: "1",
+  fontFamily: "Georgia, serif",
 };
 
 const quoteText = {
   fontSize: "15px",
   fontStyle: "italic" as const,
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.55)",
   lineHeight: "24px",
   margin: "0 0 8px 0",
 };
 
 const quoteAuthor = {
   fontSize: "13px",
-  color: "#9ca3af",
+  color: "rgba(255, 255, 255, 0.3)",
   margin: "0",
   fontWeight: "600" as const,
 };
 
+// ── CTA ──
+
 const ctaSection = {
   textAlign: "center" as const,
+};
+
+const ctaText = {
+  fontSize: "15px",
+  color: "rgba(255, 255, 255, 0.5)",
+  lineHeight: "24px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const ctaCenter = {
+  textAlign: "center" as const,
+  margin: "20px 0 0 0",
 };
