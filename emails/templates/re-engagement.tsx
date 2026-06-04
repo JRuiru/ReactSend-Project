@@ -1,53 +1,59 @@
 import {
   Text,
   Section,
+  Img,
   Row,
   Column,
   Hr,
-  Img,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 
+const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
-const RING_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/ring-peekaboo/public";
+
+const IMAGES = {
+  hero: `${CDN}/lifestyle-sun-portrait/public`,
+};
 
 export default function ReEngagementEmail() {
   return (
-    <EmailLayout preview="We'd love to see you back, {{first_name}}">
+    <EmailLayout preview="We miss you, {{first_name}}. Your health journey is waiting.">
 
-      {/* ── Editorial hero ── */}
-      <Section style={heroWrapper}>
+      {/* ── Hero ── */}
+      <Section style={heroSection}>
         <Img
-          src={RING_IMG}
-          alt="We'd love to see you back"
+          src={IMAGES.hero}
           width="560"
+          alt="We miss you"
           style={heroImage}
         />
-        <Section style={heroTitleCard} className="dark-safe">
-          <Text style={heroTitle}>We'd Love to See You Back</Text>
-          <Text style={heroSubtitle}>
-            Looking for you, {"{{first_name}}"} — it's been {"{{days_inactive}}"} days
-          </Text>
+        <Section style={heroOverlay} className="force-white">
+          <Text style={heroLabel}>WE MISS YOU</Text>
+          <Text style={heroTitle}>Your journey is waiting.</Text>
         </Section>
       </Section>
 
       {/* ── Greeting ── */}
+      <Text style={heading}>
+        Hey {"{{first_name}}"},
+      </Text>
       <Text style={paragraph}>
-        Your health journey is still here waiting for you — and here's what
-        you've been missing.
+        It has been <strong style={{ color: "#f5f5f5" }}>{"{{days_inactive}}"} days</strong> since
+        your last visit. Your health data is still here, and there is plenty
+        waiting for you.
       </Text>
 
       <Hr style={divider} />
 
       {/* ── What you're missing ── */}
-      <Text style={sectionHeading}>What's been happening</Text>
+      <Text style={sectionLabel}>WHAT YOU HAVE BEEN MISSING</Text>
 
       <Section style={missedCard}>
         <Row>
-          <Column style={missedIconCol}>
-            <Text style={iconText}>&#x1F4CA;</Text>
+          <Column style={missedNumCol}>
+            <Text style={missedNum}>1</Text>
           </Column>
           <Column>
             <Text style={missedTitle}>Your health data</Text>
@@ -61,14 +67,14 @@ export default function ReEngagementEmail() {
 
       <Section style={missedCard}>
         <Row>
-          <Column style={missedIconCol}>
-            <Text style={iconText}>&#x1F3AF;</Text>
+          <Column style={missedNumCol}>
+            <Text style={missedNum}>2</Text>
           </Column>
           <Column>
             <Text style={missedTitle}>Your goals</Text>
             <Text style={missedDesc}>
-              You were making great progress on {"{{active_goal}}"}
-              — pick up where you left off.
+              You were making great progress on {"{{active_goal}}"}. Pick up
+              where you left off.
             </Text>
           </Column>
         </Row>
@@ -76,14 +82,14 @@ export default function ReEngagementEmail() {
 
       <Section style={missedCard}>
         <Row>
-          <Column style={missedIconCol}>
-            <Text style={iconText}>&#x1F525;</Text>
+          <Column style={missedNumCol}>
+            <Text style={missedNum}>3</Text>
           </Column>
           <Column>
             <Text style={missedTitle}>Your streak</Text>
             <Text style={missedDesc}>
-              You had a {"{{last_streak}}"}-day streak going.
-              Start a new one today!
+              You had a {"{{last_streak}}"}-day streak going. Start a new one
+              today.
             </Text>
           </Column>
         </Row>
@@ -91,14 +97,14 @@ export default function ReEngagementEmail() {
 
       <Section style={missedCard}>
         <Row>
-          <Column style={missedIconCol}>
-            <Text style={iconText}>&#x1F91D;</Text>
+          <Column style={missedNumCol}>
+            <Text style={missedNum}>4</Text>
           </Column>
           <Column>
             <Text style={missedTitle}>Your community</Text>
             <Text style={missedDesc}>
-              {"{{friend_activity}}"} of your friends have been active
-              this week. {"{{active_challenges}}"} challenges are running now.
+              {"{{friend_activity}}"} of your friends have been active this
+              week. {"{{active_challenges}}"} challenges are running now.
             </Text>
           </Column>
         </Row>
@@ -107,30 +113,34 @@ export default function ReEngagementEmail() {
       <Hr style={divider} />
 
       {/* ── What's new ── */}
-      <Text style={sectionHeading}>What's new in SeeMyHealth</Text>
+      <Text style={sectionLabel}>WHAT IS NEW</Text>
 
-      <Section style={newFeature}>
-        <Text style={newBadge}>NEW</Text>
-        <Text style={newTitle}>{"{{new_feature_1_title}}"}</Text>
-        <Text style={newDesc}>{"{{new_feature_1_desc}}"}</Text>
-      </Section>
+      <Section style={newFeatureCard}>
+        <Section style={featureItem}>
+          <Text style={newBadge}>NEW</Text>
+          <Text style={newTitle}>{"{{new_feature_1_title}}"}</Text>
+          <Text style={newDesc}>{"{{new_feature_1_desc}}"}</Text>
+        </Section>
 
-      <Section style={newFeature}>
-        <Text style={newBadge}>NEW</Text>
-        <Text style={newTitle}>{"{{new_feature_2_title}}"}</Text>
-        <Text style={newDesc}>{"{{new_feature_2_desc}}"}</Text>
+        <Hr style={cardDivider} />
+
+        <Section style={featureItem}>
+          <Text style={newBadge}>NEW</Text>
+          <Text style={newTitle}>{"{{new_feature_2_title}}"}</Text>
+          <Text style={newDesc}>{"{{new_feature_2_desc}}"}</Text>
+        </Section>
       </Section>
 
       <Hr style={divider} />
 
-      {/* ── Quick start ── */}
-      <Section style={quickStartSection}>
-        <Text style={quickStartHeading}>Jump back in</Text>
-        <Text style={quickStartText}>
+      {/* ── CTA ── */}
+      <Section style={ctaSection}>
+        <Text style={ctaHeading}>Jump back in</Text>
+        <Text style={ctaText}>
           It only takes a minute to get back on track. Open the app,
-          sync your devices, and you're good to go.
+          sync your devices, and you are good to go.
         </Text>
-        <Section style={ctaSection}>
+        <Section style={ctaCenter}>
           <PrimaryButton href={BASE_URL}>
             Open SeeMyHealth
           </PrimaryButton>
@@ -140,7 +150,7 @@ export default function ReEngagementEmail() {
       <Hr style={divider} />
 
       <Text style={footerNote}>
-        Don't want these reminders?{" "}
+        Do not want these reminders?{" "}
         <a href={`${BASE_URL}/settings/notifications`} style={linkStyle}>
           Manage notification preferences
         </a>
@@ -152,107 +162,131 @@ export default function ReEngagementEmail() {
 
 // ── Styles ──
 
-// ── Editorial hero ──
-
-const heroWrapper = {
-  marginBottom: "24px",
+const heroSection = {
+  position: "relative" as const,
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+  marginBottom: "32px",
 };
 
 const heroImage = {
   width: "100%",
-  height: "auto",
   display: "block" as const,
-  borderRadius: "16px 16px 0 0",
+  borderRadius: "12px",
 };
 
-const heroTitleCard = {
-  background: "linear-gradient(135deg, #1a0533 0%, #2d1654 50%, #4c1d95 100%)",
-  padding: "24px 24px",
-  textAlign: "center" as const,
-  borderRadius: "0 0 16px 16px",
+const heroOverlay = {
+  position: "absolute" as const,
+  bottom: "0",
+  left: "0",
+  right: "0",
+  padding: "40px 24px 24px",
+  background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)",
+};
+
+const heroLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.7)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 4px 0",
 };
 
 const heroTitle = {
-  fontSize: "24px",
-  fontWeight: "bold" as const,
+  fontSize: "26px",
+  fontWeight: "700" as const,
   color: "#ffffff",
-  margin: "0 0 6px 0",
+  margin: "0",
 };
 
-const heroSubtitle = {
-  fontSize: "14px",
-  color: "rgba(196, 181, 253, 0.8)",
-  margin: "0",
+const heading = {
+  fontSize: "24px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 10px 0",
 };
 
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.6)",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(124, 58, 237, 0.1)",
-  margin: "24px 0",
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "28px 0",
 };
 
-const sectionHeading = {
-  fontSize: "18px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+const sectionLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.35)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
 };
 
 // ── Missed cards ──
 
 const missedCard = {
-  background: "linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(168,85,247,0.06) 100%)",
-  borderRadius: "12px",
-  padding: "18px 20px",
-  marginBottom: "10px",
-  border: "1px solid rgba(124, 58, 237, 0.08)",
+  marginBottom: "12px",
 };
 
-const missedIconCol = {
+const missedNumCol = {
   width: "36px",
   verticalAlign: "top" as const,
 };
 
-const iconText = {
+const missedNum = {
   fontSize: "20px",
+  fontWeight: "700" as const,
+  color: "rgba(255, 255, 255, 0.12)",
   margin: "0",
   lineHeight: "1",
 };
 
 const missedTitle = {
   fontSize: "15px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 2px 0",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0 0 4px 0",
 };
 
 const missedDesc = {
-  fontSize: "13px",
-  color: "#6b7280",
-  lineHeight: "20px",
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "21px",
   margin: "0",
 };
 
 // ── New features ──
 
-const newFeature = {
-  marginBottom: "14px",
+const newFeatureCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "24px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const featureItem = {
+  marginBottom: "0",
+};
+
+const cardDivider = {
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "16px 0",
 };
 
 const newBadge = {
   fontSize: "10px",
-  fontWeight: "bold" as const,
-  color: "#7c3aed",
-  letterSpacing: "1px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  letterSpacing: "1.5px",
   textTransform: "uppercase" as const,
-  margin: "0 0 4px 0",
-  backgroundColor: "rgba(124, 58, 237, 0.08)",
+  margin: "0 0 6px 0",
+  backgroundColor: "rgba(255, 255, 255, 0.08)",
   padding: "3px 8px",
   borderRadius: "4px",
   display: "inline-block" as const,
@@ -260,51 +294,53 @@ const newBadge = {
 
 const newTitle = {
   fontSize: "15px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
   margin: "4px 0 2px 0",
 };
 
 const newDesc = {
   fontSize: "13px",
-  color: "#6b7280",
+  color: "rgba(255, 255, 255, 0.45)",
   lineHeight: "20px",
   margin: "0",
 };
 
-// ── Quick start ──
+// ── CTA ──
 
-const quickStartSection = {
+const ctaSection = {
   textAlign: "center" as const,
 };
 
-const quickStartHeading = {
+const ctaHeading = {
   fontSize: "20px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
   margin: "0 0 6px 0",
+  textAlign: "center" as const,
 };
 
-const quickStartText = {
-  fontSize: "14px",
-  color: "#6b7280",
-  lineHeight: "22px",
+const ctaText = {
+  fontSize: "15px",
+  color: "rgba(255, 255, 255, 0.5)",
+  lineHeight: "24px",
   margin: "0",
+  textAlign: "center" as const,
 };
 
-const ctaSection = {
+const ctaCenter = {
   textAlign: "center" as const,
   margin: "20px 0 0 0",
 };
 
 const footerNote = {
   fontSize: "12px",
-  color: "#9ca3af",
+  color: "rgba(255, 255, 255, 0.25)",
   textAlign: "center" as const,
   margin: "0",
 };
 
 const linkStyle = {
-  color: "#7c3aed",
+  color: "rgba(255, 255, 255, 0.4)",
   textDecoration: "underline",
 };

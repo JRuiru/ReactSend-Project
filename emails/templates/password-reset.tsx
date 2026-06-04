@@ -1,6 +1,8 @@
 import {
   Text,
   Section,
+  Row,
+  Column,
   Hr,
 } from "@react-email/components";
 import * as React from "react";
@@ -13,11 +15,6 @@ export default function PasswordResetEmail() {
   return (
     <EmailLayout preview="Reset your SeeMyHealth password">
 
-      {/* ── Icon ── */}
-      <Section style={iconSection}>
-        <Text style={lockIcon}>&#x1F510;</Text>
-      </Section>
-
       {/* ── Heading ── */}
       <Text style={heading}>Reset your password</Text>
 
@@ -27,7 +24,7 @@ export default function PasswordResetEmail() {
       </Text>
 
       {/* ── Reset CTA ── */}
-      <Section style={ctaSection}>
+      <Section style={ctaCenter}>
         <PrimaryButton href={`${BASE_URL}/auth/reset/{{reset_token}}`}>
           Reset Password
         </PrimaryButton>
@@ -43,33 +40,51 @@ export default function PasswordResetEmail() {
       <Hr style={divider} />
 
       {/* ── Security notice ── */}
+      <Text style={sectionLabel}>SECURITY</Text>
+
       <Section style={securityCard}>
-        <Text style={securityHeading}>&#x1F6E1;&#xFE0F; Security notice</Text>
-
+        <Text style={securityHeading}>Did not request this?</Text>
         <Text style={securityText}>
-          If you didn't request this, you can safely ignore this email —
-          your password won't change.
+          If you did not request a password reset, you can safely ignore
+          this email. Your password will not change.
         </Text>
 
-        <Text style={securityText}>
-          If you're concerned about your account security, we recommend:
-        </Text>
+        <Hr style={cardDivider} />
+
+        <Text style={tipsHeading}>Keep your account secure</Text>
 
         <Section style={tipRow}>
-          <Text style={tipText}>&#x2022; Enable Face ID or Touch ID in the app</Text>
+          <Row>
+            <Column style={bulletCol}><Text style={bulletText}>&#x25CF;</Text></Column>
+            <Column>
+              <Text style={tipText}>Enable Face ID or Touch ID in the app</Text>
+            </Column>
+          </Row>
         </Section>
+
         <Section style={tipRow}>
-          <Text style={tipText}>&#x2022; Use a strong, unique password</Text>
+          <Row>
+            <Column style={bulletCol}><Text style={bulletText}>&#x25CF;</Text></Column>
+            <Column>
+              <Text style={tipText}>Use a strong, unique password</Text>
+            </Column>
+          </Row>
         </Section>
+
         <Section style={tipRow}>
-          <Text style={tipText}>&#x2022; Never share your login credentials</Text>
+          <Row>
+            <Column style={bulletCol}><Text style={bulletText}>&#x25CF;</Text></Column>
+            <Column>
+              <Text style={tipText}>Never share your login credentials</Text>
+            </Column>
+          </Row>
         </Section>
       </Section>
 
       <Hr style={divider} />
 
       <Text style={footerNote}>
-        This email was sent to {"{{email}}"}. If you didn't request a
+        This email was sent to {"{{email}}"}. If you did not request a
         password reset, please contact{" "}
         <a href={`${BASE_URL}/support`} style={linkStyle}>support</a>.
       </Text>
@@ -80,21 +95,10 @@ export default function PasswordResetEmail() {
 
 // ── Styles ──
 
-const iconSection = {
-  textAlign: "center" as const,
-  marginBottom: "8px",
-};
-
-const lockIcon = {
-  fontSize: "48px",
-  margin: "0",
-  lineHeight: "1",
-};
-
 const heading = {
   fontSize: "26px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
   margin: "0 0 12px 0",
   textAlign: "center" as const,
 };
@@ -102,12 +106,12 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.6)",
   margin: "0",
   textAlign: "center" as const,
 };
 
-const ctaSection = {
+const ctaCenter = {
   textAlign: "center" as const,
   margin: "28px 0",
 };
@@ -124,51 +128,84 @@ const expiryText = {
 };
 
 const divider = {
-  borderColor: "rgba(124, 58, 237, 0.1)",
+  borderColor: "rgba(255, 255, 255, 0.06)",
   margin: "28px 0",
 };
 
+const sectionLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.35)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 16px 0",
+};
+
 const securityCard = {
-  background: "linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(168,85,247,0.06) 100%)",
+  backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "24px",
-  border: "1px solid rgba(124, 58, 237, 0.08)",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
 const securityHeading = {
-  fontSize: "16px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 12px 0",
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 8px 0",
 };
 
 const securityText = {
   fontSize: "14px",
   lineHeight: "22px",
-  color: "#374151",
-  margin: "0 0 8px 0",
+  color: "rgba(255, 255, 255, 0.5)",
+  margin: "0",
+};
+
+const cardDivider = {
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "16px 0",
+};
+
+const tipsHeading = {
+  fontSize: "14px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.5)",
+  margin: "0 0 12px 0",
 };
 
 const tipRow = {
-  marginBottom: "2px",
+  marginBottom: "8px",
+};
+
+const bulletCol = {
+  width: "20px",
+  verticalAlign: "top" as const,
+};
+
+const bulletText = {
+  fontSize: "8px",
+  color: "rgba(255, 255, 255, 0.3)",
+  margin: "0",
+  lineHeight: "22px",
 };
 
 const tipText = {
   fontSize: "14px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.5)",
   margin: "0",
-  paddingLeft: "8px",
+  lineHeight: "22px",
 };
 
 const footerNote = {
   fontSize: "12px",
-  color: "#9ca3af",
+  color: "rgba(255, 255, 255, 0.25)",
   textAlign: "center" as const,
   lineHeight: "20px",
   margin: "0",
 };
 
 const linkStyle = {
-  color: "#7c3aed",
+  color: "rgba(255, 255, 255, 0.4)",
   textDecoration: "underline",
 };

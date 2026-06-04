@@ -1,6 +1,7 @@
 import {
   Text,
   Section,
+  Img,
   Row,
   Column,
   Hr,
@@ -9,22 +10,35 @@ import {
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
-import { SecondaryButton } from "../components/SecondaryButton";
 
+const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
+
+const IMAGES = {
+  hero: `${CDN}/app-video-consultation/public`,
+};
 
 export default function AppointmentReminderEmail() {
   return (
     <EmailLayout preview="Appointment reminder — {{doctor_name}} on {{appointment_date}}">
 
-      {/* ── Time badge ── */}
-      <Section style={timeBadge} className="dark-safe">
-        <Text style={timeBadgeText}>{"{{time_until}}"} away</Text>
+      {/* ── Hero ── */}
+      <Section style={heroSection}>
+        <Img
+          src={IMAGES.hero}
+          width="560"
+          alt="Appointment reminder"
+          style={heroImage}
+        />
+        <Section style={heroOverlay} className="force-white">
+          <Text style={heroLabel}>UPCOMING APPOINTMENT</Text>
+          <Text style={heroTitle}>{"{{time_until}}"} away</Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
       <Text style={heading}>
-        Hi {"{{first_name}}"}, you have an upcoming appointment
+        Hi {"{{first_name}}"}, you have an upcoming appointment.
       </Text>
 
       <Hr style={divider} />
@@ -33,9 +47,7 @@ export default function AppointmentReminderEmail() {
       <Section style={appointmentCard}>
 
         {/* Visit type badge */}
-        <Section style={visitTypeBadge}>
-          <Text style={visitTypeBadgeText}>{"{{visit_type}}"}</Text>
-        </Section>
+        <Text style={visitTypeBadgeText}>{"{{visit_type}}"}</Text>
 
         {/* Doctor info */}
         <Text style={doctorName}>{"{{doctor_name}}"}</Text>
@@ -43,14 +55,13 @@ export default function AppointmentReminderEmail() {
 
         <Hr style={cardDivider} />
 
-        {/* Date & Time row */}
+        {/* Date & Time */}
         <Section style={detailRow}>
           <Row>
-            <Column style={detailIcon}>
-              <Text style={iconText}>&#x1F4C5;</Text>
+            <Column style={detailLabelCol}>
+              <Text style={detailLabel}>DATE</Text>
             </Column>
-            <Column style={detailContent}>
-              <Text style={detailLabel}>Date</Text>
+            <Column>
               <Text style={detailValue}>{"{{appointment_date}}"}</Text>
             </Column>
           </Row>
@@ -58,37 +69,32 @@ export default function AppointmentReminderEmail() {
 
         <Section style={detailRow}>
           <Row>
-            <Column style={detailIcon}>
-              <Text style={iconText}>&#x1F552;</Text>
+            <Column style={detailLabelCol}>
+              <Text style={detailLabel}>TIME</Text>
             </Column>
-            <Column style={detailContent}>
-              <Text style={detailLabel}>Time</Text>
+            <Column>
               <Text style={detailValue}>{"{{appointment_time}}"}</Text>
             </Column>
           </Row>
         </Section>
 
-        {/* Location / virtual link */}
         <Section style={detailRow}>
           <Row>
-            <Column style={detailIcon}>
-              <Text style={iconText}>&#x1F4CD;</Text>
+            <Column style={detailLabelCol}>
+              <Text style={detailLabel}>LOCATION</Text>
             </Column>
-            <Column style={detailContent}>
-              <Text style={detailLabel}>Location</Text>
+            <Column>
               <Text style={detailValue}>{"{{location}}"}</Text>
             </Column>
           </Row>
         </Section>
 
-        {/* Duration */}
         <Section style={detailRow}>
           <Row>
-            <Column style={detailIcon}>
-              <Text style={iconText}>&#x23F1;</Text>
+            <Column style={detailLabelCol}>
+              <Text style={detailLabel}>DURATION</Text>
             </Column>
-            <Column style={detailContent}>
-              <Text style={detailLabel}>Duration</Text>
+            <Column>
               <Text style={detailValue}>{"{{duration}}"}</Text>
             </Column>
           </Row>
@@ -96,7 +102,7 @@ export default function AppointmentReminderEmail() {
       </Section>
 
       {/* ── Action buttons ── */}
-      <Section style={ctaSection}>
+      <Section style={ctaCenter}>
         <PrimaryButton href={`${BASE_URL}/appointments/{{appointment_id}}`}>
           View Appointment
         </PrimaryButton>
@@ -120,58 +126,60 @@ export default function AppointmentReminderEmail() {
       <Hr style={divider} />
 
       {/* ── Preparation tips ── */}
-      <Text style={sectionHeading}>Before your visit</Text>
+      <Text style={sectionLabel}>BEFORE YOUR VISIT</Text>
 
-      <Section style={tipBlock}>
-        <Row>
-          <Column style={tipIcon}>
-            <Text style={iconText}>&#x1F4CB;</Text>
-          </Column>
-          <Column style={tipContent}>
-            <Text style={tipText}>
-              Have your insurance information and ID ready
-            </Text>
-          </Column>
-        </Row>
-      </Section>
+      <Section style={tipCard}>
+        <Section style={tipRow}>
+          <Row>
+            <Column style={tipNumCol}>
+              <Text style={tipNum}>1</Text>
+            </Column>
+            <Column>
+              <Text style={tipText}>
+                Have your insurance information and ID ready.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
 
-      <Section style={tipBlock}>
-        <Row>
-          <Column style={tipIcon}>
-            <Text style={iconText}>&#x1F48A;</Text>
-          </Column>
-          <Column style={tipContent}>
-            <Text style={tipText}>
-              Bring a list of current medications and supplements
-            </Text>
-          </Column>
-        </Row>
-      </Section>
+        <Section style={tipRow}>
+          <Row>
+            <Column style={tipNumCol}>
+              <Text style={tipNum}>2</Text>
+            </Column>
+            <Column>
+              <Text style={tipText}>
+                Bring a list of current medications and supplements.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
 
-      <Section style={tipBlock}>
-        <Row>
-          <Column style={tipIcon}>
-            <Text style={iconText}>&#x2753;</Text>
-          </Column>
-          <Column style={tipContent}>
-            <Text style={tipText}>
-              Write down any questions or symptoms to discuss
-            </Text>
-          </Column>
-        </Row>
-      </Section>
+        <Section style={tipRow}>
+          <Row>
+            <Column style={tipNumCol}>
+              <Text style={tipNum}>3</Text>
+            </Column>
+            <Column>
+              <Text style={tipText}>
+                Write down any questions or symptoms to discuss.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
 
-      <Section style={tipBlock}>
-        <Row>
-          <Column style={tipIcon}>
-            <Text style={iconText}>&#x1F4F1;</Text>
-          </Column>
-          <Column style={tipContent}>
-            <Text style={tipText}>
-              Your SeeMyHealth data will be available to share with your provider
-            </Text>
-          </Column>
-        </Row>
+        <Section style={tipRow}>
+          <Row>
+            <Column style={tipNumCol}>
+              <Text style={tipNum}>4</Text>
+            </Column>
+            <Column>
+              <Text style={tipText}>
+                Your SeeMyHealth data will be available to share with your provider.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
       </Section>
 
       <Hr style={divider} />
@@ -190,58 +198,82 @@ export default function AppointmentReminderEmail() {
 
 // ── Styles ──
 
-const timeBadge = {
-  backgroundColor: "#7c3aed",
-  borderRadius: "20px",
-  padding: "6px 16px",
-  textAlign: "center" as const,
-  marginBottom: "20px",
-  display: "inline-block" as const,
+const heroSection = {
+  position: "relative" as const,
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+  marginBottom: "32px",
 };
 
-const timeBadgeText = {
-  color: "#ffffff",
-  fontSize: "13px",
-  fontWeight: "bold" as const,
-  margin: "0",
+const heroImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+};
+
+const heroOverlay = {
+  position: "absolute" as const,
+  bottom: "0",
+  left: "0",
+  right: "0",
+  padding: "40px 24px 24px",
+  background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)",
+};
+
+const heroLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.7)",
+  letterSpacing: "3px",
   textTransform: "uppercase" as const,
-  letterSpacing: "0.5px",
+  margin: "0 0 4px 0",
+};
+
+const heroTitle = {
+  fontSize: "26px",
+  fontWeight: "700" as const,
+  color: "#ffffff",
+  margin: "0",
 };
 
 const heading = {
-  fontSize: "24px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 8px 0",
-  lineHeight: "32px",
+  fontSize: "22px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 10px 0",
 };
 
 const divider = {
-  borderColor: "rgba(124, 58, 237, 0.1)",
-  margin: "24px 0",
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "28px 0",
+};
+
+const sectionLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.35)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 16px 0",
 };
 
 // ── Appointment card ──
 
 const appointmentCard = {
-  background: "linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(168,85,247,0.06) 100%)",
-  borderRadius: "14px",
+  backgroundColor: "#141414",
+  borderRadius: "12px",
   padding: "28px 24px",
-  border: "1px solid rgba(124, 58, 237, 0.1)",
-};
-
-const visitTypeBadge = {
-  marginBottom: "12px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
 const visitTypeBadgeText = {
-  fontSize: "11px",
-  fontWeight: "bold" as const,
-  color: "#7c3aed",
-  letterSpacing: "1.5px",
+  fontSize: "10px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  letterSpacing: "2px",
   textTransform: "uppercase" as const,
-  margin: "0",
-  backgroundColor: "rgba(124, 58, 237, 0.08)",
+  margin: "0 0 12px 0",
+  backgroundColor: "rgba(255, 255, 255, 0.08)",
   padding: "4px 12px",
   borderRadius: "12px",
   display: "inline-block" as const,
@@ -249,67 +281,56 @@ const visitTypeBadgeText = {
 
 const doctorName = {
   fontSize: "22px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
   margin: "0 0 2px 0",
 };
 
 const doctorSpecialty = {
   fontSize: "14px",
-  color: "#6b7280",
+  color: "rgba(255, 255, 255, 0.45)",
   margin: "0",
 };
 
 const cardDivider = {
-  borderColor: "rgba(124, 58, 237, 0.08)",
+  borderColor: "rgba(255, 255, 255, 0.06)",
   margin: "16px 0",
 };
 
 const detailRow = {
-  marginBottom: "12px",
+  marginBottom: "10px",
 };
 
-const detailIcon = {
-  width: "36px",
+const detailLabelCol = {
+  width: "90px",
   verticalAlign: "top" as const,
-};
-
-const iconText = {
-  fontSize: "20px",
-  margin: "0",
-  lineHeight: "1",
-};
-
-const detailContent = {
-  verticalAlign: "top" as const,
-  paddingLeft: "4px",
 };
 
 const detailLabel = {
-  fontSize: "11px",
-  color: "#9ca3af",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.5px",
-  margin: "0",
+  fontSize: "10px",
   fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.3)",
+  letterSpacing: "1.5px",
+  margin: "0",
+  lineHeight: "22px",
 };
 
 const detailValue = {
   fontSize: "15px",
-  color: "#111827",
-  margin: "2px 0 0 0",
+  color: "#f5f5f5",
+  margin: "0",
   fontWeight: "500" as const,
 };
 
 // ── Action buttons ──
 
-const ctaSection = {
+const ctaCenter = {
   textAlign: "center" as const,
-  margin: "24px 0 12px 0",
+  margin: "28px 0 12px 0",
 };
 
 const buttonRow = {
-  marginBottom: "8px",
+  textAlign: "center" as const,
 };
 
 const buttonCol = {
@@ -318,55 +339,58 @@ const buttonCol = {
 };
 
 const rescheduleButton = {
-  backgroundColor: "#ffffff",
-  color: "#7c3aed",
+  backgroundColor: "transparent",
+  color: "rgba(255, 255, 255, 0.5)",
   padding: "10px 20px",
-  borderRadius: "8px",
+  borderRadius: "50px",
   fontSize: "13px",
-  fontWeight: "bold" as const,
+  fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(124, 58, 237, 0.25)",
+  border: "1px solid rgba(255, 255, 255, 0.1)",
 };
 
 const cancelButton = {
-  backgroundColor: "#ffffff",
+  backgroundColor: "transparent",
   color: "#ef4444",
   padding: "10px 20px",
-  borderRadius: "8px",
+  borderRadius: "50px",
   fontSize: "13px",
-  fontWeight: "bold" as const,
+  fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(239, 68, 68, 0.25)",
+  border: "1px solid rgba(239, 68, 68, 0.2)",
 };
 
-// ── Preparation tips ──
+// ── Tips ──
 
-const sectionHeading = {
-  fontSize: "18px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 16px 0",
+const tipCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "24px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
-const tipBlock = {
-  marginBottom: "12px",
+const tipRow = {
+  marginBottom: "14px",
 };
 
-const tipIcon = {
-  width: "36px",
+const tipNumCol = {
+  width: "28px",
   verticalAlign: "top" as const,
 };
 
-const tipContent = {
-  verticalAlign: "top" as const,
-  paddingLeft: "4px",
+const tipNum = {
+  fontSize: "14px",
+  fontWeight: "700" as const,
+  color: "rgba(255, 255, 255, 0.12)",
+  margin: "0",
+  lineHeight: "22px",
 };
 
 const tipText = {
   fontSize: "14px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.5)",
   lineHeight: "22px",
   margin: "0",
 };
@@ -374,15 +398,16 @@ const tipText = {
 // ── Help section ──
 
 const helpSection = {
-  background: "rgba(124, 58, 237, 0.04)",
+  backgroundColor: "#141414",
   borderRadius: "10px",
   padding: "16px 20px",
   textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
 const helpText = {
   fontSize: "13px",
-  color: "#6b7280",
+  color: "rgba(255, 255, 255, 0.35)",
   lineHeight: "20px",
   margin: "0",
 };
