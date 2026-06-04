@@ -12,27 +12,14 @@ interface EmailLayoutProps {
 export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
   <Html>
     <Head>
-      <meta name="color-scheme" content="light dark" />
-      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="color-scheme" content="dark" />
+      <meta name="supported-color-schemes" content="dark" />
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       />
       <style dangerouslySetInnerHTML={{ __html: `
-        :root { color-scheme: light dark; supported-color-schemes: light dark; }
-        @media (prefers-color-scheme: dark) {
-          .email-bg {
-            background-color: #000000 !important;
-          }
-          .email-container {
-            background-color: #0a0a0a !important;
-            border-color: rgba(255, 255, 255, 0.06) !important;
-          }
-          .dark-safe p, .dark-safe td, .dark-safe span, .dark-safe a,
-          .dark-safe h1, .dark-safe h2, .dark-safe h3 {
-            color: inherit !important;
-          }
-        }
+        :root { color-scheme: dark; supported-color-schemes: dark; }
         .force-white p, .force-white span, .force-white td,
         .force-white h1, .force-white h2, .force-white h3 {
           color: #ffffff !important;
