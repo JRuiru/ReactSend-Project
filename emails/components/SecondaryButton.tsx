@@ -13,14 +13,16 @@ export const SecondaryButton = ({ href, children }: SecondaryButtonProps) => (
 );
 
 const button = {
-  backgroundColor: "#ffffff",
-  color: "#7c3aed",
-  padding: "12px 24px",
-  borderRadius: "8px",
+  backgroundColor: "transparent",
+  color: "#ffffff",
+  padding: "12px 28px",
+  borderRadius: "50px",
   fontSize: "14px",
-  fontWeight: "bold" as const,
+  fontWeight: "600" as const,
   textDecoration: "none",
   textAlign: "center" as const,
   display: "inline-block",
-  border: "1px solid rgba(124, 58, 237, 0.25)",
+  border: "1px solid rgba(255, 255, 255, 0.2)",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
 };

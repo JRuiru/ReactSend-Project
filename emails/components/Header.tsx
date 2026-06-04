@@ -8,13 +8,13 @@ interface HeaderProps {
 }
 
 export const Header = ({ title }: HeaderProps) => (
-  <Section style={header} className="header-border">
+  <Section style={header}>
     <Row>
       <Column style={logoCol}>
-        <Img src={LOGO_URL} width="44" height="44" alt="SeeMyHealth" style={logoImg} />
+        <Img src={LOGO_URL} width="40" height="40" alt="SeeMyHealth" style={logoImg} />
       </Column>
       <Column style={textCol}>
-        <Text style={logoText} className="logo-text">SeeMyHealth</Text>
+        <Text style={logoText}>SeeMyHealth</Text>
         {title && <Text style={titleStyle}>{title}</Text>}
       </Column>
     </Row>
@@ -22,18 +22,18 @@ export const Header = ({ title }: HeaderProps) => (
 );
 
 const header = {
-  borderBottom: "1px solid rgba(124, 58, 237, 0.12)",
+  borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
   paddingBottom: "24px",
-  marginBottom: "24px",
+  marginBottom: "32px",
 };
 
 const logoCol = {
-  width: "52px",
+  width: "48px",
   verticalAlign: "middle" as const,
 };
 
 const logoImg = {
-  borderRadius: "12px",
+  borderRadius: "10px",
 };
 
 const textCol = {
@@ -42,14 +42,17 @@ const textCol = {
 };
 
 const logoText = {
-  fontSize: "20px",
-  fontWeight: "bold" as const,
-  color: "#7c3aed",
+  fontSize: "18px",
+  fontWeight: "600" as const,
+  color: "#ffffff",
   margin: "0",
+  letterSpacing: "0.5px",
 };
 
 const titleStyle = {
-  fontSize: "13px",
-  color: "#9ca3af",
+  fontSize: "12px",
+  color: "rgba(255, 255, 255, 0.4)",
   margin: "2px 0 0 0",
+  textTransform: "uppercase" as const,
+  letterSpacing: "1.5px",
 };

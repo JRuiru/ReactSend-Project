@@ -13,19 +13,24 @@ import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { SecondaryButton } from "../components/SecondaryButton";
 
-// ---------------------------------------------------------------
-// TODO: Replace placeholders with real product photos.
-// Host on CDN / S3 / Cloudinary for production.
-// ---------------------------------------------------------------
+const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
+const BASE_URL = "https://seemyhealth.ai";
+
 const IMAGES = {
-  ringOne: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/ring-one/public",
-  scale: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/scale/public",
-  bpMonitor: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/bp-black-studio/public",
-  hydraOne: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/hydra-one/public",
-  hemaOne: "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/hema-one/public",
+  hero: `${CDN}/lifestyle-sun-portrait/public`,
+  ringLifestyle: `${CDN}/ring-photo-08/public`,
+  ringProduct: `${CDN}/ring-phantom-black-poster/public`,
+  scaleLifestyle: `${CDN}/scale-bathroom-stepon-v3/public`,
+  bpLifestyle: `${CDN}/bp-breakfast-reading/public`,
+  hydraLifestyle: `${CDN}/bottle-black-picnic/public`,
+  hemaLifestyle: `${CDN}/hema-orange-kitchen-v2/public`,
+  appScreens: `${CDN}/app-hero-triple-phones/public`,
+  appMood: `${CDN}/app-mood-journal/public`,
+  appMeals: `${CDN}/app-meal-logging/public`,
+  appChallenges: `${CDN}/app-community-challenges/public`,
+  appFamily: `${CDN}/app-hubby-progress/public`,
 };
 
-// SwiftUI system color → hex for device accents
 const DEVICE_COLORS = {
   ring: "#F97316",
   scale: "#3B82F6",
@@ -34,69 +39,80 @@ const DEVICE_COLORS = {
   hema: "#A855F7",
 };
 
-const BASE_URL = "https://seemyhealth.ai";
-
 export default function WelcomeEmail() {
   return (
-    <EmailLayout preview="Welcome to SeeMyHealth — your complete health ecosystem">
+    <EmailLayout preview="Welcome to SeeMyHealth. Your complete health ecosystem.">
 
-      {/* ── Hero Banner ── */}
-      <Section style={heroBanner} className="dark-safe">
-        <Text style={heroTitle}>SeeMyHealth</Text>
-        <Text style={heroTagline}>Your wellness, beautifully organized.</Text>
+      {/* ── Hero Image ── */}
+      <Section style={heroSection}>
+        <Img
+          src={IMAGES.hero}
+          width="560"
+          alt="Welcome to SeeMyHealth"
+          style={heroImage}
+        />
+        <Section style={heroOverlay} className="force-white">
+          <Text style={heroTagline}>WELCOME TO</Text>
+          <Text style={heroTitle}>SeeMyHealth</Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
-      <Text style={heading}>
-        Hey {"{{first_name}}"}, welcome aboard!
-      </Text>
-
-      <Text style={paragraph}>
-        You've just joined a complete health ecosystem — smart hardware that
-        captures your data, and an intelligent app that turns it into your
-        personal wellness story.
-      </Text>
+      <Section style={greetingSection}>
+        <Text style={heading}>
+          Hey {"{{first_name}}"},
+        </Text>
+        <Text style={paragraph}>
+          You just joined a complete health ecosystem. Smart hardware that
+          captures your data, and an intelligent app that turns it into your
+          personal wellness story.
+        </Text>
+        <Text style={paragraph}>
+          Here is everything waiting for you.
+        </Text>
+      </Section>
 
       <Hr style={divider} />
 
       {/* ══════════════════════════════════════════════════════════
           SECTION 1 — Hardware Ecosystem
           ══════════════════════════════════════════════════════════ */}
-      <Text style={sectionHeading}>Meet the hardware</Text>
+      <Text style={sectionLabel}>THE ECOSYSTEM</Text>
+      <Text style={sectionHeading}>Five devices. One picture of your health.</Text>
       <Text style={sectionSubtext}>
-        Five connected devices designed to work together — giving you a
-        complete, real-time picture of your health.
+        Each device captures a different dimension of your wellness.
+        Together, they give you the complete story.
       </Text>
 
-      {/* ── The Ring One ── */}
-      <Section style={hardwareCard}>
-        <Img src={IMAGES.ringOne} width="480" alt="The Ring One" style={hardwareImage} />
-        <Section style={hardwareBody}>
-          <Text style={hardwareBadge(DEVICE_COLORS.ring)}>WEARABLE</Text>
-          <Text style={hardwareName}>The Ring One</Text>
-          <Text style={hardwareDesc}>
-            Sleep, heart rate, HRV, SpO2, temperature &amp; activity tracking
-            — 24/7 on your finger. The smallest health lab you'll ever own.
+      {/* ── Ring One ── */}
+      <Section style={deviceCard}>
+        <Img src={IMAGES.ringLifestyle} width="480" alt="Ring One on hand" style={deviceImage} />
+        <Section style={deviceBody}>
+          <Text style={deviceBadge(DEVICE_COLORS.ring)}>WEARABLE</Text>
+          <Text style={deviceName}>The Ring One</Text>
+          <Text style={deviceDesc}>
+            Sleep, heart rate, HRV, SpO2, temperature and activity tracking.
+            24/7 on your finger. The smallest health lab you will ever own.
           </Text>
-          <Section style={hardwareCta}>
+          <Section style={{ marginTop: "16px" }}>
             <Button href={`${BASE_URL}/products/ring-one`} style={deviceButton(DEVICE_COLORS.ring)}>
-              Explore The Ring One
+              Explore Ring One
             </Button>
           </Section>
         </Section>
       </Section>
 
       {/* ── The Scale ── */}
-      <Section style={hardwareCard}>
-        <Img src={IMAGES.scale} width="480" alt="The Scale" style={hardwareImage} />
-        <Section style={hardwareBody}>
-          <Text style={hardwareBadge(DEVICE_COLORS.scale)}>BODY COMPOSITION</Text>
-          <Text style={hardwareName}>The Scale</Text>
-          <Text style={hardwareDesc}>
-            Full body composition analysis — weight, body fat, muscle mass
-            and more. Step on, and your data syncs instantly.
+      <Section style={deviceCard}>
+        <Img src={IMAGES.scaleLifestyle} width="480" alt="The Scale in bathroom" style={deviceImage} />
+        <Section style={deviceBody}>
+          <Text style={deviceBadge(DEVICE_COLORS.scale)}>BODY COMPOSITION</Text>
+          <Text style={deviceName}>The Scale</Text>
+          <Text style={deviceDesc}>
+            Full body composition analysis. Weight, body fat, muscle mass and
+            more. Step on, and your data syncs instantly.
           </Text>
-          <Section style={hardwareCta}>
+          <Section style={{ marginTop: "16px" }}>
             <Button href={`${BASE_URL}/products/scale`} style={deviceButton(DEVICE_COLORS.scale)}>
               Explore The Scale
             </Button>
@@ -104,35 +120,35 @@ export default function WelcomeEmail() {
         </Section>
       </Section>
 
-      {/* ── The BP Monitor ── */}
-      <Section style={hardwareCard}>
-        <Img src={IMAGES.bpMonitor} width="480" alt="The BP Monitor" style={hardwareImage} />
-        <Section style={hardwareBody}>
-          <Text style={hardwareBadge(DEVICE_COLORS.bp)}>VITAL SIGNS</Text>
-          <Text style={hardwareName}>The BP Monitor</Text>
-          <Text style={hardwareDesc}>
+      {/* ── BP Monitor ── */}
+      <Section style={deviceCard}>
+        <Img src={IMAGES.bpLifestyle} width="480" alt="BP Monitor morning reading" style={deviceImage} />
+        <Section style={deviceBody}>
+          <Text style={deviceBadge(DEVICE_COLORS.bp)}>VITAL SIGNS</Text>
+          <Text style={deviceName}>The BP Monitor</Text>
+          <Text style={deviceDesc}>
             Clinical-grade blood pressure readings that sync directly to
             your health dashboard. Track trends over time.
           </Text>
-          <Section style={hardwareCta}>
+          <Section style={{ marginTop: "16px" }}>
             <Button href={`${BASE_URL}/products/bp-monitor`} style={deviceButton(DEVICE_COLORS.bp)}>
-              Explore The BP Monitor
+              Explore BP Monitor
             </Button>
           </Section>
         </Section>
       </Section>
 
       {/* ── Hydra One ── */}
-      <Section style={hardwareCard}>
-        <Img src={IMAGES.hydraOne} width="480" alt="Hydra One" style={hardwareImage} />
-        <Section style={hardwareBody}>
-          <Text style={hardwareBadge(DEVICE_COLORS.hydra)}>HYDRATION</Text>
-          <Text style={hardwareName}>Hydra One</Text>
-          <Text style={hardwareDesc}>
-            Smart bottle that tracks every sip. Stay hydrated automatically
-            with real-time tracking and daily goals.
+      <Section style={deviceCard}>
+        <Img src={IMAGES.hydraLifestyle} width="480" alt="Hydra One in cafe" style={deviceImage} />
+        <Section style={deviceBody}>
+          <Text style={deviceBadge(DEVICE_COLORS.hydra)}>HYDRATION</Text>
+          <Text style={deviceName}>Hydra One</Text>
+          <Text style={deviceDesc}>
+            Smart bottle that tracks every sip. Stay hydrated with real-time
+            tracking, smart reminders, and daily goals.
           </Text>
-          <Section style={hardwareCta}>
+          <Section style={{ marginTop: "16px" }}>
             <Button href={`${BASE_URL}/products/hydra-one`} style={deviceButton(DEVICE_COLORS.hydra)}>
               Explore Hydra One
             </Button>
@@ -141,16 +157,16 @@ export default function WelcomeEmail() {
       </Section>
 
       {/* ── Hema One ── */}
-      <Section style={hardwareCard}>
-        <Img src={IMAGES.hemaOne} width="480" alt="Hema One" style={hardwareImage} />
-        <Section style={hardwareBody}>
-          <Text style={hardwareBadge(DEVICE_COLORS.hema)}>BLOOD TESTS</Text>
-          <Text style={hardwareName}>Hema One</Text>
-          <Text style={hardwareDesc}>
-            At-home blood analysis — lab-level insights without the lab visit.
+      <Section style={deviceCard}>
+        <Img src={IMAGES.hemaLifestyle} width="480" alt="Hema One in kitchen" style={deviceImage} />
+        <Section style={deviceBody}>
+          <Text style={deviceBadge(DEVICE_COLORS.hema)}>BLOOD ANALYSIS</Text>
+          <Text style={deviceName}>Hema One</Text>
+          <Text style={deviceDesc}>
+            At-home blood analysis. Lab-level insights without the lab visit.
             Know your numbers from the comfort of home.
           </Text>
-          <Section style={hardwareCta}>
+          <Section style={{ marginTop: "16px" }}>
             <Button href={`${BASE_URL}/products/hema-one`} style={deviceButton(DEVICE_COLORS.hema)}>
               Explore Hema One
             </Button>
@@ -161,100 +177,86 @@ export default function WelcomeEmail() {
       <Hr style={divider} />
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 2 — App Wellness Journey (independent of hardware)
+          SECTION 2 — What's waiting in the app
           ══════════════════════════════════════════════════════════ */}
-      <Text style={sectionHeading}>Your wellness journey</Text>
-      <Text style={sectionSubtext}>
-        The SeeMyHealth app is your central hub for a healthier life —
-        with or without the hardware.
-      </Text>
+      <Text style={sectionLabel}>READY FOR YOU</Text>
+      <Text style={sectionHeading}>Here is what is waiting inside your app.</Text>
 
-      <Section style={featureBlock}>
-        <Text style={featureIcon}>&#x1F4CA;</Text>
-        <Text style={featureTitle}>Health Dashboard</Text>
-        <Text style={featureDesc}>
-          Steps, calories, sleep, heart rate, SpO2 — all your vitals in one
-          beautiful daily view with trends over time.
-        </Text>
+      {/* App hero image */}
+      <Img
+        src={IMAGES.appScreens}
+        width="480"
+        alt="SeeMyHealth app screens"
+        style={fullImage}
+      />
+
+      {/* Feature grid - 2 per row */}
+      <Section style={{ marginTop: "24px" }}>
+        <Row>
+          <Column style={featureCol}>
+            <Img src={IMAGES.appFamily} width="220" alt="Family health sharing" style={featureImage} />
+            <Text style={featureTitle}>Family Health</Text>
+            <Text style={featureDesc}>
+              Share data with family, monitor loved ones. Health is better together.
+            </Text>
+          </Column>
+          <Column style={featureColSpacer} />
+          <Column style={featureCol}>
+            <Img src={IMAGES.appMeals} width="220" alt="Meal logging" style={featureImage} />
+            <Text style={featureTitle}>Nutrition and Hydration</Text>
+            <Text style={featureDesc}>
+              Log meals, plan recipes, track macros, and monitor water intake.
+            </Text>
+          </Column>
+        </Row>
       </Section>
 
-      <Section style={featureBlock}>
-        <Text style={featureIcon}>&#x1F3AF;</Text>
-        <Text style={featureTitle}>Goals &amp; Progress</Text>
-        <Text style={featureDesc}>
-          Set fitness, nutrition, wellness, and health metric goals. Track
-          your streaks and watch yourself improve week over week.
-        </Text>
+      <Section style={{ marginTop: "16px" }}>
+        <Row>
+          <Column style={featureCol}>
+            <Img src={IMAGES.appChallenges} width="220" alt="Community challenges" style={featureImage} />
+            <Text style={featureTitle}>Challenges and Community</Text>
+            <Text style={featureDesc}>
+              Compete in health challenges and stay motivated with friends.
+            </Text>
+          </Column>
+          <Column style={featureColSpacer} />
+          <Column style={featureCol}>
+            <Img src={IMAGES.appMood} width="220" alt="Mood journaling" style={featureImage} />
+            <Text style={featureTitle}>Mood and Journaling</Text>
+            <Text style={featureDesc}>
+              Daily check-ins, voice journaling, and mental health trends.
+            </Text>
+          </Column>
+        </Row>
       </Section>
 
-      <Section style={featureBlock}>
-        <Text style={featureIcon}>&#x1F957;</Text>
-        <Text style={featureTitle}>Nutrition &amp; Hydration</Text>
-        <Text style={featureDesc}>
-          Log meals, plan recipes, track macros, monitor water intake, and
-          manage intermittent fasting — all in one place.
-        </Text>
-      </Section>
-
-      <Section style={featureBlock}>
-        <Text style={featureIcon}>&#x1F9E0;</Text>
-        <Text style={featureTitle}>Mood &amp; Journaling</Text>
-        <Text style={featureDesc}>
-          Daily mood check-ins, voice journaling with transcription, and
-          mental health trends to understand your well-being.
-        </Text>
-      </Section>
-
-      <Section style={featureBlock}>
-        <Text style={featureIcon}>&#x1F3E5;</Text>
-        <Text style={featureTitle}>Appointments &amp; Providers</Text>
-        <Text style={featureDesc}>
-          Find healthcare providers, book in-person or virtual visits, and
-          manage your medical records — all from the app.
-        </Text>
-      </Section>
-
-      <Section style={featureBlock}>
-        <Text style={featureIcon}>&#x1F91D;</Text>
-        <Text style={featureTitle}>Community &amp; Challenges</Text>
-        <Text style={featureDesc}>
-          Join groups, compete in health challenges, share milestones, and
-          stay motivated with friends and leaderboards.
-        </Text>
-      </Section>
-
-      <Section style={featureBlock}>
-        <Text style={featureIcon}>&#x1F46A;</Text>
-        <Text style={featureTitle}>Family Health</Text>
-        <Text style={featureDesc}>
-          Share data with family members, monitor loved ones' health, and
-          manage permissions — health is better together.
-        </Text>
+      <Section style={ctaCenter}>
+        <PrimaryButton href={`${BASE_URL}/shop`}>
+          Shop the Ecosystem
+        </PrimaryButton>
       </Section>
 
       <Hr style={divider} />
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 3 — Invite Friends
+          SECTION 3 — Invite
           ══════════════════════════════════════════════════════════ */}
-      <Section style={shareSection} className="dark-safe">
-        <Text style={shareHeading}>Invite your friends!</Text>
-        <Text style={shareText}>
-          Know someone who'd love SeeMyHealth? Share the good news
-          and start your wellness journey together.
+      <Section style={inviteSection} className="dark-safe">
+        <Text style={inviteHeading}>Know someone who would love this?</Text>
+        <Text style={inviteText}>
+          Share SeeMyHealth and start your wellness journey together.
         </Text>
-
-        <Section style={ctaSection}>
+        <Section style={ctaCenter}>
           <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={inviteButton}>
             Invite a Friend
           </Button>
         </Section>
-
         <Section style={shareRow}>
           <Row>
             <Column align="center" style={shareCol}>
               <Link
-                href="mailto:?subject=Join%20me%20on%20SeeMyHealth&body=Hey!%20I%20just%20joined%20SeeMyHealth%20and%20it%E2%80%99s%20amazing.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
+                href="mailto:?subject=Join%20me%20on%20SeeMyHealth&body=Hey!%20I%20just%20joined%20SeeMyHealth%20and%20it%27s%20amazing.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
                 style={shareLink}
               >
                 Email
@@ -262,7 +264,7 @@ export default function WelcomeEmail() {
             </Column>
             <Column align="center" style={shareCol}>
               <Link
-                href="sms:?body=Hey!%20I%20just%20joined%20SeeMyHealth%20%E2%80%94%20check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
+                href="sms:?body=Hey!%20I%20just%20joined%20SeeMyHealth.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
                 style={shareLink}
               >
                 SMS
@@ -270,7 +272,7 @@ export default function WelcomeEmail() {
             </Column>
             <Column align="center" style={shareCol}>
               <Link
-                href="https://wa.me/?text=Hey!%20I%20just%20joined%20SeeMyHealth%20%E2%80%94%20check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
+                href="https://wa.me/?text=Hey!%20I%20just%20joined%20SeeMyHealth.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
                 style={shareLink}
               >
                 WhatsApp
@@ -282,14 +284,14 @@ export default function WelcomeEmail() {
 
       <Hr style={divider} />
 
-      {/* ── Social Proof ── */}
+      {/* ── Testimonial ── */}
       <Section style={testimonialSection}>
         <Text style={testimonialQuote}>"</Text>
         <Text style={testimonialText}>
           The Ring One tracks my sleep and the app shows me exactly what to
-          improve. I've never felt more in control of my health.
+          improve. I have never felt more in control of my health.
         </Text>
-        <Text style={testimonialAuthor}>— Sarah K., member since 2024</Text>
+        <Text style={testimonialAuthor}>Sarah K., member since 2024</Text>
       </Section>
 
     </EmailLayout>
@@ -298,193 +300,230 @@ export default function WelcomeEmail() {
 
 // ── Styles ──
 
-// Brand purple palette
-// Primary: #7c3aed  Lighter: #a855f7  Darker: #4c1d95  Deep: #1a0533
+const heroSection = {
+  position: "relative" as const,
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+  marginBottom: "32px",
+};
 
-const heroBanner = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 50%, #7c3aed 100%)",
-  borderRadius: "16px",
-  padding: "48px 24px",
-  textAlign: "center" as const,
-  marginBottom: "28px",
+const heroImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+};
+
+const heroOverlay = {
+  position: "absolute" as const,
+  bottom: "0",
+  left: "0",
+  right: "0",
+  padding: "40px 24px 24px",
+  background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)",
+};
+
+const heroTagline = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.7)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 4px 0",
 };
 
 const heroTitle = {
   fontSize: "32px",
-  fontWeight: "bold" as const,
+  fontWeight: "700" as const,
   color: "#ffffff",
-  margin: "0 0 8px 0",
+  margin: "0",
   letterSpacing: "-0.5px",
 };
 
-const heroTagline = {
-  fontSize: "16px",
-  color: "rgba(255, 255, 255, 0.8)",
-  margin: "0",
+const greetingSection = {
+  marginBottom: "8px",
 };
 
 const heading = {
-  fontSize: "28px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+  fontSize: "26px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
   margin: "0 0 12px 0",
 };
 
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.6)",
+  margin: "0 0 8px 0",
+};
+
+const sectionLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.35)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
   margin: "0 0 8px 0",
 };
 
 const sectionHeading = {
-  fontSize: "20px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 4px 0",
+  fontSize: "22px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 8px 0",
+  letterSpacing: "-0.3px",
 };
 
 const sectionSubtext = {
-  fontSize: "14px",
-  color: "#6b7280",
-  lineHeight: "22px",
-  margin: "0 0 20px 0",
-};
-
-const ctaSection = {
-  textAlign: "center" as const,
-  margin: "24px 0",
+  fontSize: "15px",
+  color: "rgba(255, 255, 255, 0.5)",
+  lineHeight: "24px",
+  margin: "0 0 24px 0",
 };
 
 const divider = {
-  borderColor: "rgba(124, 58, 237, 0.1)",
-  margin: "32px 0",
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "36px 0",
 };
 
-// ── Hardware cards ──
+const ctaCenter = {
+  textAlign: "center" as const,
+  margin: "28px 0 0 0",
+};
 
-const hardwareCard = {
-  borderRadius: "14px",
+// ── Device cards ──
+
+const deviceCard = {
+  borderRadius: "12px",
   overflow: "hidden" as const,
   marginBottom: "16px",
-  border: "1px solid rgba(124, 58, 237, 0.08)",
-  boxShadow: "0 2px 12px rgba(76, 29, 149, 0.06)",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+  backgroundColor: "#141414",
 };
 
-const hardwareImage = {
+const deviceImage = {
   width: "100%",
   display: "block" as const,
 };
 
-const hardwareBody = {
-  padding: "20px 24px 24px 24px",
+const deviceBody = {
+  padding: "20px 24px 24px",
 };
 
-const hardwareBadge = (color: string) => ({
+const deviceBadge = (color: string) => ({
   fontSize: "10px",
-  fontWeight: "bold" as const,
+  fontWeight: "700" as const,
   color: color,
-  letterSpacing: "1.5px",
-  margin: "0 0 6px 0",
+  letterSpacing: "2px",
+  margin: "0 0 8px 0",
   textTransform: "uppercase" as const,
 });
 
-const hardwareName = {
+const deviceName = {
   fontSize: "20px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
   margin: "0 0 8px 0",
 };
 
-const hardwareDesc = {
+const deviceDesc = {
   fontSize: "14px",
   lineHeight: "22px",
-  color: "#6b7280",
+  color: "rgba(255, 255, 255, 0.5)",
   margin: "0",
-};
-
-const hardwareCta = {
-  marginTop: "16px",
 };
 
 const deviceButton = (color: string) => ({
   backgroundColor: color,
   color: "#ffffff",
-  padding: "10px 20px",
-  borderRadius: "8px",
-  fontSize: "13px",
-  fontWeight: "bold" as const,
+  padding: "10px 22px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
 });
 
-// ── Wellness feature blocks ──
+// ── App features ──
 
-const featureBlock = {
-  background: "linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(168,85,247,0.04) 100%)",
+const fullImage = {
+  width: "100%",
+  display: "block" as const,
   borderRadius: "12px",
-  padding: "20px 24px",
-  marginBottom: "10px",
-  border: "1px solid rgba(124, 58, 237, 0.08)",
 };
 
-const featureIcon = {
-  fontSize: "28px",
-  margin: "0 0 4px 0",
-  lineHeight: "1",
+const featureCol = {
+  width: "48%",
+  verticalAlign: "top" as const,
+};
+
+const featureColSpacer = {
+  width: "4%",
+};
+
+const featureImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "10px",
+  marginBottom: "12px",
 };
 
 const featureTitle = {
-  fontSize: "16px",
-  fontWeight: "bold" as const,
-  color: "#111827",
+  fontSize: "14px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
   margin: "0 0 4px 0",
 };
 
 const featureDesc = {
-  fontSize: "14px",
-  lineHeight: "22px",
-  color: "#6b7280",
+  fontSize: "13px",
+  lineHeight: "20px",
+  color: "rgba(255, 255, 255, 0.45)",
   margin: "0",
 };
 
-// ── Share / Invite section ──
+// ── Invite section ──
 
-const shareSection = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 100%)",
-  borderRadius: "16px",
-  padding: "32px 24px",
+const inviteSection = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "36px 24px",
   textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
-const shareHeading = {
-  fontSize: "22px",
-  fontWeight: "bold" as const,
-  color: "#ffffff",
+const inviteHeading = {
+  fontSize: "20px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
   margin: "0 0 8px 0",
 };
 
-const shareText = {
+const inviteText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.75)",
+  color: "rgba(255, 255, 255, 0.5)",
   lineHeight: "24px",
-  margin: "0 0 4px 0",
+  margin: "0",
 };
 
 const inviteButton = {
   backgroundColor: "#ffffff",
-  color: "#7c3aed",
-  padding: "14px 28px",
-  borderRadius: "10px",
-  fontSize: "15px",
-  fontWeight: "bold" as const,
+  color: "#0a0a0a",
+  padding: "14px 32px",
+  borderRadius: "50px",
+  fontSize: "14px",
+  fontWeight: "600" as const,
   textDecoration: "none",
   textAlign: "center" as const,
   display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
 };
 
 const shareRow = {
-  marginTop: "8px",
+  marginTop: "16px",
 };
 
 const shareCol = {
@@ -493,25 +532,22 @@ const shareCol = {
 };
 
 const shareLink = {
-  color: "#c4b5fd",
+  color: "rgba(255, 255, 255, 0.4)",
   fontSize: "12px",
-  fontWeight: "bold" as const,
+  fontWeight: "600" as const,
   textDecoration: "underline",
 };
 
 // ── Testimonial ──
 
 const testimonialSection = {
-  background: "linear-gradient(135deg, rgba(124,58,237,0.05) 0%, rgba(168,85,247,0.05) 100%)",
-  borderRadius: "16px",
-  padding: "32px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(124, 58, 237, 0.1)",
+  padding: "8px 0",
 };
 
 const testimonialQuote = {
   fontSize: "48px",
-  color: "#7c3aed",
+  color: "rgba(255, 255, 255, 0.15)",
   margin: "0",
   lineHeight: "1",
   fontFamily: "Georgia, serif",
@@ -520,14 +556,14 @@ const testimonialQuote = {
 const testimonialText = {
   fontSize: "15px",
   fontStyle: "italic" as const,
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.6)",
   lineHeight: "24px",
   margin: "0 0 12px 0",
 };
 
 const testimonialAuthor = {
   fontSize: "13px",
-  color: "#9ca3af",
+  color: "rgba(255, 255, 255, 0.3)",
   margin: "0",
   fontWeight: "600" as const,
 };

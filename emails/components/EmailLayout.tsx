@@ -14,39 +14,28 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
     <Head>
       <meta name="color-scheme" content="light dark" />
       <meta name="supported-color-schemes" content="light dark" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      />
       <style dangerouslySetInnerHTML={{ __html: `
         :root { color-scheme: light dark; supported-color-schemes: light dark; }
         @media (prefers-color-scheme: dark) {
           .email-bg {
-            background: #1a0533 !important;
+            background-color: #000000 !important;
           }
           .email-container {
-            background-color: #1e1e2e !important;
-            border-color: rgba(167, 139, 250, 0.2) !important;
-          }
-          .email-container h1, .email-container h2, .email-container h3,
-          .email-container p, .email-container td, .email-container span {
-            color: #e4e4e7 !important;
-          }
-          .email-container a {
-            color: #a78bfa !important;
+            background-color: #0a0a0a !important;
+            border-color: rgba(255, 255, 255, 0.06) !important;
           }
           .dark-safe p, .dark-safe td, .dark-safe span, .dark-safe a,
           .dark-safe h1, .dark-safe h2, .dark-safe h3 {
             color: inherit !important;
           }
-          .header-border {
-            border-bottom-color: rgba(167, 139, 250, 0.2) !important;
-          }
-          .footer-hr {
-            border-color: rgba(167, 139, 250, 0.2) !important;
-          }
-          .footer-text {
-            color: #71717a !important;
-          }
-          .logo-text {
-            color: #a78bfa !important;
-          }
+        }
+        .force-white p, .force-white span, .force-white td,
+        .force-white h1, .force-white h2, .force-white h3 {
+          color: #ffffff !important;
         }
         @media only screen and (max-width: 600px) {
           .email-container {
@@ -72,8 +61,8 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
     </Head>
     <Preview>{preview}</Preview>
     <Body style={main}>
-      <Section style={gradientBg} className="email-bg">
-        <Container style={glassContainer} className="email-container">
+      <Section style={outerBg} className="email-bg">
+        <Container style={container} className="email-container">
           <Header title={title} />
           {children}
           <Footer />
@@ -84,26 +73,21 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
 );
 
 const main = {
-  backgroundColor: "#1a0533",
+  backgroundColor: "#0a0a0a",
   fontFamily:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   margin: "0",
   padding: "0",
 };
 
-const gradientBg = {
-  background: "linear-gradient(160deg, #1a0533 0%, #2d1654 30%, #4c1d95 60%, #1a0533 100%)",
+const outerBg = {
+  backgroundColor: "#0a0a0a",
   padding: "40px 16px",
 };
 
-const glassContainer = {
-  backgroundColor: "rgba(255, 255, 255, 0.96)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+const container = {
+  backgroundColor: "#0a0a0a",
   margin: "0 auto",
-  padding: "40px",
+  padding: "0 40px",
   maxWidth: "560px",
-  borderRadius: "16px",
-  border: "1px solid rgba(124, 58, 237, 0.1)",
-  boxShadow: "0 8px 32px rgba(76, 29, 149, 0.15)",
 };
