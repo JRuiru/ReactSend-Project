@@ -66,7 +66,7 @@ export default function AbandonedCartReminder() {
               <Text style={styles.productQty}>{"Qty: {{ item.quantity }}"}</Text>
             </Column>
             <Column style={{ verticalAlign: "top", textAlign: "right" }}>
-              <Text style={styles.productPrice}>{"{{ item.row_total|floatformat:2|money }}"}</Text>
+              <Text style={styles.productPrice}>{"${{ item.row_total|floatformat:2 }}"}</Text>
             </Column>
           </Row>
         </Section>
@@ -89,7 +89,7 @@ export default function AbandonedCartReminder() {
               <Text style={styles.totalLabel}>Estimated Total</Text>
             </Column>
             <Column>
-              <Text style={styles.totalValue}>{"{{ event.extra.total_price|floatformat:2|money }}"}</Text>
+              <Text style={styles.totalValue}>{"${{ event.extra.total_price|floatformat:2 }}"}</Text>
             </Column>
           </Row>
         </Section>

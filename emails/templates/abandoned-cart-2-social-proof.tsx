@@ -15,7 +15,7 @@ const CF_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 
 export default function AbandonedCartSocialProof() {
   return (
-    <EmailLayout preview="Still thinking it over? Here's why thousands trust SeeMyHealth." title="Still Thinking?">
+    <EmailLayout preview="See what SeeMyHealth owners are saying — your cart is still saved." title="Still Thinking?">
 
       {/* Spacer */}
       <Section style={{ height: "32px" }} />
@@ -43,46 +43,92 @@ export default function AbandonedCartSocialProof() {
         {"{{ person|lookup:'first_name'|default:'Hey' }}"}, your cart is still waiting.
       </Text>
       <Text style={styles.subtext}>
-        We noticed you haven&rsquo;t completed your order yet. Here&rsquo;s what our community is saying about the devices in your cart.
+        Making a decision about your health is important. Here&rsquo;s what real customers are experiencing with the devices in your cart.
       </Text>
 
       {/* Spacer */}
       <Section style={{ height: "24px" }} />
 
-      {/* Testimonials Card */}
+      {/* Social Proof Banner */}
+      <Section style={styles.socialProofBanner}>
+        <Row>
+          <Column style={{ textAlign: "center", width: "33%" }}>
+            <Text style={styles.statNumber}>10,000+</Text>
+            <Text style={styles.statLabel}>Active Users</Text>
+          </Column>
+          <Column style={{ textAlign: "center", width: "33%" }}>
+            <Text style={styles.statNumber}>4.8/5</Text>
+            <Text style={styles.statLabel}>Avg. Rating</Text>
+          </Column>
+          <Column style={{ textAlign: "center", width: "33%" }}>
+            <Text style={styles.statNumber}>50+</Text>
+            <Text style={styles.statLabel}>Health Metrics</Text>
+          </Column>
+        </Row>
+      </Section>
+
+      {/* Spacer */}
+      <Section style={{ height: "24px" }} />
+
+      {/* Testimonials Card — outcome-focused */}
       <Section style={styles.card}>
         <Section style={styles.cardHeader}>
-          <Text style={styles.cardLabel}>What Our Community Says</Text>
+          <Text style={styles.cardLabel}>Real Results From Real Customers</Text>
         </Section>
         <Hr style={styles.cardDivider} />
 
-        {/* Testimonial 1 */}
+        {/* Testimonial 1 — sleep improvement */}
         <Section style={{ padding: "20px 24px" }}>
+          <Row style={{ marginBottom: "8px" }}>
+            <Column>
+              <Text style={styles.stars}>&#9733;&#9733;&#9733;&#9733;&#9733;</Text>
+            </Column>
+          </Row>
           <Text style={styles.testimonialQuote}>
-            &ldquo;The Ring One tracks my sleep and the app shows me exactly what to improve. I have never felt more in control of my health.&rdquo;
+            &ldquo;After two weeks with the Ring One, my sleep score went from 62 to 84. I wake up feeling rested for the first time in years. The app pinpointed that my late caffeine was the problem.&rdquo;
           </Text>
-          <Text style={styles.testimonialAuthor}>Sarah M. &mdash; Verified Customer</Text>
+          <Text style={styles.testimonialAuthor}>Sarah M. &mdash; Ring One Owner</Text>
         </Section>
 
         <Hr style={{ borderColor: "#171717", margin: "0 24px" }} />
 
-        {/* Testimonial 2 */}
+        {/* Testimonial 2 — body composition results */}
         <Section style={{ padding: "20px 24px" }}>
+          <Row style={{ marginBottom: "8px" }}>
+            <Column>
+              <Text style={styles.stars}>&#9733;&#9733;&#9733;&#9733;&#9733;</Text>
+            </Column>
+          </Row>
           <Text style={styles.testimonialQuote}>
-            &ldquo;I bought The Scale for body composition tracking and within a week I could see real changes in my muscle mass. The app makes it so easy to follow progress.&rdquo;
+            &ldquo;Lost 4kg of fat and gained 2kg of muscle in 3 months. The Scale tracks everything and the trends in the app kept me accountable. Worth every penny.&rdquo;
           </Text>
-          <Text style={styles.testimonialAuthor}>James R. &mdash; Verified Customer</Text>
+          <Text style={styles.testimonialAuthor}>James R. &mdash; Scale Owner</Text>
         </Section>
 
         <Hr style={{ borderColor: "#171717", margin: "0 24px" }} />
 
-        {/* Testimonial 3 */}
+        {/* Testimonial 3 — hydration impact */}
         <Section style={{ padding: "20px 24px" }}>
+          <Row style={{ marginBottom: "8px" }}>
+            <Column>
+              <Text style={styles.stars}>&#9733;&#9733;&#9733;&#9733;&#9733;</Text>
+            </Column>
+          </Row>
           <Text style={styles.testimonialQuote}>
-            &ldquo;The Hydra One changed my hydration game completely. I never realized how little water I was drinking until I started tracking it.&rdquo;
+            &ldquo;I was only drinking 1.2L a day and didn&rsquo;t even know it. The Hydra One got me to 2.5L consistently. My energy levels and skin have completely changed.&rdquo;
           </Text>
-          <Text style={styles.testimonialAuthor}>Amira K. &mdash; Verified Customer</Text>
+          <Text style={styles.testimonialAuthor}>Amira K. &mdash; Hydra One Owner</Text>
         </Section>
+      </Section>
+
+      {/* Spacer */}
+      <Section style={{ height: "24px" }} />
+
+      {/* Free Shipping Banner */}
+      <Section style={styles.freeShippingCard}>
+        <Text style={styles.freeShippingIcon}>&#10003;</Text>
+        <Text style={styles.freeShippingTitle}>Free Shipping on Your Order</Text>
+        <Text style={styles.freeShippingDesc}>Every order ships free, straight to your door. No minimum, no code needed.</Text>
       </Section>
 
       {/* Spacer */}
@@ -100,7 +146,7 @@ export default function AbandonedCartSocialProof() {
               <Text style={styles.checkmark}>&#10003;</Text>
             </Column>
             <Column style={{ verticalAlign: "top", paddingLeft: "8px" }}>
-              <Text style={styles.benefitText}><strong style={{ color: "#f5f5f5" }}>Medical-Grade Accuracy</strong> &mdash; Lab-quality health insights from home</Text>
+              <Text style={styles.benefitText}><strong style={{ color: "#f5f5f5" }}>Advanced Sensors</strong> &mdash; Professional-level health insights from home</Text>
             </Column>
           </Row>
           <Row style={{ marginBottom: "12px" }}>
@@ -124,7 +170,7 @@ export default function AbandonedCartSocialProof() {
               <Text style={styles.checkmark}>&#10003;</Text>
             </Column>
             <Column style={{ verticalAlign: "top", paddingLeft: "8px" }}>
-              <Text style={styles.benefitText}><strong style={{ color: "#f5f5f5" }}>Free Shipping</strong> &mdash; On every order, delivered to your door</Text>
+              <Text style={styles.benefitText}><strong style={{ color: "#f5f5f5" }}>5-Minute Setup</strong> &mdash; Unbox, pair with the app, and start tracking instantly</Text>
             </Column>
           </Row>
         </Section>
@@ -160,7 +206,7 @@ export default function AbandonedCartSocialProof() {
               <Text style={styles.productQty}>{"Qty: {{ item.quantity }}"}</Text>
             </Column>
             <Column style={{ verticalAlign: "top", textAlign: "right" }}>
-              <Text style={styles.productPrice}>{"{{ item.row_total|floatformat:2|money }}"}</Text>
+              <Text style={styles.productPrice}>{"${{ item.row_total|floatformat:2 }}"}</Text>
             </Column>
           </Row>
         </Section>
@@ -232,6 +278,28 @@ const styles = {
     color: "#a3a3a3",
     margin: "0 0 8px 0",
   },
+  socialProofBanner: {
+    backgroundColor: "#141414",
+    border: "1px solid #1a4d30",
+    borderRadius: "12px",
+    padding: "20px 16px",
+  },
+  statNumber: {
+    margin: "0 0 2px 0",
+    fontSize: "22px",
+    fontWeight: "700" as const,
+    color: "#22c55e",
+    textAlign: "center" as const,
+  },
+  statLabel: {
+    margin: "0",
+    fontSize: "11px",
+    fontWeight: "600" as const,
+    color: "#6b6b6b",
+    letterSpacing: "1px",
+    textTransform: "uppercase" as const,
+    textAlign: "center" as const,
+  },
   card: {
     backgroundColor: "#141414",
     border: "1px solid #1a1a1a",
@@ -253,6 +321,12 @@ const styles = {
     borderColor: "#1a1a1a",
     margin: "0",
   },
+  stars: {
+    margin: "0",
+    fontSize: "16px",
+    color: "#F97316",
+    letterSpacing: "2px",
+  },
   testimonialQuote: {
     margin: "0 0 8px 0",
     fontSize: "15px",
@@ -265,6 +339,31 @@ const styles = {
     fontSize: "13px",
     color: "#525252",
     fontWeight: "600" as const,
+  },
+  freeShippingCard: {
+    backgroundColor: "#0d2618",
+    border: "1px solid #1a4d30",
+    borderRadius: "12px",
+    padding: "20px 24px",
+    textAlign: "center" as const,
+  },
+  freeShippingIcon: {
+    margin: "0 0 4px 0",
+    fontSize: "20px",
+    color: "#22c55e",
+    fontWeight: "700" as const,
+  },
+  freeShippingTitle: {
+    margin: "0 0 4px 0",
+    fontSize: "16px",
+    fontWeight: "700" as const,
+    color: "#22c55e",
+  },
+  freeShippingDesc: {
+    margin: "0",
+    fontSize: "14px",
+    lineHeight: "22px",
+    color: "#a3a3a3",
   },
   checkmark: {
     margin: "0",

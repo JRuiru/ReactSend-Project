@@ -15,7 +15,7 @@ const CF_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 
 export default function AbandonedCartLastChance() {
   return (
-    <EmailLayout preview="Last chance — your cart expires soon." title="Last Chance">
+    <EmailLayout preview="Last chance — your cart expires soon. Complete your order now." title="Last Chance">
 
       {/* Spacer */}
       <Section style={{ height: "32px" }} />
@@ -32,17 +32,65 @@ export default function AbandonedCartLastChance() {
         {"{{ person|lookup:'first_name'|default:'Hey' }}"}, your cart is about to expire.
       </Text>
       <Text style={styles.subtext}>
-        We&rsquo;ve been holding your items, but we can&rsquo;t keep them reserved much longer. Complete your order now to secure your health upgrade.
+        We&rsquo;ve been holding your items, but we can&rsquo;t keep them reserved much longer. This is your last reminder before your cart is cleared.
       </Text>
 
       {/* Spacer */}
       <Section style={{ height: "16px" }} />
 
+      {/* ═══════════════════════════════════════════
+           FIRST-TIME CUSTOMER: 10% OFF
+           Klaviyo conditional: only show to people
+           who have never placed an order
+           ═══════════════════════════════════════════ */}
+      <Text style={styles.klaviyoBlock}>
+        {"{% if person|lookup:'Number of Orders'|default:0 == 0 %}"}
+      </Text>
+
+      <Section style={styles.discountCard}>
+        <Text style={styles.discountLabel}>First Order Exclusive</Text>
+        <Text style={styles.discountAmount}>10% OFF</Text>
+        <Text style={styles.discountDesc}>
+          Use this code at checkout &mdash; it&rsquo;s unique to you and expires in 48 hours.
+        </Text>
+        <Section style={styles.couponBox}>
+          <Text style={styles.couponCode}>{"{{ coupon_code }}"}</Text>
+        </Section>
+        <Text style={styles.discountNote}>
+          One-time use. Cannot be combined with other offers.
+        </Text>
+      </Section>
+
+      {/* Spacer */}
+      <Section style={{ height: "16px" }} />
+
+      <Text style={styles.klaviyoBlock}>
+        {"{% else %}"}
+      </Text>
+
+      {/* ═══════════════════════════════════════════
+           RETURNING CUSTOMER: No discount,
+           offer free health consultation instead
+           ═══════════════════════════════════════════ */}
+      <Section style={styles.consultCard}>
+        <Text style={styles.consultLabel}>Exclusive for You</Text>
+        <Text style={styles.consultTitle}>Free Health Consultation</Text>
+        <Text style={styles.consultDesc}>
+          Complete your order today and get a complimentary 15-minute health consultation with our wellness team. We&rsquo;ll help you get the most out of your devices.
+        </Text>
+      </Section>
+
+      {/* Spacer */}
+      <Section style={{ height: "16px" }} />
+
+      <Text style={styles.klaviyoBlock}>
+        {"{% endif %}"}
+      </Text>
+
       {/* Urgency Card */}
       <Section style={styles.urgencyCard}>
-        <Text style={styles.urgencyIcon}>&#9888;</Text>
         <Text style={styles.urgencyText}>
-          Cart items are not guaranteed &mdash; stock is limited and your cart will expire soon.
+          Cart items are not guaranteed &mdash; popular items sell out fast and your cart will expire soon.
         </Text>
       </Section>
 
@@ -76,7 +124,7 @@ export default function AbandonedCartLastChance() {
               <Text style={styles.productQty}>{"Qty: {{ item.quantity }}"}</Text>
             </Column>
             <Column style={{ verticalAlign: "top", textAlign: "right" }}>
-              <Text style={styles.productPrice}>{"{{ item.row_total|floatformat:2|money }}"}</Text>
+              <Text style={styles.productPrice}>{"${{ item.row_total|floatformat:2 }}"}</Text>
             </Column>
           </Row>
         </Section>
@@ -99,7 +147,7 @@ export default function AbandonedCartLastChance() {
               <Text style={styles.totalLabel}>Estimated Total</Text>
             </Column>
             <Column>
-              <Text style={styles.totalValue}>{"{{ event.extra.total_price|floatformat:2|money }}"}</Text>
+              <Text style={styles.totalValue}>{"${{ event.extra.total_price|floatformat:2 }}"}</Text>
             </Column>
           </Row>
         </Section>
@@ -132,28 +180,41 @@ export default function AbandonedCartLastChance() {
         <Section style={{ padding: "20px 24px" }}>
           <Row style={{ marginBottom: "16px" }}>
             <Column style={{ width: "48px", verticalAlign: "top" }}>
-              <Text style={styles.statNumber}>24/7</Text>
+              <Text style={styles.metricNumber}>24/7</Text>
             </Column>
             <Column style={{ verticalAlign: "top", paddingLeft: "16px" }}>
-              <Text style={styles.statDesc}>Continuous health monitoring while you sleep, work, and exercise</Text>
+              <Text style={styles.metricTitle}>Continuous Monitoring</Text>
+              <Text style={styles.metricDesc}>Health tracking while you sleep, work, and exercise</Text>
             </Column>
           </Row>
           <Hr style={{ borderColor: "#171717", margin: "0 0 16px 0" }} />
           <Row style={{ marginBottom: "16px" }}>
             <Column style={{ width: "48px", verticalAlign: "top" }}>
-              <Text style={styles.statNumber}>50+</Text>
+              <Text style={styles.metricNumber}>50+</Text>
             </Column>
             <Column style={{ verticalAlign: "top", paddingLeft: "16px" }}>
-              <Text style={styles.statDesc}>Health metrics tracked across all devices in one unified dashboard</Text>
+              <Text style={styles.metricTitle}>Health Metrics</Text>
+              <Text style={styles.metricDesc}>From sleep quality to body composition in one dashboard</Text>
+            </Column>
+          </Row>
+          <Hr style={{ borderColor: "#171717", margin: "0 0 16px 0" }} />
+          <Row style={{ marginBottom: "16px" }}>
+            <Column style={{ width: "48px", verticalAlign: "top" }}>
+              <Text style={styles.metricNumber}>5min</Text>
+            </Column>
+            <Column style={{ verticalAlign: "top", paddingLeft: "16px" }}>
+              <Text style={styles.metricTitle}>Quick Setup</Text>
+              <Text style={styles.metricDesc}>Unbox, pair with the app, and start tracking immediately</Text>
             </Column>
           </Row>
           <Hr style={{ borderColor: "#171717", margin: "0 0 16px 0" }} />
           <Row>
             <Column style={{ width: "48px", verticalAlign: "top" }}>
-              <Text style={styles.statNumber}>5min</Text>
+              <Text style={styles.metricNumber}>30d</Text>
             </Column>
             <Column style={{ verticalAlign: "top", paddingLeft: "16px" }}>
-              <Text style={styles.statDesc}>Setup time. Unbox, pair with the app, and start tracking immediately</Text>
+              <Text style={styles.metricTitle}>Money-Back Guarantee</Text>
+              <Text style={styles.metricDesc}>Try it risk-free. If it&rsquo;s not for you, send it back for a full refund</Text>
             </Column>
           </Row>
         </Section>
@@ -189,7 +250,7 @@ export default function AbandonedCartLastChance() {
       {/* Final CTA */}
       <Section style={{ textAlign: "center" }}>
         <PrimaryButton href="{{ event.extra.checkout_url }}">
-          Don&rsquo;t Miss Out &mdash; Order Now
+          Complete Your Order
         </PrimaryButton>
       </Section>
 
@@ -230,17 +291,87 @@ const styles = {
     color: "#a3a3a3",
     margin: "0 0 8px 0",
   },
+  discountCard: {
+    backgroundColor: "#0d2618",
+    border: "1px solid #1a4d30",
+    borderRadius: "12px",
+    padding: "24px",
+    textAlign: "center" as const,
+  },
+  discountLabel: {
+    margin: "0 0 4px 0",
+    fontSize: "11px",
+    fontWeight: "600" as const,
+    color: "#22c55e",
+    letterSpacing: "2px",
+    textTransform: "uppercase" as const,
+  },
+  discountAmount: {
+    margin: "0 0 8px 0",
+    fontSize: "36px",
+    fontWeight: "700" as const,
+    color: "#22c55e",
+  },
+  discountDesc: {
+    margin: "0 0 16px 0",
+    fontSize: "14px",
+    lineHeight: "22px",
+    color: "#a3a3a3",
+  },
+  couponBox: {
+    backgroundColor: "#0a0a0a",
+    border: "2px dashed #1a4d30",
+    borderRadius: "8px",
+    padding: "12px 20px",
+    display: "inline-block" as const,
+    marginBottom: "12px",
+  },
+  couponCode: {
+    margin: "0",
+    fontSize: "20px",
+    fontWeight: "700" as const,
+    color: "#ffffff",
+    letterSpacing: "3px",
+    fontFamily: "monospace",
+  },
+  discountNote: {
+    margin: "0",
+    fontSize: "12px",
+    color: "#6b6b6b",
+  },
+  consultCard: {
+    backgroundColor: "#141414",
+    border: "1px solid #1a3a5c",
+    borderRadius: "12px",
+    padding: "24px",
+    textAlign: "center" as const,
+  },
+  consultLabel: {
+    margin: "0 0 4px 0",
+    fontSize: "11px",
+    fontWeight: "600" as const,
+    color: "#3B82F6",
+    letterSpacing: "2px",
+    textTransform: "uppercase" as const,
+  },
+  consultTitle: {
+    margin: "0 0 8px 0",
+    fontSize: "20px",
+    fontWeight: "700" as const,
+    color: "#f5f5f5",
+  },
+  consultDesc: {
+    margin: "0",
+    fontSize: "14px",
+    lineHeight: "22px",
+    color: "#a3a3a3",
+  },
   urgencyCard: {
     backgroundColor: "#1f1111",
     border: "1px solid #4d1a1a",
     borderRadius: "12px",
     padding: "16px 20px",
     textAlign: "center" as const,
-  },
-  urgencyIcon: {
-    margin: "0 0 4px 0",
-    fontSize: "20px",
-    color: "#EF4444",
   },
   urgencyText: {
     margin: "0",
@@ -311,16 +442,22 @@ const styles = {
     color: "#f5f5f5",
     textAlign: "right" as const,
   },
-  statNumber: {
+  metricNumber: {
     margin: "0",
     fontSize: "18px",
     fontWeight: "700" as const,
     color: "#22c55e",
   },
-  statDesc: {
+  metricTitle: {
+    margin: "0 0 2px 0",
+    fontSize: "15px",
+    fontWeight: "600" as const,
+    color: "#f5f5f5",
+  },
+  metricDesc: {
     margin: "0",
-    fontSize: "14px",
-    lineHeight: "22px",
+    fontSize: "13px",
+    lineHeight: "20px",
     color: "#8a8a8a",
   },
   appCard: {
