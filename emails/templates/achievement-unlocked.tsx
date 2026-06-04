@@ -1,6 +1,7 @@
 import {
   Text,
   Section,
+  Img,
   Row,
   Column,
   Hr,
@@ -10,23 +11,35 @@ import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 
+const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
+
+const IMAGES = {
+  hero: `${CDN}/app-goals-achieved/public`,
+};
 
 export default function AchievementUnlockedEmail() {
   return (
     <EmailLayout preview="Achievement unlocked: {{achievement_name}}">
 
-      {/* ── Celebration banner ── */}
-      <Section style={banner} className="dark-safe">
-        <Text style={bannerEmoji}>{"{{achievement_icon}}"}</Text>
-        <Text style={bannerTitle}>Achievement Unlocked!</Text>
+      {/* ── Hero ── */}
+      <Section style={heroSection}>
+        <Img
+          src={IMAGES.hero}
+          width="560"
+          alt="Achievement unlocked"
+          style={heroImage}
+        />
+        <Section style={heroOverlay} className="force-white">
+          <Text style={heroLabel}>ACHIEVEMENT UNLOCKED</Text>
+          <Text style={heroTitle}>{"{{achievement_name}}"}</Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
       <Text style={heading}>
-        Way to go, {"{{first_name}}"}!
+        Way to go, {"{{first_name}}"}.
       </Text>
-
       <Text style={paragraph}>
         You just earned a new achievement. This badge is now on your profile
         for everyone to see.
@@ -34,69 +47,58 @@ export default function AchievementUnlockedEmail() {
 
       <Hr style={divider} />
 
-      {/* ── Achievement card ── */}
-      <Section style={achievementCard}>
-        <Text style={badgeIcon}>{"{{achievement_icon}}"}</Text>
-        <Text style={badgeName}>{"{{achievement_name}}"}</Text>
-        <Text style={badgeDesc}>{"{{achievement_description}}"}</Text>
+      {/* ══════════════════════════════════════════════════════════
+          Achievement Badge Card
+          ══════════════════════════════════════════════════════════ */}
+      <Section style={badgeCard} className="force-white">
+        <div style={badgeBg}>
+          <div style={badgeOverlay}>
+            <Text style={badgeEmoji}>{"{{achievement_icon}}"}</Text>
+            <Text style={badgeName}>{"{{achievement_name}}"}</Text>
+            <Text style={badgeDesc}>{"{{achievement_description}}"}</Text>
 
-        <Hr style={cardDivider} />
+            <Hr style={badgeDivider} />
 
-        <Section style={detailRow}>
-          <Row>
-            <Column style={detailIconCol}>
-              <Text style={iconText}>&#x1F4C5;</Text>
-            </Column>
-            <Column>
-              <Text style={detailLabel}>Earned</Text>
-              <Text style={detailValue}>{"{{earned_date}}"}</Text>
-            </Column>
-          </Row>
-        </Section>
+            <Section style={detailGrid}>
+              <Row>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>EARNED</Text>
+                  <Text style={detailValue}>{"{{earned_date}}"}</Text>
+                </Column>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>CATEGORY</Text>
+                  <Text style={detailValue}>{"{{achievement_category}}"}</Text>
+                </Column>
+              </Row>
+            </Section>
 
-        <Section style={detailRow}>
-          <Row>
-            <Column style={detailIconCol}>
-              <Text style={iconText}>&#x1F3AF;</Text>
-            </Column>
-            <Column>
-              <Text style={detailLabel}>Category</Text>
-              <Text style={detailValue}>{"{{achievement_category}}"}</Text>
-            </Column>
-          </Row>
-        </Section>
-
-        <Section style={detailRow}>
-          <Row>
-            <Column style={detailIconCol}>
-              <Text style={iconText}>&#x1F4CA;</Text>
-            </Column>
-            <Column>
-              <Text style={detailLabel}>What you did</Text>
-              <Text style={detailValue}>{"{{achievement_criteria}}"}</Text>
-            </Column>
-          </Row>
-        </Section>
+            <Text style={criteriaLabel}>WHAT YOU DID</Text>
+            <Text style={criteriaValue}>{"{{achievement_criteria}}"}</Text>
+          </div>
+        </div>
       </Section>
 
-      {/* ── Progress ── */}
-      <Section style={progressSection}>
-        <Text style={progressText}>
-          You now have <strong>{"{{total_achievements}}"}</strong> achievements.
-          {"{{achievements_remaining}}"} more to collect!
+      <Hr style={divider} />
+
+      {/* ── Progress to next ── */}
+      <Section style={progressCard}>
+        <Text style={progressHeading}>
+          {"{{total_achievements}}"} achievements earned
+        </Text>
+        <Text style={progressSub}>
+          {"{{achievements_remaining}}"} more to collect. Keep going.
         </Text>
       </Section>
 
       <Hr style={divider} />
 
       {/* ── Share ── */}
-      <Section style={shareSection} className="dark-safe">
-        <Text style={shareHeading}>Show it off!</Text>
+      <Section style={shareSection} className="force-white">
+        <Text style={shareHeading}>Show it off</Text>
         <Text style={shareText}>
           Let your friends know about your latest achievement.
         </Text>
-
-        <Section style={shareRow}>
+        <Section style={shareLinks}>
           <Row>
             <Column align="center" style={shareCol}>
               <Link
@@ -108,7 +110,7 @@ export default function AchievementUnlockedEmail() {
             </Column>
             <Column align="center" style={shareCol}>
               <Link
-                href="sms:?body=I%20just%20unlocked%20{{achievement_name}}%20on%20SeeMyHealth!%20%F0%9F%8C%9F%20https%3A%2F%2Fseemyhealth.ai"
+                href="sms:?body=I%20just%20unlocked%20{{achievement_name}}%20on%20SeeMyHealth!%20https%3A%2F%2Fseemyhealth.ai"
                 style={shareLink}
               >
                 SMS
@@ -116,7 +118,7 @@ export default function AchievementUnlockedEmail() {
             </Column>
             <Column align="center" style={shareCol}>
               <Link
-                href="https://wa.me/?text=I%20just%20unlocked%20{{achievement_name}}%20on%20SeeMyHealth!%20%F0%9F%8C%9F%20https%3A%2F%2Fseemyhealth.ai"
+                href="https://wa.me/?text=I%20just%20unlocked%20{{achievement_name}}%20on%20SeeMyHealth!%20https%3A%2F%2Fseemyhealth.ai"
                 style={shareLink}
               >
                 WhatsApp
@@ -128,10 +130,16 @@ export default function AchievementUnlockedEmail() {
 
       <Hr style={divider} />
 
+      {/* ── CTA ── */}
       <Section style={ctaSection}>
-        <PrimaryButton href={`${BASE_URL}/achievements`}>
-          View All Achievements
-        </PrimaryButton>
+        <Text style={ctaText}>
+          See all your badges and find your next challenge in the app.
+        </Text>
+        <Section style={ctaCenter}>
+          <PrimaryButton href={`${BASE_URL}/app`}>
+            Open the App
+          </PrimaryButton>
+        </Section>
       </Section>
 
     </EmailLayout>
@@ -140,160 +148,218 @@ export default function AchievementUnlockedEmail() {
 
 // ── Styles ──
 
-const banner = {
-  background: "linear-gradient(135deg, #78350f 0%, #b45309 40%, #f59e0b 70%, #fbbf24 100%)",
-  borderRadius: "16px",
-  padding: "40px 24px",
-  textAlign: "center" as const,
-  marginBottom: "24px",
+const heroSection = {
+  position: "relative" as const,
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+  marginBottom: "32px",
 };
 
-const bannerEmoji = {
-  fontSize: "52px",
-  margin: "0 0 8px 0",
-  lineHeight: "1",
+const heroImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
 };
 
-const bannerTitle = {
-  fontSize: "28px",
-  fontWeight: "bold" as const,
+const heroOverlay = {
+  position: "absolute" as const,
+  bottom: "0",
+  left: "0",
+  right: "0",
+  padding: "40px 24px 24px",
+  background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)",
+};
+
+const heroLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.7)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 4px 0",
+};
+
+const heroTitle = {
+  fontSize: "26px",
+  fontWeight: "700" as const,
   color: "#ffffff",
   margin: "0",
+  letterSpacing: "-0.3px",
 };
 
 const heading = {
   fontSize: "24px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 8px 0",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 10px 0",
 };
 
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.6)",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(124, 58, 237, 0.1)",
-  margin: "24px 0",
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "28px 0",
 };
 
-// ── Achievement card ──
+// ── Badge card with gold accent ──
 
-const achievementCard = {
-  background: "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fef3c7 100%)",
-  borderRadius: "14px",
-  padding: "32px 24px",
+const badgeCard = {
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+};
+
+const badgeBg = {
+  background: "linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%)",
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+};
+
+const badgeOverlay = {
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  padding: "36px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(245, 158, 11, 0.2)",
 };
 
-const badgeIcon = {
+const badgeEmoji = {
   fontSize: "64px",
-  margin: "0 0 12px 0",
+  margin: "0 0 16px 0",
   lineHeight: "1",
 };
 
 const badgeName = {
   fontSize: "24px",
-  fontWeight: "bold" as const,
-  color: "#78350f",
-  margin: "0 0 6px 0",
+  fontWeight: "700" as const,
+  color: "#fbbf24",
+  margin: "0 0 8px 0",
 };
 
 const badgeDesc = {
   fontSize: "14px",
-  color: "#92400e",
+  color: "rgba(255, 255, 255, 0.7)",
   lineHeight: "22px",
   margin: "0",
 };
 
-const cardDivider = {
-  borderColor: "rgba(120, 53, 15, 0.15)",
-  margin: "20px 0",
+const badgeDivider = {
+  borderColor: "rgba(255, 255, 255, 0.15)",
+  margin: "24px 0",
 };
 
-const detailRow = {
-  marginBottom: "10px",
-  textAlign: "left" as const,
+const detailGrid = {
+  textAlign: "center" as const,
 };
 
-const detailIconCol = {
-  width: "32px",
-  verticalAlign: "top" as const,
-};
-
-const iconText = {
-  fontSize: "18px",
-  margin: "0",
-  lineHeight: "1",
+const detailCell = {
+  width: "50%",
+  textAlign: "center" as const,
 };
 
 const detailLabel = {
-  fontSize: "11px",
-  color: "#92400e",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.5px",
-  margin: "0",
+  fontSize: "10px",
   fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.4)",
+  letterSpacing: "2px",
+  margin: "0 0 4px 0",
 };
 
 const detailValue = {
   fontSize: "14px",
-  color: "#78350f",
-  margin: "2px 0 0 0",
-  fontWeight: "500" as const,
+  fontWeight: "600" as const,
+  color: "#fbbf24",
+  margin: "0",
+};
+
+const criteriaLabel = {
+  fontSize: "10px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.4)",
+  letterSpacing: "2px",
+  margin: "20px 0 4px 0",
+};
+
+const criteriaValue = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.7)",
+  margin: "0",
+  lineHeight: "22px",
 };
 
 // ── Progress ──
 
-const progressSection = {
+const progressCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "20px 24px",
   textAlign: "center" as const,
-  background: "rgba(124, 58, 237, 0.04)",
-  borderRadius: "10px",
-  padding: "16px 20px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
-const progressText = {
+const progressHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 4px 0",
+};
+
+const progressSub = {
   fontSize: "14px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.4)",
   margin: "0",
 };
 
 // ── Share ──
 
 const shareSection = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 100%)",
-  borderRadius: "16px",
+  backgroundColor: "#141414",
+  borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
 const shareHeading = {
-  fontSize: "20px",
-  fontWeight: "bold" as const,
-  color: "#ffffff",
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
   margin: "0 0 6px 0",
 };
 
 const shareText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "rgba(255, 255, 255, 0.45)",
   margin: "0 0 16px 0",
 };
 
-const shareRow = { marginTop: "0" };
+const shareLinks = { marginTop: "0" };
 const shareCol = { width: "33.33%", padding: "0 4px" };
 
 const shareLink = {
-  color: "#c4b5fd",
+  color: "rgba(255, 255, 255, 0.5)",
   fontSize: "12px",
-  fontWeight: "bold" as const,
+  fontWeight: "600" as const,
   textDecoration: "underline",
 };
 
+// ── CTA ──
+
 const ctaSection = {
   textAlign: "center" as const,
+};
+
+const ctaText = {
+  fontSize: "15px",
+  color: "rgba(255, 255, 255, 0.5)",
+  lineHeight: "24px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const ctaCenter = {
+  textAlign: "center" as const,
+  margin: "20px 0 0 0",
 };
