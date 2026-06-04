@@ -5,6 +5,7 @@ import {
   Row,
   Column,
   Hr,
+  Button,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -146,6 +147,38 @@ export default function StreakMilestoneEmail() {
           Success is the sum of small efforts, repeated day in and day out.
         </Text>
         <Text style={quoteAuthor}>Robert Collier</Text>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Challenge nudge ── */}
+      <Section style={challengeCard}>
+        <Text style={challengeHeading}>Take it to the next level</Text>
+        <Text style={challengeText}>
+          You are on fire. Channel that momentum into a challenge and
+          compete with friends.
+        </Text>
+        <Section style={ctaCenter}>
+          <Button href={`${BASE_URL}/challenges`} style={challengeButton}>
+            Browse Challenges
+          </Button>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Invite ── */}
+      <Section style={inviteCard}>
+        <Text style={inviteHeading}>Bring a friend along</Text>
+        <Text style={inviteText}>
+          Streaks are easier with accountability. Invite someone to join
+          and build streaks together.
+        </Text>
+        <Section style={ctaCenter}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={inviteCta}>
+            Invite a Friend
+          </Button>
+        </Section>
       </Section>
 
       <Hr style={divider} />
@@ -353,6 +386,79 @@ const quoteAuthor = {
   color: "rgba(255, 255, 255, 0.3)",
   margin: "0",
   fontWeight: "600" as const,
+};
+
+// ── Challenge nudge ──
+
+const challengeCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "28px 24px",
+  textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const challengeHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+};
+
+const challengeText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+};
+
+const challengeButton = {
+  backgroundColor: "#fb923c",
+  color: "#ffffff",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+};
+
+// ── Invite ──
+
+const inviteCard = {
+  textAlign: "center" as const,
+};
+
+const inviteHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+  textAlign: "center" as const,
+};
+
+const inviteText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const inviteCta = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  color: "#f5f5f5",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+  border: "1px solid rgba(255, 255, 255, 0.1)",
 };
 
 // ── CTA ──

@@ -5,6 +5,7 @@ import {
   Row,
   Column,
   Hr,
+  Button,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -240,6 +241,38 @@ export default function HealthReportEmail() {
         alt="Your health trends"
         style={trendsImage}
       />
+
+      {/* ── Challenge invite ── */}
+      <Section style={challengeCard}>
+        <Text style={challengeHeading}>Join this week's challenge</Text>
+        <Text style={challengeText}>
+          {"{{active_challenge_count}}"} challenges are running right now.
+          Compete with friends and stay motivated.
+        </Text>
+        <Section style={ctaCenter}>
+          <Button href={`${BASE_URL}/challenges`} style={challengeButton}>
+            Browse Challenges
+          </Button>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Referral ── */}
+      <Section style={referralSection}>
+        <Text style={referralHeading}>Share your progress</Text>
+        <Text style={referralText}>
+          Invite a friend to SeeMyHealth and track your health journeys
+          together.
+        </Text>
+        <Section style={ctaCenter}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={referralButton}>
+            Invite a Friend
+          </Button>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
 
       {/* ── CTA ── */}
       <Section style={ctaSection}>
@@ -517,6 +550,80 @@ const trendsImage = {
   display: "block" as const,
   borderRadius: "12px",
   marginBottom: "24px",
+};
+
+// ── Challenge ──
+
+const challengeCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "28px 24px",
+  textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const challengeHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+};
+
+const challengeText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+};
+
+const challengeButton = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  color: "#f5f5f5",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+  border: "1px solid rgba(255, 255, 255, 0.1)",
+};
+
+// ── Referral ──
+
+const referralSection = {
+  textAlign: "center" as const,
+};
+
+const referralHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+  textAlign: "center" as const,
+};
+
+const referralText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const referralButton = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  color: "#f5f5f5",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+  border: "1px solid rgba(255, 255, 255, 0.1)",
 };
 
 const ctaSection = {

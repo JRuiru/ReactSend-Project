@@ -72,6 +72,62 @@ export default function WelcomeEmail() {
         </Text>
       </Section>
 
+      {/* ── Getting Started Checklist ── */}
+      <Section style={checklistCard}>
+        <Text style={checklistHeading}>Get started in 3 steps</Text>
+
+        <Section style={checklistItem}>
+          <Row>
+            <Column style={checkNumCol}>
+              <Text style={checkNum}>1</Text>
+            </Column>
+            <Column>
+              <Text style={checkTitle}>Complete your profile</Text>
+              <Text style={checkDesc}>
+                Add your age, height, and health goals so we can personalize
+                your experience.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
+
+        <Section style={checklistItem}>
+          <Row>
+            <Column style={checkNumCol}>
+              <Text style={checkNum}>2</Text>
+            </Column>
+            <Column>
+              <Text style={checkTitle}>Connect a device</Text>
+              <Text style={checkDesc}>
+                Pair your first SeeMyHealth device to start tracking
+                automatically.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
+
+        <Section style={checklistItem}>
+          <Row>
+            <Column style={checkNumCol}>
+              <Text style={checkNum}>3</Text>
+            </Column>
+            <Column>
+              <Text style={checkTitle}>Set your first goal</Text>
+              <Text style={checkDesc}>
+                Pick a health goal and we will help you build the habits to
+                get there.
+              </Text>
+            </Column>
+          </Row>
+        </Section>
+
+        <Section style={{ textAlign: "center" as const, marginTop: "16px" }}>
+          <Button href={`${BASE_URL}/onboarding`} style={checklistButton}>
+            Start Setup
+          </Button>
+        </Section>
+      </Section>
+
       <Hr style={divider} />
 
       {/* ══════════════════════════════════════════════════════════
@@ -284,6 +340,16 @@ export default function WelcomeEmail() {
 
       <Hr style={divider} />
 
+      {/* ── Social proof ── */}
+      <Section style={socialProofSection}>
+        <Text style={socialProofNumber}>10,000+</Text>
+        <Text style={socialProofText}>
+          people tracking their health with SeeMyHealth
+        </Text>
+      </Section>
+
+      <Hr style={divider} />
+
       {/* ── Testimonial ── */}
       <Section style={testimonialSection}>
         <Text style={testimonialQuote}>"</Text>
@@ -292,6 +358,31 @@ export default function WelcomeEmail() {
           improve. I have never felt more in control of my health.
         </Text>
         <Text style={testimonialAuthor}>Sarah K., member since 2024</Text>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── App download ── */}
+      <Section style={downloadSection}>
+        <Text style={downloadHeading}>Download the app</Text>
+        <Text style={downloadText}>
+          Available on iOS and Android. Your health data syncs
+          automatically across all your devices.
+        </Text>
+        <Section style={{ textAlign: "center" as const, marginTop: "16px" }}>
+          <Row>
+            <Column align="center" style={storeCol}>
+              <Button href="https://apps.apple.com/app/seemyhealth" style={storeButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={storeCol}>
+              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={storeButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
+        </Section>
       </Section>
 
     </EmailLayout>
@@ -536,6 +627,129 @@ const shareLink = {
   fontSize: "12px",
   fontWeight: "600" as const,
   textDecoration: "underline",
+};
+
+// ── Getting started checklist ──
+
+const checklistCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "24px",
+  marginTop: "24px",
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const checklistHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 20px 0",
+};
+
+const checklistItem = {
+  marginBottom: "16px",
+};
+
+const checkNumCol = {
+  width: "32px",
+  verticalAlign: "top" as const,
+};
+
+const checkNum = {
+  fontSize: "16px",
+  fontWeight: "700" as const,
+  color: "rgba(255, 255, 255, 0.12)",
+  margin: "0",
+  lineHeight: "1",
+};
+
+const checkTitle = {
+  fontSize: "15px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0 0 2px 0",
+};
+
+const checkDesc = {
+  fontSize: "13px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "20px",
+  margin: "0",
+};
+
+const checklistButton = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  color: "#f5f5f5",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+  border: "1px solid rgba(255, 255, 255, 0.1)",
+};
+
+// ── Social proof ──
+
+const socialProofSection = {
+  textAlign: "center" as const,
+  padding: "8px 0",
+};
+
+const socialProofNumber = {
+  fontSize: "32px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0",
+  letterSpacing: "-0.5px",
+};
+
+const socialProofText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.4)",
+  margin: "4px 0 0 0",
+};
+
+// ── App download ──
+
+const downloadSection = {
+  textAlign: "center" as const,
+};
+
+const downloadHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+  textAlign: "center" as const,
+};
+
+const downloadText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const storeCol = {
+  width: "50%",
+  padding: "0 4px",
+};
+
+const storeButton = {
+  backgroundColor: "transparent",
+  color: "rgba(255, 255, 255, 0.6)",
+  padding: "10px 20px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
+  letterSpacing: "0.5px",
 };
 
 // ── Testimonial ──

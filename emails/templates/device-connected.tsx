@@ -5,6 +5,7 @@ import {
   Row,
   Column,
   Hr,
+  Button,
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../components/EmailLayout";
@@ -131,6 +132,22 @@ export default function DeviceConnectedEmail() {
             </Text>
           </Column>
         </Row>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Cross-sell ── */}
+      <Section style={crossSellCard}>
+        <Text style={crossSellHeading}>Complete your ecosystem</Text>
+        <Text style={crossSellText}>
+          Your {"{{device_name}}"} is just the beginning. Each device adds
+          a new dimension to your health picture.
+        </Text>
+        <Section style={ctaCenter}>
+          <Button href={`${BASE_URL}/shop`} style={crossSellButton}>
+            Explore Devices
+          </Button>
+        </Section>
       </Section>
 
       <Hr style={divider} />
@@ -287,6 +304,44 @@ const stepDesc = {
   color: "rgba(255, 255, 255, 0.45)",
   lineHeight: "21px",
   margin: "0",
+};
+
+// ── Cross-sell ──
+
+const crossSellCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "28px 24px",
+  textAlign: "center" as const,
+  border: "1px solid rgba(255, 255, 255, 0.06)",
+};
+
+const crossSellHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+};
+
+const crossSellText = {
+  fontSize: "14px",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "22px",
+  margin: "0",
+};
+
+const crossSellButton = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  color: "#f5f5f5",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  letterSpacing: "0.5px",
+  textTransform: "uppercase" as const,
+  border: "1px solid rgba(255, 255, 255, 0.1)",
 };
 
 // ── CTA ──
