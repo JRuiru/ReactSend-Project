@@ -1,6 +1,7 @@
 import {
   Text,
   Section,
+  Img,
   Row,
   Column,
   Hr,
@@ -10,90 +11,102 @@ import { EmailLayout } from "../components/EmailLayout";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { SecondaryButton } from "../components/SecondaryButton";
 
+const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
-const CHALLENGE_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg/challenge-fitness/public";
+
+const IMAGES = {
+  hero: `${CDN}/challenge-accepted/public`,
+};
 
 export default function ChallengeInviteEmail() {
   return (
     <EmailLayout preview="{{inviter_name}} challenged you: {{challenge_name}}">
 
-      {/* ── Banner ── */}
-      <Section style={banner} className="dark-safe">
-        <Text style={bannerIcon}>&#x1F525;</Text>
-        <Text style={bannerTitle}>You've Been Challenged!</Text>
+      {/* ── Hero ── */}
+      <Section style={heroSection}>
+        <Img
+          src={IMAGES.hero}
+          width="560"
+          alt="Challenge invite"
+          style={heroImage}
+        />
+        <Section style={heroOverlay} className="force-white">
+          <Text style={heroLabel}>{"{{challenge_category}}"}</Text>
+          <Text style={heroTitle}>You have been challenged.</Text>
+        </Section>
       </Section>
 
       {/* ── Greeting ── */}
       <Text style={heading}>
-        {"{{inviter_name}}"} thinks you're up for it
+        {"{{inviter_name}}"} thinks you are up for it.
       </Text>
-
       <Text style={paragraph}>
-        Hey {"{{first_name}}"}, {"{{inviter_name}}"} invited you to join
-        a health challenge. Think you can keep up?
+        Hey {"{{first_name}}"}, you have been invited to join a health
+        challenge. Think you can keep up?
       </Text>
 
       <Hr style={divider} />
 
-      {/* ── Challenge details — image bg + glass card ── */}
-      <Section style={challengeBgSection} className="dark-safe">
-        <Section style={glassCard}>
-          <Text style={categoryBadge}>{"{{challenge_category}}"}</Text>
-          <Text style={challengeName}>{"{{challenge_name}}"}</Text>
-          <Text style={challengeDesc}>{"{{challenge_description}}"}</Text>
+      {/* ══════════════════════════════════════════════════════════
+          Challenge Details Card
+          ══════════════════════════════════════════════════════════ */}
+      <Section style={challengeCard} className="force-white">
+        <div style={challengeBg}>
+          <div style={challengeOverlay}>
+            <Text style={challengeName}>{"{{challenge_name}}"}</Text>
+            <Text style={challengeDesc}>{"{{challenge_description}}"}</Text>
 
-          <Hr style={cardDivider} />
+            <Hr style={cardDivider} />
 
-          <Section style={detailRow}>
-            <Row>
-              <Column style={detailIconCol}><Text style={iconText}>&#x1F3AF;</Text></Column>
-              <Column>
-                <Text style={detailLabel}>Goal</Text>
-                <Text style={detailValue}>{"{{challenge_goal}}"}</Text>
-              </Column>
-            </Row>
-          </Section>
+            <Section style={detailGrid}>
+              <Row>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>GOAL</Text>
+                  <Text style={detailValue}>{"{{challenge_goal}}"}</Text>
+                </Column>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>DURATION</Text>
+                  <Text style={detailValue}>{"{{duration}}"}</Text>
+                </Column>
+              </Row>
+            </Section>
 
-          <Section style={detailRow}>
-            <Row>
-              <Column style={detailIconCol}><Text style={iconText}>&#x1F4C5;</Text></Column>
-              <Column>
-                <Text style={detailLabel}>Duration</Text>
-                <Text style={detailValue}>{"{{start_date}}"} — {"{{end_date}}"} ({"{{duration}}"})</Text>
-              </Column>
-            </Row>
-          </Section>
+            <Section style={{ marginTop: "12px" }}>
+              <Row>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>PARTICIPANTS</Text>
+                  <Text style={detailValue}>{"{{participant_count}}"} joined</Text>
+                </Column>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>WINNING CRITERIA</Text>
+                  <Text style={detailValue}>{"{{goal_type}}"}</Text>
+                </Column>
+              </Row>
+            </Section>
 
-          <Section style={detailRow}>
-            <Row>
-              <Column style={detailIconCol}><Text style={iconText}>&#x1F465;</Text></Column>
-              <Column>
-                <Text style={detailLabel}>Participants</Text>
-                <Text style={detailValue}>{"{{participant_count}}"} joined so far</Text>
-              </Column>
-            </Row>
-          </Section>
-
-          <Section style={detailRow}>
-            <Row>
-              <Column style={detailIconCol}><Text style={iconText}>&#x1F3C5;</Text></Column>
-              <Column>
-                <Text style={detailLabel}>Winning Criteria</Text>
-                <Text style={detailValue}>{"{{goal_type}}"}</Text>
-              </Column>
-            </Row>
-          </Section>
-        </Section>
+            <Section style={{ marginTop: "12px" }}>
+              <Row>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>STARTS</Text>
+                  <Text style={detailValue}>{"{{start_date}}"}</Text>
+                </Column>
+                <Column style={detailCell}>
+                  <Text style={detailLabel}>ENDS</Text>
+                  <Text style={detailValue}>{"{{end_date}}"}</Text>
+                </Column>
+              </Row>
+            </Section>
+          </div>
+        </div>
       </Section>
 
-      {/* ── Join CTA ── */}
-      <Section style={ctaSection}>
+      {/* ── CTAs ── */}
+      <Section style={ctaCenter}>
         <PrimaryButton href={`${BASE_URL}/challenges/{{challenge_id}}/join`}>
           Accept Challenge
         </PrimaryButton>
       </Section>
-
-      <Section style={secondaryCta}>
+      <Section style={ctaSecondary}>
         <SecondaryButton href={`${BASE_URL}/challenges/{{challenge_id}}`}>
           View Details
         </SecondaryButton>
@@ -101,45 +114,51 @@ export default function ChallengeInviteEmail() {
 
       <Hr style={divider} />
 
-      {/* ── Motivation ── */}
-      <Section style={motivationSection}>
-        <Text style={motivationHeading}>Why join?</Text>
+      {/* ══════════════════════════════════════════════════════════
+          Why Join
+          ══════════════════════════════════════════════════════════ */}
+      <Text style={sectionLabel}>WHY JOIN</Text>
 
-        <Section style={motivationItem}>
-          <Row>
-            <Column style={motivationIconCol}><Text style={iconText}>&#x1F4AA;</Text></Column>
-            <Column>
-              <Text style={motivationText}>
-                <strong>Build healthy habits</strong> — challenges create
-                consistency and accountability.
-              </Text>
-            </Column>
-          </Row>
-        </Section>
+      <Section style={reasonRow}>
+        <Row>
+          <Column style={reasonNumCol}>
+            <Text style={reasonNum}>1</Text>
+          </Column>
+          <Column>
+            <Text style={reasonTitle}>Build healthy habits</Text>
+            <Text style={reasonDesc}>
+              Challenges create consistency and accountability.
+            </Text>
+          </Column>
+        </Row>
+      </Section>
 
-        <Section style={motivationItem}>
-          <Row>
-            <Column style={motivationIconCol}><Text style={iconText}>&#x1F91D;</Text></Column>
-            <Column>
-              <Text style={motivationText}>
-                <strong>Compete with friends</strong> — a little friendly
-                competition goes a long way.
-              </Text>
-            </Column>
-          </Row>
-        </Section>
+      <Section style={reasonRow}>
+        <Row>
+          <Column style={reasonNumCol}>
+            <Text style={reasonNum}>2</Text>
+          </Column>
+          <Column>
+            <Text style={reasonTitle}>Compete with friends</Text>
+            <Text style={reasonDesc}>
+              A little friendly competition goes a long way.
+            </Text>
+          </Column>
+        </Row>
+      </Section>
 
-        <Section style={motivationItem}>
-          <Row>
-            <Column style={motivationIconCol}><Text style={iconText}>&#x1F3C6;</Text></Column>
-            <Column>
-              <Text style={motivationText}>
-                <strong>Earn achievements</strong> — winners get badges
-                displayed on their profile.
-              </Text>
-            </Column>
-          </Row>
-        </Section>
+      <Section style={reasonRow}>
+        <Row>
+          <Column style={reasonNumCol}>
+            <Text style={reasonNum}>3</Text>
+          </Column>
+          <Column>
+            <Text style={reasonTitle}>Earn achievements</Text>
+            <Text style={reasonDesc}>
+              Winners get badges displayed on their profile.
+            </Text>
+          </Column>
+        </Row>
       </Section>
 
     </EmailLayout>
@@ -148,167 +167,176 @@ export default function ChallengeInviteEmail() {
 
 // ── Styles ──
 
-const banner = {
-  background: "linear-gradient(135deg, #1a0533 0%, #4c1d95 40%, #7c3aed 70%, #a855f7 100%)",
-  borderRadius: "16px",
-  padding: "36px 24px",
-  textAlign: "center" as const,
-  marginBottom: "24px",
+const heroSection = {
+  position: "relative" as const,
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+  marginBottom: "32px",
 };
 
-const bannerIcon = {
-  fontSize: "44px",
-  margin: "0 0 8px 0",
-  lineHeight: "1",
+const heroImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
 };
 
-const bannerTitle = {
+const heroOverlay = {
+  position: "absolute" as const,
+  bottom: "0",
+  left: "0",
+  right: "0",
+  padding: "40px 24px 24px",
+  background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)",
+};
+
+const heroLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.7)",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 4px 0",
+};
+
+const heroTitle = {
   fontSize: "26px",
-  fontWeight: "bold" as const,
+  fontWeight: "700" as const,
   color: "#ffffff",
   margin: "0",
+  letterSpacing: "-0.3px",
 };
 
-// (challengeHero and challengeImage removed — using bg image now)
-
 const heading = {
-  fontSize: "24px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 8px 0",
+  fontSize: "22px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 10px 0",
 };
 
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.6)",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(124, 58, 237, 0.1)",
-  margin: "24px 0",
+  borderColor: "rgba(255, 255, 255, 0.06)",
+  margin: "28px 0",
 };
 
-// ── Challenge bg + glass card ──
-
-const challengeBgSection = {
-  backgroundImage: `url(${CHALLENGE_IMG})`,
-  backgroundSize: "cover" as const,
-  backgroundPosition: "center top" as const,
-  backgroundColor: "#1a0533",
-  borderRadius: "16px",
-  padding: "32px 16px",
-};
-
-const glassCard = {
-  backgroundColor: "rgba(26, 5, 51, 0.75)",
-  borderRadius: "14px",
-  padding: "28px 24px",
-  border: "1px solid rgba(167, 139, 250, 0.2)",
-};
-
-const categoryBadge = {
+const sectionLabel = {
   fontSize: "11px",
-  fontWeight: "bold" as const,
-  color: "#c4b5fd",
-  letterSpacing: "1.5px",
+  fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.35)",
+  letterSpacing: "3px",
   textTransform: "uppercase" as const,
-  margin: "0 0 8px 0",
-  backgroundColor: "rgba(167, 139, 250, 0.15)",
-  padding: "4px 12px",
+  margin: "0 0 16px 0",
+};
+
+// ── Challenge card ──
+
+const challengeCard = {
   borderRadius: "12px",
-  display: "inline-block" as const,
+  overflow: "hidden" as const,
+};
+
+const challengeBg = {
+  backgroundImage: `url(${CDN}/lifestyle-athlete/public)`,
+  backgroundSize: "cover" as const,
+  backgroundPosition: "center" as const,
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+};
+
+const challengeOverlay = {
+  backgroundColor: "rgba(0, 0, 0, 0.8)",
+  padding: "32px 24px",
 };
 
 const challengeName = {
   fontSize: "22px",
-  fontWeight: "bold" as const,
-  color: "#ffffff",
-  margin: "0 0 4px 0",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 8px 0",
 };
 
 const challengeDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "rgba(255, 255, 255, 0.6)",
   lineHeight: "22px",
   margin: "0",
 };
 
 const cardDivider = {
-  borderColor: "rgba(167, 139, 250, 0.2)",
-  margin: "16px 0",
+  borderColor: "rgba(255, 255, 255, 0.1)",
+  margin: "20px 0",
 };
 
-const detailRow = {
-  marginBottom: "12px",
+const detailGrid = {
+  textAlign: "center" as const,
 };
 
-const detailIconCol = {
-  width: "32px",
-  verticalAlign: "top" as const,
-};
-
-const iconText = {
-  fontSize: "18px",
-  margin: "0",
-  lineHeight: "1",
+const detailCell = {
+  width: "50%",
+  textAlign: "center" as const,
 };
 
 const detailLabel = {
-  fontSize: "11px",
-  color: "rgba(196, 181, 253, 0.7)",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.5px",
-  margin: "0",
+  fontSize: "10px",
   fontWeight: "600" as const,
+  color: "rgba(255, 255, 255, 0.35)",
+  letterSpacing: "1.5px",
+  margin: "0 0 4px 0",
 };
 
 const detailValue = {
   fontSize: "14px",
-  color: "#ffffff",
-  margin: "2px 0 0 0",
-  fontWeight: "500" as const,
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0",
 };
 
 // ── CTAs ──
 
-const ctaSection = {
+const ctaCenter = {
   textAlign: "center" as const,
-  margin: "24px 0 12px 0",
+  margin: "28px 0 12px 0",
 };
 
-const secondaryCta = {
+const ctaSecondary = {
   textAlign: "center" as const,
 };
 
-// ── Motivation ──
+// ── Reasons ──
 
-const motivationSection = {
-  background: "rgba(124, 58, 237, 0.03)",
-  borderRadius: "12px",
-  padding: "24px",
+const reasonRow = {
+  marginBottom: "16px",
 };
 
-const motivationHeading = {
-  fontSize: "18px",
-  fontWeight: "bold" as const,
-  color: "#111827",
-  margin: "0 0 16px 0",
-};
-
-const motivationItem = {
-  marginBottom: "14px",
-};
-
-const motivationIconCol = {
-  width: "32px",
+const reasonNumCol = {
+  width: "36px",
   verticalAlign: "top" as const,
 };
 
-const motivationText = {
+const reasonNum = {
+  fontSize: "20px",
+  fontWeight: "700" as const,
+  color: "rgba(255, 255, 255, 0.12)",
+  margin: "0",
+  lineHeight: "1",
+};
+
+const reasonTitle = {
+  fontSize: "15px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0 0 4px 0",
+};
+
+const reasonDesc = {
   fontSize: "14px",
-  lineHeight: "22px",
-  color: "#374151",
+  color: "rgba(255, 255, 255, 0.45)",
+  lineHeight: "21px",
   margin: "0",
 };
