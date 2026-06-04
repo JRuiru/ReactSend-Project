@@ -56,6 +56,37 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
             max-width: 100% !important;
             height: auto !important;
           }
+          /* Metric grid - tighten on mobile */
+          .metric-value {
+            font-size: 20px !important;
+          }
+          .metric-label {
+            font-size: 9px !important;
+            letter-spacing: 1px !important;
+          }
+          .metric-delta {
+            font-size: 11px !important;
+          }
+          /* Mood grid */
+          .mood-number {
+            font-size: 22px !important;
+          }
+          .mood-emoji {
+            font-size: 26px !important;
+          }
+          /* Goal percent */
+          .goal-percent {
+            font-size: 14px !important;
+          }
+          /* Hero text */
+          .hero-period {
+            font-size: 22px !important;
+          }
+          /* Button full width on mobile */
+          .primary-btn {
+            width: 100% !important;
+            text-align: center !important;
+          }
         }
       `}} />
     </Head>
