@@ -7,7 +7,7 @@ interface PrimaryButtonProps {
 }
 
 export const PrimaryButton = ({ href, children }: PrimaryButtonProps) => (
-  <Button href={href} style={button} className="dark-safe primary-btn">
+  <Button href={href} style={button} className="primary-btn">
     {children}
   </Button>
 );
@@ -24,4 +24,5 @@ const button = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
+  msoLineHeightRule: "exactly",
 };

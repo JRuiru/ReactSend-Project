@@ -2,21 +2,21 @@
   "abandoned-cart-1-reminder": {
     "name": "Abandoned Cart — Reminder (1hr)",
     "module": "abandoned-cart-1-reminder",
-    "klaviyo_template_id": null,
+    "klaviyo_template_id": "WxV4U4",
     "flow_position": 1,
     "delay": "1 hour"
   },
   "abandoned-cart-2-social-proof": {
     "name": "Abandoned Cart — Social Proof (24hr)",
     "module": "abandoned-cart-2-social-proof",
-    "klaviyo_template_id": null,
+    "klaviyo_template_id": "Tvt6aj",
     "flow_position": 2,
     "delay": "24 hours"
   },
   "abandoned-cart-3-last-chance": {
     "name": "Abandoned Cart — Last Chance (48hr)",
     "module": "abandoned-cart-3-last-chance",
-    "klaviyo_template_id": null,
+    "klaviyo_template_id": "SSs3xG",
     "flow_position": 3,
     "delay": "48 hours"
   }

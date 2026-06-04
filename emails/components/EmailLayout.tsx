@@ -19,11 +19,25 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       />
       <style dangerouslySetInnerHTML={{ __html: `
-        :root { color-scheme: dark; supported-color-schemes: dark; }
+        :root { color-scheme: light dark; }
         .force-white p, .force-white span, .force-white td,
         .force-white h1, .force-white h2, .force-white h3 {
           color: #ffffff !important;
         }
+        /* Force dark mode — prevent email clients from inverting */
+        @media (prefers-color-scheme: dark) {
+          body, .email-bg, .outer-bg { background-color: #0a0a0a !important; }
+          .email-container { background-color: #0a0a0a !important; }
+          h1, h2, h3, p, td, span { color: inherit !important; }
+          a { color: #ffffff !important; }
+          .primary-btn { color: #0a0a0a !important; background-color: #ffffff !important; }
+        }
+        /* Outlook dark mode overrides */
+        [data-ogsc] body, [data-ogsc] .email-bg, [data-ogsc] .outer-bg { background-color: #0a0a0a !important; }
+        [data-ogsc] .email-container { background-color: #0a0a0a !important; }
+        [data-ogsc] h1, [data-ogsc] h2, [data-ogsc] h3, [data-ogsc] p, [data-ogsc] td, [data-ogsc] span { color: inherit !important; }
+        [data-ogsc] .primary-btn { color: #0a0a0a !important; background-color: #ffffff !important; }
+        [data-ogsb] body, [data-ogsb] .email-bg, [data-ogsb] .outer-bg { background-color: #0a0a0a !important; }
         @media only screen and (max-width: 600px) {
           .email-container {
             padding: 24px 16px !important;
@@ -43,37 +57,14 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
             max-width: 100% !important;
             height: auto !important;
           }
-          /* Metric grid - tighten on mobile */
-          .metric-value {
-            font-size: 20px !important;
-          }
-          .metric-label {
-            font-size: 9px !important;
-            letter-spacing: 1px !important;
-          }
-          .metric-delta {
-            font-size: 11px !important;
-          }
-          /* Mood grid */
-          .mood-number {
-            font-size: 22px !important;
-          }
-          .mood-emoji {
-            font-size: 26px !important;
-          }
-          /* Goal percent */
-          .goal-percent {
-            font-size: 14px !important;
-          }
-          /* Hero text */
-          .hero-period {
-            font-size: 22px !important;
-          }
-          /* Button full width on mobile */
-          .primary-btn {
-            width: 100% !important;
-            text-align: center !important;
-          }
+          .metric-value { font-size: 20px !important; }
+          .metric-label { font-size: 9px !important; letter-spacing: 1px !important; }
+          .metric-delta { font-size: 11px !important; }
+          .mood-number { font-size: 22px !important; }
+          .mood-emoji { font-size: 26px !important; }
+          .goal-percent { font-size: 14px !important; }
+          .hero-period { font-size: 22px !important; }
+          .primary-btn { width: 100% !important; text-align: center !important; }
         }
       `}} />
     </Head>
