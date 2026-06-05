@@ -8,8 +8,8 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
@@ -205,7 +205,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -228,12 +228,12 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
@@ -244,7 +244,7 @@ const requesterCard = {
   borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const avatarImage = {
@@ -262,12 +262,12 @@ const requesterName = {
 
 const requesterBio = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   margin: "0",
 };
 
 const cardDivider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "16px 0",
 };
 
@@ -290,7 +290,7 @@ const statValue = {
 const statLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   letterSpacing: "1.5px",
   margin: "0",
 };
@@ -308,14 +308,14 @@ const ctaSecondary = {
 
 const declineButton = {
   backgroundColor: "transparent",
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   padding: "10px 24px",
   borderRadius: "50px",
   fontSize: "13px",
   fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 // ── Together ──
@@ -324,7 +324,7 @@ const togetherCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const togetherHeading = {
@@ -346,7 +346,7 @@ const togetherNumCol = {
 const togetherNum = {
   fontSize: "14px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "22px",
 };
@@ -360,7 +360,7 @@ const togetherTitle = {
 
 const togetherDesc = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "20px",
   margin: "0",
 };
@@ -381,7 +381,7 @@ const downloadHeading = {
 
 const downloadText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
   textAlign: "center" as const,
@@ -398,20 +398,20 @@ const downloadStoreCol = {
 
 const downloadStoreButton = {
   backgroundColor: "transparent",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   padding: "10px 20px",
   borderRadius: "50px",
   fontSize: "12px",
   fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(255, 255, 255, 0.15)",
+  border: "1px solid #2a2a2a",
   letterSpacing: "0.5px",
 };
 
 const footerNote = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   textAlign: "center" as const,
   lineHeight: "20px",
   margin: "0",

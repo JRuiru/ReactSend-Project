@@ -40,7 +40,7 @@ function saveMap(map: Record<string, TemplateEntry>) {
 async function deployTemplate(key: string, entry: TemplateEntry) {
   // Dynamic import of the template
   const mod = await import(
-    path.resolve(__dirname, `../emails/templates/${entry.module}.tsx`)
+    path.resolve(__dirname, `../emails/templates/sendgrid/${entry.module}.tsx`)
   );
   const Component = mod.default;
   const html = await render(Component());

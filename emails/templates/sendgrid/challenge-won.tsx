@@ -8,8 +8,8 @@ import {
   Link,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";

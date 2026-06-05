@@ -8,8 +8,8 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
@@ -277,7 +277,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -300,19 +300,19 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
@@ -324,7 +324,7 @@ const summaryCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const detailRow = {
@@ -339,7 +339,7 @@ const labelCol = {
 const detailLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   letterSpacing: "1.5px",
   margin: "0",
   lineHeight: "22px",
@@ -353,29 +353,29 @@ const detailValue = {
 };
 
 const cardDivider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "16px 0",
 };
 
 const messageLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   letterSpacing: "1.5px",
   margin: "0 0 8px 0",
 };
 
 const messageBox = {
-  backgroundColor: "rgba(255, 255, 255, 0.04)",
+  backgroundColor: "#0f0f0f",
   borderRadius: "8px",
   padding: "14px 16px",
-  borderLeft: "3px solid rgba(255, 255, 255, 0.15)",
+  borderLeft: "3px solid #2a2a2a",
 };
 
 const messageText = {
   fontSize: "14px",
   lineHeight: "22px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   margin: "0",
   whiteSpace: "pre-wrap" as const,
 };
@@ -394,7 +394,7 @@ const stepNumCol = {
 const stepNum = {
   fontSize: "20px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "1",
 };
@@ -408,13 +408,13 @@ const stepTitle = {
 
 const stepDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   margin: "0",
   lineHeight: "21px",
 };
 
 const linkStyle = {
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   textDecoration: "underline",
 };
 
@@ -422,7 +422,7 @@ const linkStyle = {
 
 const ecosystemIntro = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0 0 20px 0",
 };
@@ -474,7 +474,7 @@ const testimonialSection = {
 
 const testimonialQuote = {
   fontSize: "48px",
-  color: "rgba(255, 255, 255, 0.15)",
+  color: "#2a2a2a",
   margin: "0",
   lineHeight: "1",
   fontFamily: "Georgia, serif",
@@ -483,14 +483,14 @@ const testimonialQuote = {
 const testimonialText = {
   fontSize: "15px",
   fontStyle: "italic" as const,
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   lineHeight: "24px",
   margin: "0 0 12px 0",
 };
 
 const testimonialAuthor = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   margin: "0",
   fontWeight: "600" as const,
 };
@@ -501,7 +501,7 @@ const faqCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const faqItem = {
@@ -517,7 +517,7 @@ const faqQuestion = {
 
 const faqAnswer = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
 };
@@ -526,7 +526,7 @@ const faqAnswer = {
 
 const closingText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   textAlign: "center" as const,
   margin: "0",
 };

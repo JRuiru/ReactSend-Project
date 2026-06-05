@@ -8,15 +8,19 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
-import { SecondaryButton } from "../components/SecondaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { SecondaryButton } from "../../components/SecondaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
 
 const IMAGES = {
   hero: `${CDN}/challenge-accepted/public`,
+  challengeCard: `${CDN}/app-community-challenges/public`,
+  lifestyle: `${CDN}/ring-fitness-body/public`,
+  appStore: `${CDN}/badge-app-store/public`,
+  googlePlay: `${CDN}/badge-google-play/public`,
 };
 
 export default function ChallengeInviteEmail() {
@@ -51,54 +55,58 @@ export default function ChallengeInviteEmail() {
       {/* ══════════════════════════════════════════════════════════
           Challenge Details Card
           ══════════════════════════════════════════════════════════ */}
-      <Section style={challengeCard} className="force-white">
-        <div style={challengeBg}>
-          <div style={challengeOverlay}>
-            <Text style={challengeName}>{"{{challenge_name}}"}</Text>
-            <Text style={challengeDesc}>{"{{challenge_description}}"}</Text>
+      <Section style={challengeCard}>
+        <Img
+          src={IMAGES.challengeCard}
+          width="560"
+          alt="Community challenges"
+          style={challengeCardImage}
+        />
+        <Section style={challengeDetails} className="force-white">
+          <Text style={challengeName}>{"{{challenge_name}}"}</Text>
+          <Text style={challengeDesc}>{"{{challenge_description}}"}</Text>
 
-            <Hr style={cardDivider} />
+          <Hr style={cardDivider} />
 
-            <Section style={detailGrid}>
-              <Row>
-                <Column style={detailCell}>
-                  <Text style={detailLabel}>GOAL</Text>
-                  <Text style={detailValue}>{"{{challenge_goal}}"}</Text>
-                </Column>
-                <Column style={detailCell}>
-                  <Text style={detailLabel}>DURATION</Text>
-                  <Text style={detailValue}>{"{{duration}}"}</Text>
-                </Column>
-              </Row>
-            </Section>
+          <Section style={detailGrid}>
+            <Row>
+              <Column style={detailCell}>
+                <Text style={detailLabel}>GOAL</Text>
+                <Text style={detailValue}>{"{{challenge_goal}}"}</Text>
+              </Column>
+              <Column style={detailCell}>
+                <Text style={detailLabel}>DURATION</Text>
+                <Text style={detailValue}>{"{{duration}}"}</Text>
+              </Column>
+            </Row>
+          </Section>
 
-            <Section style={{ marginTop: "12px" }}>
-              <Row>
-                <Column style={detailCell}>
-                  <Text style={detailLabel}>PARTICIPANTS</Text>
-                  <Text style={detailValue}>{"{{participant_count}}"} joined</Text>
-                </Column>
-                <Column style={detailCell}>
-                  <Text style={detailLabel}>WINNING CRITERIA</Text>
-                  <Text style={detailValue}>{"{{goal_type}}"}</Text>
-                </Column>
-              </Row>
-            </Section>
+          <Section style={{ marginTop: "12px" }}>
+            <Row>
+              <Column style={detailCell}>
+                <Text style={detailLabel}>PARTICIPANTS</Text>
+                <Text style={detailValue}>{"{{participant_count}}"} joined</Text>
+              </Column>
+              <Column style={detailCell}>
+                <Text style={detailLabel}>WINNING CRITERIA</Text>
+                <Text style={detailValue}>{"{{goal_type}}"}</Text>
+              </Column>
+            </Row>
+          </Section>
 
-            <Section style={{ marginTop: "12px" }}>
-              <Row>
-                <Column style={detailCell}>
-                  <Text style={detailLabel}>STARTS</Text>
-                  <Text style={detailValue}>{"{{start_date}}"}</Text>
-                </Column>
-                <Column style={detailCell}>
-                  <Text style={detailLabel}>ENDS</Text>
-                  <Text style={detailValue}>{"{{end_date}}"}</Text>
-                </Column>
-              </Row>
-            </Section>
-          </div>
-        </div>
+          <Section style={{ marginTop: "12px" }}>
+            <Row>
+              <Column style={detailCell}>
+                <Text style={detailLabel}>STARTS</Text>
+                <Text style={detailValue}>{"{{start_date}}"}</Text>
+              </Column>
+              <Column style={detailCell}>
+                <Text style={detailLabel}>ENDS</Text>
+                <Text style={detailValue}>{"{{end_date}}"}</Text>
+              </Column>
+            </Row>
+          </Section>
+        </Section>
       </Section>
 
       {/* ── CTAs ── */}
@@ -162,6 +170,19 @@ export default function ChallengeInviteEmail() {
         </Row>
       </Section>
 
+      {/* ── Lifestyle image ── */}
+      <Section style={lifestyleSection}>
+        <Img
+          src={IMAGES.lifestyle}
+          width="560"
+          alt="Ring fitness tracking"
+          style={lifestyleImage}
+        />
+        <Text style={lifestyleCaption}>
+          Health is better when you compete with friends.
+        </Text>
+      </Section>
+
       <Hr style={divider} />
 
       {/* ── Invite friends ── */}
@@ -172,9 +193,53 @@ export default function ChallengeInviteEmail() {
           compete together.
         </Text>
         <Section style={inviteCtaCenter}>
-          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={inviteButton}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}&name={{first_name}}`} style={inviteButton}>
             Invite a Friend
           </Button>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Testimonial ── */}
+      <Section style={testimonialSection}>
+        <Text style={testimonialQuote}>
+          "Our step challenge pushed me to walk 15,000 steps a day for two
+          weeks. I have never been more motivated."
+        </Text>
+        <Text style={testimonialAuthor}>
+          Rachel T., challenge winner
+        </Text>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── App download ── */}
+      <Section style={appDownloadSection}>
+        <Text style={appDownloadHeading}>Get the app</Text>
+        <Section style={appBadgeRow}>
+          <Row>
+            <Column style={appBadgeCol}>
+              <a href={`${BASE_URL}/download/ios`}>
+                <Img
+                  src={IMAGES.appStore}
+                  width="120"
+                  alt="Download on the App Store"
+                  style={appBadge}
+                />
+              </a>
+            </Column>
+            <Column style={appBadgeCol}>
+              <a href={`${BASE_URL}/download/android`}>
+                <Img
+                  src={IMAGES.googlePlay}
+                  width="120"
+                  alt="Get it on Google Play"
+                  style={appBadge}
+                />
+              </a>
+            </Column>
+          </Row>
         </Section>
       </Section>
 
@@ -209,7 +274,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -233,19 +298,19 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
@@ -258,17 +323,16 @@ const challengeCard = {
   overflow: "hidden" as const,
 };
 
-const challengeBg = {
-  backgroundImage: `url(${CDN}/lifestyle-athlete/public)`,
-  backgroundSize: "cover" as const,
-  backgroundPosition: "center" as const,
-  borderRadius: "12px",
-  overflow: "hidden" as const,
+const challengeCardImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px 12px 0 0",
 };
 
-const challengeOverlay = {
-  backgroundColor: "rgba(0, 0, 0, 0.8)",
-  padding: "32px 24px",
+const challengeDetails = {
+  backgroundColor: "#141414",
+  padding: "28px 24px",
+  borderRadius: "0 0 12px 12px",
 };
 
 const challengeName = {
@@ -280,13 +344,13 @@ const challengeName = {
 
 const challengeDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   lineHeight: "22px",
   margin: "0",
 };
 
 const cardDivider = {
-  borderColor: "rgba(255, 255, 255, 0.1)",
+  borderColor: "#222222",
   margin: "20px 0",
 };
 
@@ -302,7 +366,7 @@ const detailCell = {
 const detailLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "1.5px",
   margin: "0 0 4px 0",
 };
@@ -339,7 +403,7 @@ const reasonNumCol = {
 const reasonNum = {
   fontSize: "20px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "1",
 };
@@ -353,7 +417,7 @@ const reasonTitle = {
 
 const reasonDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "21px",
   margin: "0",
 };
@@ -365,7 +429,7 @@ const inviteCard = {
   borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const inviteHeading = {
@@ -377,7 +441,7 @@ const inviteHeading = {
 
 const inviteText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
 };
@@ -388,7 +452,7 @@ const inviteCtaCenter = {
 };
 
 const inviteButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -398,5 +462,75 @@ const inviteButton = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
+};
+
+// ── Lifestyle ──
+
+const lifestyleSection = {
+  marginTop: "28px",
+};
+
+const lifestyleImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+};
+
+const lifestyleCaption = {
+  fontSize: "14px",
+  color: "#6b6b6b",
+  textAlign: "center" as const,
+  margin: "12px 0 0 0",
+  fontStyle: "italic" as const,
+};
+
+// ── Testimonial ──
+
+const testimonialSection = {
+  textAlign: "center" as const,
+  padding: "8px 16px",
+};
+
+const testimonialQuote = {
+  fontSize: "16px",
+  lineHeight: "26px",
+  color: "#d4d4d4",
+  fontStyle: "italic" as const,
+  margin: "0 0 12px 0",
+};
+
+const testimonialAuthor = {
+  fontSize: "13px",
+  fontWeight: "600" as const,
+  color: "#5e5e5e",
+  margin: "0",
+};
+
+// ── App download ──
+
+const appDownloadSection = {
+  textAlign: "center" as const,
+};
+
+const appDownloadHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 16px 0",
+  textAlign: "center" as const,
+};
+
+const appBadgeRow = {
+  textAlign: "center" as const,
+};
+
+const appBadgeCol = {
+  width: "50%",
+  textAlign: "center" as const,
+  verticalAlign: "middle" as const,
+};
+
+const appBadge = {
+  display: "inline-block" as const,
 };

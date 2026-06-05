@@ -19,5 +19,138 @@
     "klaviyo_template_id": "SSs3xG",
     "flow_position": 3,
     "delay": "48 hours"
+  },
+  "welcome-1-brand-intro": {
+    "name": "Welcome — Brand Intro (Immediate)",
+    "module": "welcome-1-brand-intro",
+    "klaviyo_template_id": "X5E2Wp",
+    "flow_position": 1,
+    "delay": "immediate"
+  },
+  "welcome-2-product-education": {
+    "name": "Welcome — Product Education (Day 2)",
+    "module": "welcome-2-product-education",
+    "klaviyo_template_id": "UEd6Ph",
+    "flow_position": 2,
+    "delay": "2 days"
+  },
+  "welcome-3-social-proof": {
+    "name": "Welcome — Social Proof (Day 4)",
+    "module": "welcome-3-social-proof",
+    "klaviyo_template_id": "WZ2LAZ",
+    "flow_position": 3,
+    "delay": "4 days"
+  },
+  "welcome-4-first-purchase": {
+    "name": "Welcome — First Purchase Offer (Day 7)",
+    "module": "welcome-4-first-purchase",
+    "klaviyo_template_id": "VJYFmK",
+    "flow_position": 4,
+    "delay": "7 days"
+  },
+  "post-purchase-1-thank-you": {
+    "name": "Post-Purchase — Thank You (Immediate)",
+    "module": "post-purchase-1-thank-you",
+    "klaviyo_template_id": "WUpwfB",
+    "flow_position": 1,
+    "delay": "immediate"
+  },
+  "post-purchase-2-setup-tips": {
+    "name": "Post-Purchase — Setup Tips (Day 2)",
+    "module": "post-purchase-2-setup-tips",
+    "klaviyo_template_id": "SBTsgC",
+    "flow_position": 2,
+    "delay": "2 days"
+  },
+  "post-purchase-3-review-request": {
+    "name": "Post-Purchase — Review Request (Day 14)",
+    "module": "post-purchase-3-review-request",
+    "klaviyo_template_id": "RYSpDZ",
+    "flow_position": 3,
+    "delay": "14 days"
+  },
+  "browse-abandon-1-reminder": {
+    "name": "Browse Abandonment — Reminder (2hr)",
+    "module": "browse-abandon-1-reminder",
+    "klaviyo_template_id": "TahexR",
+    "flow_position": 1,
+    "delay": "2 hours"
+  },
+  "browse-abandon-2-social-proof": {
+    "name": "Browse Abandonment — Social Proof (24hr)",
+    "module": "browse-abandon-2-social-proof",
+    "klaviyo_template_id": "SxgbVe",
+    "flow_position": 2,
+    "delay": "24 hours"
+  },
+  "cross-sell-1-complement": {
+    "name": "Cross-Sell — Complement (Day 21)",
+    "module": "cross-sell-1-complement",
+    "klaviyo_template_id": "TGF2P6",
+    "flow_position": 1,
+    "delay": "21 days"
+  },
+  "cross-sell-2-ecosystem": {
+    "name": "Cross-Sell — Ecosystem (Day 28)",
+    "module": "cross-sell-2-ecosystem",
+    "klaviyo_template_id": "Rhe6FY",
+    "flow_position": 2,
+    "delay": "28 days"
+  },
+  "cross-sell-3-bundle": {
+    "name": "Cross-Sell — Bundle Offer (Day 35)",
+    "module": "cross-sell-3-bundle",
+    "klaviyo_template_id": "UMsBmy",
+    "flow_position": 3,
+    "delay": "35 days"
+  },
+  "winback-1-miss-you": {
+    "name": "Winback — We Miss You (Day 60)",
+    "module": "winback-1-miss-you",
+    "klaviyo_template_id": "RJYCBP",
+    "flow_position": 1,
+    "delay": "60 days"
+  },
+  "winback-2-whats-new": {
+    "name": "Winback — What's New (Day 67)",
+    "module": "winback-2-whats-new",
+    "klaviyo_template_id": "Vfd9hp",
+    "flow_position": 2,
+    "delay": "67 days"
+  },
+  "winback-3-last-chance": {
+    "name": "Winback — Last Chance Offer (Day 74)",
+    "module": "winback-3-last-chance",
+    "klaviyo_template_id": "WqBYbf",
+    "flow_position": 3,
+    "delay": "74 days"
+  },
+  "review-request-1-ask": {
+    "name": "Review Request — Ask (Day 14)",
+    "module": "review-request-1-ask",
+    "klaviyo_template_id": "TZb449",
+    "flow_position": 1,
+    "delay": "14 days"
+  },
+  "review-request-2-reminder": {
+    "name": "Review Request — Reminder (Day 21)",
+    "module": "review-request-2-reminder",
+    "klaviyo_template_id": "VazSVZ",
+    "flow_position": 2,
+    "delay": "21 days"
+  },
+  "sunset-1-miss-you": {
+    "name": "Sunset — Miss You (Day 90)",
+    "module": "sunset-1-miss-you",
+    "klaviyo_template_id": "UxyQjn",
+    "flow_position": 1,
+    "delay": "90 days"
+  },
+  "sunset-2-final-goodbye": {
+    "name": "Sunset — Final Goodbye (Day 97)",
+    "module": "sunset-2-final-goodbye",
+    "klaviyo_template_id": "TUxMGK",
+    "flow_position": 2,
+    "delay": "97 days"
   }
 }

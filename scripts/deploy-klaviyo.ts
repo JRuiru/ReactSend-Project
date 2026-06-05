@@ -60,7 +60,7 @@ async function klaviyoRequest(
 
 async function deployTemplate(key: string, entry: TemplateEntry) {
   const mod = await import(
-    path.resolve(__dirname, `../emails/templates/${entry.module}.tsx`)
+    path.resolve(__dirname, `../emails/templates/klaviyo/${entry.module}.tsx`)
   );
   const Component = mod.default;
   const html = await render(Component());

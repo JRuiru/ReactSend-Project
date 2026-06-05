@@ -6,9 +6,9 @@ import {
   Column,
   Hr,
 } from "@react-email/components";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
-import { SecondaryButton } from "../components/SecondaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { SecondaryButton } from "../../components/SecondaryButton";
 import * as React from "react";
 
 const CF_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
@@ -19,6 +19,17 @@ export default function AbandonedCartLastChance() {
 
       {/* Spacer */}
       <Section style={{ height: "32px" }} />
+
+      {/* Hero Image */}
+      <Img
+        src={`${CF_IMG}/ring-gold-shh-portrait/public`}
+        width="560"
+        alt="Exclusive offer — Ring One in Aurora Gold"
+        style={{ display: "block", width: "100%", height: "auto", borderRadius: "12px" }}
+      />
+
+      {/* Spacer */}
+      <Section style={{ height: "24px" }} />
 
       {/* Badge — urgency red */}
       <Section style={{ textAlign: "center", paddingBottom: "24px" }}>
@@ -241,7 +252,7 @@ export default function AbandonedCartLastChance() {
         <Text style={styles.testimonialQuote}>
           &ldquo;The Ring One tracks my sleep and the app shows me exactly what to improve. I have never felt more in control of my health.&rdquo;
         </Text>
-        <Text style={styles.testimonialAuthor}>Sarah M. &mdash; Verified Customer</Text>
+        <Text style={styles.testimonialAuthor}>Daniela V. &mdash; Verified Customer</Text>
       </Section>
 
       {/* Spacer */}

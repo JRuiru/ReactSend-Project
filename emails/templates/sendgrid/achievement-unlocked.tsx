@@ -9,14 +9,15 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
 
 const IMAGES = {
   hero: `${CDN}/app-goals-achieved/public`,
+  community: `${CDN}/app-community-challenges/public`,
 };
 
 export default function AchievementUnlockedEmail() {
@@ -133,13 +134,19 @@ export default function AchievementUnlockedEmail() {
 
       {/* ── Invite friends ── */}
       <Section style={inviteCard}>
+        <Img
+          src={IMAGES.community}
+          width="560"
+          alt="Community challenges"
+          style={inviteCardImage}
+        />
         <Text style={inviteHeading}>Invite friends to compete</Text>
         <Text style={inviteText}>
           Achievements are better with friends. Invite someone to join
           SeeMyHealth and start earning badges together.
         </Text>
         <Section style={ctaCenter}>
-          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={inviteButton}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}&name={{first_name}}`} style={inviteButton}>
             Invite a Friend
           </Button>
         </Section>
@@ -156,6 +163,36 @@ export default function AchievementUnlockedEmail() {
           <PrimaryButton href={`${BASE_URL}/app`}>
             Open the App
           </PrimaryButton>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Testimonial ── */}
+      <Section style={testimonialSection}>
+        <Text style={testimonialQuoteMark}>"</Text>
+        <Text style={testimonialText}>
+          Earning the 30-day streak badge was my turning point. Now I am chasing the 100-day one.
+        </Text>
+        <Text style={testimonialAuthor}>Marcus J., badge collector</Text>
+      </Section>
+
+      {/* ── App Store Buttons ── */}
+      <Section style={{ textAlign: "center" as const, marginTop: "28px" }}>
+        <Text style={storeLabel}>GET THE APP</Text>
+        <Section style={{ textAlign: "center" as const, marginTop: "12px" }}>
+          <Row>
+            <Column align="center" style={storeCol}>
+              <Button href="https://apps.apple.com/app/seemyhealth" style={storeButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={storeCol}>
+              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={storeButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
         </Section>
       </Section>
 
@@ -190,7 +227,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -214,12 +251,12 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
@@ -257,13 +294,13 @@ const badgeName = {
 
 const badgeDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   lineHeight: "22px",
   margin: "0",
 };
 
 const badgeDivider = {
-  borderColor: "rgba(255, 255, 255, 0.15)",
+  borderColor: "#2a2a2a",
   margin: "24px 0",
 };
 
@@ -279,7 +316,7 @@ const detailCell = {
 const detailLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   letterSpacing: "2px",
   margin: "0 0 4px 0",
 };
@@ -294,14 +331,14 @@ const detailValue = {
 const criteriaLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   letterSpacing: "2px",
   margin: "20px 0 4px 0",
 };
 
 const criteriaValue = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   margin: "0",
   lineHeight: "22px",
 };
@@ -313,7 +350,7 @@ const progressCard = {
   borderRadius: "12px",
   padding: "20px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const progressHeading = {
@@ -325,7 +362,7 @@ const progressHeading = {
 
 const progressSub = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   margin: "0",
 };
 
@@ -336,7 +373,7 @@ const shareSection = {
   borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const shareHeading = {
@@ -348,7 +385,7 @@ const shareHeading = {
 
 const shareText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   margin: "0 0 16px 0",
 };
 
@@ -356,7 +393,7 @@ const shareLinks = { marginTop: "0" };
 const shareCol = { width: "33.33%", padding: "0 4px" };
 
 const shareLink = {
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   fontSize: "12px",
   fontWeight: "600" as const,
   textDecoration: "underline",
@@ -369,7 +406,7 @@ const inviteCard = {
   borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const inviteHeading = {
@@ -381,13 +418,13 @@ const inviteHeading = {
 
 const inviteText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
 };
 
 const inviteButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -397,7 +434,7 @@ const inviteButton = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 // ── CTA ──
@@ -408,7 +445,7 @@ const ctaSection = {
 
 const ctaText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0",
   textAlign: "center" as const,
@@ -417,4 +454,74 @@ const ctaText = {
 const ctaCenter = {
   textAlign: "center" as const,
   margin: "20px 0 0 0",
+};
+
+// ── Invite card image ──
+
+const inviteCardImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px 12px 0 0",
+  marginBottom: "16px",
+};
+
+// ── Testimonial ──
+
+const testimonialSection = {
+  textAlign: "center" as const,
+};
+
+const testimonialQuoteMark = {
+  fontSize: "48px",
+  color: "#222222",
+  margin: "0",
+  lineHeight: "1",
+  fontFamily: "Georgia, serif",
+};
+
+const testimonialText = {
+  fontSize: "15px",
+  fontStyle: "italic" as const,
+  color: "#8a8a8a",
+  lineHeight: "24px",
+  margin: "0 0 8px 0",
+  textAlign: "center" as const,
+};
+
+const testimonialAuthor = {
+  fontSize: "13px",
+  color: "#5e5e5e",
+  margin: "0",
+  fontWeight: "600" as const,
+  textAlign: "center" as const,
+};
+
+// ── App Store buttons ──
+
+const storeLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "#5e5e5e",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const storeCol = {
+  width: "50%",
+  padding: "0 4px",
+};
+
+const storeButton = {
+  backgroundColor: "transparent",
+  color: "#a3a3a3",
+  padding: "10px 20px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid #2a2a2a",
+  letterSpacing: "0.5px",
 };

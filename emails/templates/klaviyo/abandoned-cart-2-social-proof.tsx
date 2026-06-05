@@ -6,9 +6,9 @@ import {
   Column,
   Hr,
 } from "@react-email/components";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
-import { SecondaryButton } from "../components/SecondaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { SecondaryButton } from "../../components/SecondaryButton";
 import * as React from "react";
 
 const CF_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
@@ -87,7 +87,7 @@ export default function AbandonedCartSocialProof() {
           <Text style={styles.testimonialQuote}>
             &ldquo;After two weeks with the Ring One, my sleep score went from 62 to 84. I wake up feeling rested for the first time in years. The app pinpointed that my late caffeine was the problem.&rdquo;
           </Text>
-          <Text style={styles.testimonialAuthor}>Sarah M. &mdash; Ring One Owner</Text>
+          <Text style={styles.testimonialAuthor}>Keiko Y. &mdash; Ring One Owner</Text>
         </Section>
 
         <Hr style={{ borderColor: "#171717", margin: "0 24px" }} />
@@ -102,7 +102,7 @@ export default function AbandonedCartSocialProof() {
           <Text style={styles.testimonialQuote}>
             &ldquo;Lost 4kg of fat and gained 2kg of muscle in 3 months. The Scale tracks everything and the trends in the app kept me accountable. Worth every penny.&rdquo;
           </Text>
-          <Text style={styles.testimonialAuthor}>James R. &mdash; Scale Owner</Text>
+          <Text style={styles.testimonialAuthor}>Marcus D. &mdash; Scale Owner</Text>
         </Section>
 
         <Hr style={{ borderColor: "#171717", margin: "0 24px" }} />
@@ -117,7 +117,7 @@ export default function AbandonedCartSocialProof() {
           <Text style={styles.testimonialQuote}>
             &ldquo;I was only drinking 1.2L a day and didn&rsquo;t even know it. The Hydra One got me to 2.5L consistently. My energy levels and skin have completely changed.&rdquo;
           </Text>
-          <Text style={styles.testimonialAuthor}>Amira K. &mdash; Hydra One Owner</Text>
+          <Text style={styles.testimonialAuthor}>Zara P. &mdash; Hydra One Owner</Text>
         </Section>
       </Section>
 

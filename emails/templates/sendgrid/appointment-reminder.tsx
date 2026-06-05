@@ -8,14 +8,18 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
 
 const IMAGES = {
   hero: `${CDN}/app-video-consultation/public`,
+  hubbyProgress: `${CDN}/app-hubby-progress/public`,
+  ringGold: `${CDN}/ring-gold-hands-portrait/public`,
+  scaleBlack: `${CDN}/scale-black-nutritionist/public`,
+  hemaBlack: `${CDN}/hema-black-poster/public`,
 };
 
 export default function AppointmentReminderEmail() {
@@ -186,16 +190,60 @@ export default function AppointmentReminderEmail() {
 
       {/* ── Share data with doctor ── */}
       <Section style={shareDataCard}>
-        <Text style={shareDataHeading}>Share your health data</Text>
-        <Text style={shareDataText}>
-          Give your doctor a clearer picture. Share your SeeMyHealth data
-          directly from the app during your appointment.
-        </Text>
-        <Section style={{ textAlign: "center" as const, marginTop: "16px" }}>
-          <Button href={`${BASE_URL}/share/doctor`} style={shareDataButton}>
-            Learn How
-          </Button>
+        <Img
+          src={IMAGES.hubbyProgress}
+          width="560"
+          alt="Health data sharing in SeeMyHealth app"
+          style={shareDataImage}
+        />
+        <Section style={shareDataContent}>
+          <Text style={shareDataHeading}>Share your health data</Text>
+          <Text style={shareDataText}>
+            Give your doctor a clearer picture. Share your SeeMyHealth data
+            directly from the app during your appointment.
+          </Text>
+          <Section style={{ textAlign: "center" as const, marginTop: "16px" }}>
+            <Button href={`${BASE_URL}/share/doctor`} style={shareDataButton}>
+              Learn How
+            </Button>
+          </Section>
         </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Mini device showcase ── */}
+      <Text style={deviceShowcaseHeading}>Track more before your next visit</Text>
+      <Section style={deviceShowcaseRow}>
+        <Row>
+          <Column align="center" style={deviceCol}>
+            <Img
+              src={IMAGES.ringGold}
+              width="140"
+              alt="Hema Ring"
+              style={deviceImage}
+            />
+            <Text style={deviceName}>Hema Ring</Text>
+          </Column>
+          <Column align="center" style={deviceCol}>
+            <Img
+              src={IMAGES.scaleBlack}
+              width="140"
+              alt="Hema Scale"
+              style={deviceImage}
+            />
+            <Text style={deviceName}>Hema Scale</Text>
+          </Column>
+          <Column align="center" style={deviceCol}>
+            <Img
+              src={IMAGES.hemaBlack}
+              width="140"
+              alt="Hema One"
+              style={deviceImage}
+            />
+            <Text style={deviceName}>Hema One</Text>
+          </Column>
+        </Row>
       </Section>
 
       <Hr style={divider} />
@@ -206,6 +254,27 @@ export default function AppointmentReminderEmail() {
           Need to make changes? You can reschedule or cancel directly from
           the SeeMyHealth app up to 24 hours before your appointment.
         </Text>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── App download buttons ── */}
+      <Section style={appDownloadSection}>
+        <Text style={appDownloadHeading}>Get the SeeMyHealth app</Text>
+        <Section style={appDownloadRow}>
+          <Row>
+            <Column align="center" style={appDownloadCol}>
+              <Button href={`${BASE_URL}/download/ios`} style={appStoreButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={appDownloadCol}>
+              <Button href={`${BASE_URL}/download/android`} style={appStoreButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
+        </Section>
       </Section>
 
     </EmailLayout>
@@ -239,7 +308,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -260,14 +329,14 @@ const heading = {
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
@@ -279,7 +348,7 @@ const appointmentCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "28px 24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const visitTypeBadgeText = {
@@ -289,7 +358,7 @@ const visitTypeBadgeText = {
   letterSpacing: "2px",
   textTransform: "uppercase" as const,
   margin: "0 0 12px 0",
-  backgroundColor: "rgba(255, 255, 255, 0.08)",
+  backgroundColor: "#1f1f1f",
   padding: "4px 12px",
   borderRadius: "12px",
   display: "inline-block" as const,
@@ -304,12 +373,12 @@ const doctorName = {
 
 const doctorSpecialty = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   margin: "0",
 };
 
 const cardDivider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "16px 0",
 };
 
@@ -325,7 +394,7 @@ const detailLabelCol = {
 const detailLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   letterSpacing: "1.5px",
   margin: "0",
   lineHeight: "22px",
@@ -356,14 +425,14 @@ const buttonCol = {
 
 const rescheduleButton = {
   backgroundColor: "transparent",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   padding: "10px 20px",
   borderRadius: "50px",
   fontSize: "13px",
   fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 const cancelButton = {
@@ -375,7 +444,7 @@ const cancelButton = {
   fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(239, 68, 68, 0.2)",
+  border: "1px solid #2e1919",
 };
 
 // ── Tips ──
@@ -384,7 +453,7 @@ const tipCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const tipRow = {
@@ -399,14 +468,14 @@ const tipNumCol = {
 const tipNum = {
   fontSize: "14px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "22px",
 };
 
 const tipText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "22px",
   margin: "0",
 };
@@ -416,9 +485,9 @@ const tipText = {
 const shareDataCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
-  padding: "28px 24px",
+  overflow: "hidden" as const,
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const shareDataHeading = {
@@ -430,13 +499,13 @@ const shareDataHeading = {
 
 const shareDataText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
 };
 
 const shareDataButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -446,7 +515,7 @@ const shareDataButton = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 // ── Help section ──
@@ -456,12 +525,93 @@ const helpSection = {
   borderRadius: "10px",
   padding: "16px 20px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const helpText = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   lineHeight: "20px",
   margin: "0",
+};
+
+// ── Share data image ──
+
+const shareDataImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px 12px 0 0",
+};
+
+const shareDataContent = {
+  padding: "28px 24px",
+};
+
+// ── Device showcase ──
+
+const deviceShowcaseHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  textAlign: "center" as const,
+  margin: "0 0 20px 0",
+};
+
+const deviceShowcaseRow = {
+  textAlign: "center" as const,
+};
+
+const deviceCol = {
+  width: "33.33%",
+  verticalAlign: "top" as const,
+  padding: "0 6px",
+};
+
+const deviceImage = {
+  width: "100%",
+  borderRadius: "10px",
+  display: "block" as const,
+};
+
+const deviceName = {
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  color: "#8a8a8a",
+  margin: "8px 0 0 0",
+  textAlign: "center" as const,
+};
+
+// ── App download ──
+
+const appDownloadSection = {
+  textAlign: "center" as const,
+};
+
+const appDownloadHeading = {
+  fontSize: "16px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  textAlign: "center" as const,
+  margin: "0 0 16px 0",
+};
+
+const appDownloadRow = {
+  textAlign: "center" as const,
+};
+
+const appDownloadCol = {
+  width: "50%",
+  padding: "0 6px",
+};
+
+const appStoreButton = {
+  backgroundColor: "transparent",
+  color: "#8a8a8a",
+  padding: "10px 24px",
+  borderRadius: "50px",
+  fontSize: "13px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid #222222",
 };

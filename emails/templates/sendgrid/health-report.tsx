@@ -8,8 +8,8 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
@@ -17,9 +17,13 @@ const BASE_URL = "https://seemyhealth.ai";
 const IMAGES = {
   hero: `${CDN}/lifestyle-athlete/public`,
   trends: `${CDN}/scale-trend-tracking/public`,
-  moodBg: `${CDN}/ring-one-sunset-meditation/public`,
-  vitalsBg: `${CDN}/hema-black-lab/public`,
-  goalsBg: `${CDN}/ring-fitness-body/public`,
+  mood: `${CDN}/ring-one-sunset-meditation/public`,
+  vitals: `${CDN}/hema-black-lab/public`,
+  goals: `${CDN}/ring-fitness-body/public`,
+  ringGold: `${CDN}/ring-gold-hands-portrait/public`,
+  scaleBlack: `${CDN}/scale-black-nutritionist/public`,
+  bpBlack: `${CDN}/bp-black-poster/public`,
+  videoConsult: `${CDN}/app-video-consultation/public`,
 };
 
 export default function HealthReportEmail() {
@@ -48,7 +52,7 @@ export default function HealthReportEmail() {
       <Hr style={divider} />
 
       {/* ══════════════════════════════════════════════════════════
-          Headline Metrics — 3 across, top row
+          Headline Metrics, 3 across, top row
           ══════════════════════════════════════════════════════════ */}
       <Text style={sectionLabel}>AT A GLANCE</Text>
 
@@ -152,54 +156,58 @@ export default function HealthReportEmail() {
           ══════════════════════════════════════════════════════════ */}
       <Text style={sectionLabel}>VITALS</Text>
 
-      <Section style={vitalsCard} className="force-white">
-        <div style={bgImageWrapper(IMAGES.vitalsBg)}>
-          <div style={bgOverlay}>
-        <Section style={vitalRow}>
-          <Row>
-            <Column style={vitalLabelCol}>
-              <Text style={vitalLabelText}>Blood Pressure</Text>
-            </Column>
-            <Column style={vitalValueCol}>
-              <Text style={vitalValueText}>{"{{avg_bp}}"}</Text>
-            </Column>
-          </Row>
-        </Section>
+      <Section style={vitalsCard}>
+        <Img
+          src={IMAGES.vitals}
+          width="560"
+          alt="Vitals overview"
+          style={cardTopImage}
+        />
+        <Section style={cardBody}>
+          <Section style={vitalRow}>
+            <Row>
+              <Column style={vitalLabelCol}>
+                <Text style={vitalLabelText}>Blood Pressure</Text>
+              </Column>
+              <Column style={vitalValueCol}>
+                <Text style={vitalValueText}>{"{{avg_bp}}"}</Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={vitalRow}>
-          <Row>
-            <Column style={vitalLabelCol}>
-              <Text style={vitalLabelText}>HRV</Text>
-            </Column>
-            <Column style={vitalValueCol}>
-              <Text style={vitalValueText}>{"{{avg_hrv}}"} ms</Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={vitalRow}>
+            <Row>
+              <Column style={vitalLabelCol}>
+                <Text style={vitalLabelText}>HRV</Text>
+              </Column>
+              <Column style={vitalValueCol}>
+                <Text style={vitalValueText}>{"{{avg_hrv}}"} ms</Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={vitalRow}>
-          <Row>
-            <Column style={vitalLabelCol}>
-              <Text style={vitalLabelText}>SpO2</Text>
-            </Column>
-            <Column style={vitalValueCol}>
-              <Text style={vitalValueText}>{"{{avg_spo2}}"}%</Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={vitalRow}>
+            <Row>
+              <Column style={vitalLabelCol}>
+                <Text style={vitalLabelText}>SpO2</Text>
+              </Column>
+              <Column style={vitalValueCol}>
+                <Text style={vitalValueText}>{"{{avg_spo2}}"}%</Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={vitalRowLast}>
-          <Row>
-            <Column style={vitalLabelCol}>
-              <Text style={vitalLabelText}>Weight</Text>
-            </Column>
-            <Column style={vitalValueCol}>
-              <Text style={vitalValueText}>{"{{current_weight}}"}</Text>
-            </Column>
-          </Row>
+          <Section style={vitalRowLast}>
+            <Row>
+              <Column style={vitalLabelCol}>
+                <Text style={vitalLabelText}>Weight</Text>
+              </Column>
+              <Column style={vitalValueCol}>
+                <Text style={vitalValueText}>{"{{current_weight}}"}</Text>
+              </Column>
+            </Row>
+          </Section>
         </Section>
-          </div>
-        </div>
       </Section>
 
       <Hr style={divider} />
@@ -209,27 +217,30 @@ export default function HealthReportEmail() {
           ══════════════════════════════════════════════════════════ */}
       <Text style={sectionLabel}>MIND AND MOOD</Text>
 
-      <Section style={moodCard} className="force-white">
-        {/* Background image with overlay */}
-        <div style={bgImageWrapper(IMAGES.moodBg)}>
-          <div style={bgOverlay}>
-            <Row>
-              <Column style={moodCell}>
-                <Text style={moodEmoji} className="mood-emoji">{"{{avg_mood_emoji}}"}</Text>
-                <Text style={moodCellLabel}>Average Mood</Text>
-                <Text style={moodCellValue}>{"{{avg_mood}}"}</Text>
-              </Column>
-              <Column style={moodCell}>
-                <Text style={moodNumber} className="mood-number">{"{{journal_count}}"}</Text>
-                <Text style={moodCellLabel}>Journal Entries</Text>
-              </Column>
-              <Column style={moodCell}>
-                <Text style={moodNumber} className="mood-number">{"{{mood_streak}}"}</Text>
-                <Text style={moodCellLabel}>Day Streak</Text>
-              </Column>
-            </Row>
-          </div>
-        </div>
+      <Section style={moodCard}>
+        <Img
+          src={IMAGES.mood}
+          width="560"
+          alt="Mind and mood"
+          style={cardTopImage}
+        />
+        <Section style={cardBody}>
+          <Row>
+            <Column style={moodCell}>
+              <Text style={moodEmoji} className="mood-emoji">{"{{avg_mood_emoji}}"}</Text>
+              <Text style={moodCellLabel}>Average Mood</Text>
+              <Text style={moodCellValue}>{"{{avg_mood}}"}</Text>
+            </Column>
+            <Column style={moodCell}>
+              <Text style={moodNumber} className="mood-number">{"{{journal_count}}"}</Text>
+              <Text style={moodCellLabel}>Journal Entries</Text>
+            </Column>
+            <Column style={moodCell}>
+              <Text style={moodNumber} className="mood-number">{"{{mood_streak}}"}</Text>
+              <Text style={moodCellLabel}>Day Streak</Text>
+            </Column>
+          </Row>
+        </Section>
       </Section>
 
       <Hr style={divider} />
@@ -258,6 +269,57 @@ export default function HealthReportEmail() {
 
       <Hr style={divider} />
 
+      {/* ══════════════════════════════════════════════════════════
+          Ecosystem Cross-Sell
+          ══════════════════════════════════════════════════════════ */}
+      <Text style={sectionLabel}>THE ECOSYSTEM</Text>
+
+      <Section style={ecosystemStrip}>
+        <Row>
+          <Column style={ecosystemCell}>
+            <Img
+              src={IMAGES.ringGold}
+              width="160"
+              alt="SeeMyHealth Ring"
+              style={ecosystemImage}
+            />
+            <Text style={ecosystemBadge("#F97316")}>Ring</Text>
+            <Text style={ecosystemName}>Smart Ring</Text>
+            <Button href={`${BASE_URL}/products/ring`} style={ecosystemLink}>
+              Explore
+            </Button>
+          </Column>
+          <Column style={ecosystemCell}>
+            <Img
+              src={IMAGES.scaleBlack}
+              width="160"
+              alt="SeeMyHealth Scale"
+              style={ecosystemImage}
+            />
+            <Text style={ecosystemBadge("#3B82F6")}>Scale</Text>
+            <Text style={ecosystemName}>Smart Scale</Text>
+            <Button href={`${BASE_URL}/products/scale`} style={ecosystemLink}>
+              Explore
+            </Button>
+          </Column>
+          <Column style={ecosystemCell}>
+            <Img
+              src={IMAGES.bpBlack}
+              width="160"
+              alt="SeeMyHealth BP Monitor"
+              style={ecosystemImage}
+            />
+            <Text style={ecosystemBadge("#EF4444")}>BP</Text>
+            <Text style={ecosystemName}>BP Monitor</Text>
+            <Button href={`${BASE_URL}/products/bp-monitor`} style={ecosystemLink}>
+              Explore
+            </Button>
+          </Column>
+        </Row>
+      </Section>
+
+      <Hr style={divider} />
+
       {/* ── Referral ── */}
       <Section style={referralSection}>
         <Text style={referralHeading}>Share your progress</Text>
@@ -266,10 +328,33 @@ export default function HealthReportEmail() {
           together.
         </Text>
         <Section style={ctaCenter}>
-          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={referralButton}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}&name={{first_name}}`} style={referralButton}>
             Invite a Friend
           </Button>
         </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Did You Know? ── */}
+      <Section style={didYouKnowCard}>
+        <Row>
+          <Column style={didYouKnowImageCol}>
+            <Img
+              src={IMAGES.videoConsult}
+              width="100"
+              alt="Share with your doctor"
+              style={didYouKnowImage}
+            />
+          </Column>
+          <Column style={didYouKnowContent}>
+            <Text style={didYouKnowHeading}>Did you know?</Text>
+            <Text style={didYouKnowText}>
+              Share your report with your doctor directly from the app.
+              Tap any metric to generate a printable PDF.
+            </Text>
+          </Column>
+        </Row>
       </Section>
 
       <Hr style={divider} />
@@ -311,13 +396,13 @@ const heroOverlay = {
   left: "0",
   right: "0",
   padding: "40px 24px 24px",
-  background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)",
+  backgroundColor: "#000000",
 };
 
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -333,38 +418,37 @@ const heroPeriod = {
 
 const greeting = {
   fontSize: "16px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   lineHeight: "26px",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
 };
 
-// ── Background image helpers ──
+// ── Card image + body pattern ──
 
-const bgImageWrapper = (imageUrl: string) => ({
-  backgroundImage: `url(${imageUrl})`,
-  backgroundSize: "cover" as const,
-  backgroundPosition: "center" as const,
-  borderRadius: "12px",
-  overflow: "hidden" as const,
-});
+const cardTopImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px 12px 0 0",
+};
 
-const bgOverlay = {
-  backgroundColor: "rgba(0, 0, 0, 0.75)",
-  padding: "24px 20px",
+const cardBody = {
+  backgroundColor: "#141414",
+  padding: "20px",
+  borderRadius: "0 0 12px 12px",
 };
 
 // ── Metrics ──
@@ -374,7 +458,7 @@ const metricsCard = {
   borderRadius: "12px",
   padding: "20px 8px",
   marginBottom: "8px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
   textAlign: "center" as const,
 };
 
@@ -393,7 +477,7 @@ const metricValue = {
 
 const metricLabel = {
   fontSize: "10px",
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   textTransform: "uppercase" as const,
   letterSpacing: "1.5px",
   margin: "6px 0 4px 0",
@@ -402,7 +486,7 @@ const metricLabel = {
 
 const metricDelta = {
   fontSize: "12px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   margin: "0",
   fontWeight: "500" as const,
 };
@@ -414,7 +498,7 @@ const goalRow = {
   backgroundColor: "#141414",
   borderRadius: "10px",
   padding: "16px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const goalContent = {
@@ -430,7 +514,7 @@ const goalName = {
 
 const goalProgress = {
   fontSize: "12px",
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   margin: "2px 0 0 0",
 };
 
@@ -448,7 +532,7 @@ const goalPercent = {
 };
 
 const progressBarBg = {
-  backgroundColor: "rgba(255, 255, 255, 0.08)",
+  backgroundColor: "#1f1f1f",
   borderRadius: "4px",
   height: "6px",
   marginTop: "12px",
@@ -467,10 +551,11 @@ const progressBarFill = (_percent: string) => ({
 const vitalsCard = {
   borderRadius: "12px",
   overflow: "hidden" as const,
+  border: "1px solid #1a1a1a",
 };
 
 const vitalRow = {
-  borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+  borderBottom: "1px solid #1a1a1a",
   padding: "14px 0",
 };
 
@@ -484,7 +569,7 @@ const vitalLabelCol = {
 
 const vitalLabelText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   margin: "0",
 };
 
@@ -506,6 +591,7 @@ const moodCard = {
   borderRadius: "12px",
   overflow: "hidden" as const,
   textAlign: "center" as const,
+  border: "1px solid #1a1a1a",
 };
 
 const moodCell = {
@@ -529,7 +615,7 @@ const moodNumber = {
 
 const moodCellLabel = {
   fontSize: "10px",
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   textTransform: "uppercase" as const,
   letterSpacing: "1px",
   margin: "0 0 2px 0",
@@ -559,7 +645,7 @@ const challengeCard = {
   borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const challengeHeading = {
@@ -571,13 +657,13 @@ const challengeHeading = {
 
 const challengeText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
 };
 
 const challengeButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -587,7 +673,7 @@ const challengeButton = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 // ── Referral ──
@@ -606,14 +692,14 @@ const referralHeading = {
 
 const referralText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
   textAlign: "center" as const,
 };
 
 const referralButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -623,7 +709,7 @@ const referralButton = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 const ctaSection = {
@@ -632,7 +718,7 @@ const ctaSection = {
 
 const ctaText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0 0 4px 0",
   textAlign: "center" as const,
@@ -641,4 +727,100 @@ const ctaText = {
 const ctaCenter = {
   textAlign: "center" as const,
   margin: "20px 0 0 0",
+};
+
+// ── Ecosystem Cross-Sell ──
+
+const ecosystemStrip = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "24px 12px",
+  border: "1px solid #1a1a1a",
+  textAlign: "center" as const,
+};
+
+const ecosystemCell = {
+  width: "33.33%",
+  textAlign: "center" as const,
+  verticalAlign: "top" as const,
+  padding: "0 4px",
+};
+
+const ecosystemImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "8px",
+  marginBottom: "10px",
+};
+
+const ecosystemBadge = (color: string) => ({
+  display: "inline-block" as const,
+  backgroundColor: color,
+  color: "#ffffff",
+  fontSize: "9px",
+  fontWeight: "700" as const,
+  letterSpacing: "1px",
+  textTransform: "uppercase" as const,
+  padding: "3px 8px",
+  borderRadius: "4px",
+  margin: "0 0 6px 0",
+  lineHeight: "1.3",
+});
+
+const ecosystemName = {
+  fontSize: "13px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0 0 8px 0",
+};
+
+const ecosystemLink = {
+  color: "#8a8a8a",
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  textDecoration: "underline",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.5px",
+  backgroundColor: "transparent",
+  border: "none",
+  padding: "0",
+};
+
+// ── Did You Know ──
+
+const didYouKnowCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "24px 20px",
+  border: "1px solid #1a1a1a",
+};
+
+const didYouKnowImageCol = {
+  width: "100px",
+  verticalAlign: "top" as const,
+  paddingRight: "16px",
+};
+
+const didYouKnowImage = {
+  width: "100px",
+  display: "block" as const,
+  borderRadius: "8px",
+};
+
+const didYouKnowContent = {
+  verticalAlign: "top" as const,
+};
+
+const didYouKnowHeading = {
+  fontSize: "15px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+};
+
+const didYouKnowText = {
+  fontSize: "13px",
+  color: "#8a8a8a",
+  lineHeight: "20px",
+  margin: "0",
 };

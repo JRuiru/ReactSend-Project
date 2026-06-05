@@ -8,15 +8,16 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
-import { SecondaryButton } from "../components/SecondaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { SecondaryButton } from "../../components/SecondaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
 
 const IMAGES = {
   hero: `${CDN}/app-community-challenges/public`,
+  lifestyle: `${CDN}/lifestyle-friends-bar/public`,
 };
 
 export default function GroupInviteEmail() {
@@ -143,6 +144,16 @@ export default function GroupInviteEmail() {
         </Row>
       </Section>
 
+      {/* ── Lifestyle image ── */}
+      <Section style={lifestyleImageSection}>
+        <Img
+          src={IMAGES.lifestyle}
+          width="560"
+          alt="Friends being social and healthy together"
+          style={lifestyleImage}
+        />
+      </Section>
+
       <Hr style={divider} />
 
       {/* ── Social proof ── */}
@@ -151,6 +162,16 @@ export default function GroupInviteEmail() {
         <Text style={proofText}>
           are already in this group. Join them and start your health
           journey together.
+        </Text>
+      </Section>
+
+      {/* ── Testimonial ── */}
+      <Section style={testimonialSection}>
+        <Text style={testimonialQuote}>
+          "Our running group has done three challenges together. The leaderboard keeps everyone honest."
+        </Text>
+        <Text style={testimonialAuthor}>
+          Amara W., group admin
         </Text>
       </Section>
 
@@ -210,7 +231,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -233,19 +254,19 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
@@ -257,7 +278,7 @@ const groupCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "28px 24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const groupName = {
@@ -269,13 +290,13 @@ const groupName = {
 
 const groupDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "22px",
   margin: "0",
 };
 
 const cardDivider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "20px 0",
 };
 
@@ -298,7 +319,7 @@ const detailValue = {
 const detailLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   letterSpacing: "1.5px",
   margin: "0",
 };
@@ -328,7 +349,7 @@ const benefitNumCol = {
 const benefitNum = {
   fontSize: "20px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "1",
 };
@@ -342,9 +363,45 @@ const benefitTitle = {
 
 const benefitDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "21px",
   margin: "0",
+};
+
+// ── Lifestyle image ──
+
+const lifestyleImageSection = {
+  margin: "28px 0 0 0",
+};
+
+const lifestyleImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+};
+
+// ── Testimonial ──
+
+const testimonialSection = {
+  textAlign: "center" as const,
+  padding: "24px 20px",
+};
+
+const testimonialQuote = {
+  fontSize: "16px",
+  fontStyle: "italic" as const,
+  lineHeight: "26px",
+  color: "#a3a3a3",
+  margin: "0 0 12px 0",
+  textAlign: "center" as const,
+};
+
+const testimonialAuthor = {
+  fontSize: "13px",
+  fontWeight: "600" as const,
+  color: "#6b6b6b",
+  margin: "0",
+  textAlign: "center" as const,
 };
 
 // ── Social proof ──
@@ -363,7 +420,7 @@ const proofNumber = {
 
 const proofText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   margin: "4px 0 0 0",
   textAlign: "center" as const,
 };
@@ -384,7 +441,7 @@ const downloadHeading = {
 
 const downloadText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
   textAlign: "center" as const,
@@ -401,13 +458,13 @@ const downloadStoreCol = {
 
 const downloadStoreButton = {
   backgroundColor: "transparent",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   padding: "10px 20px",
   borderRadius: "50px",
   fontSize: "12px",
   fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(255, 255, 255, 0.15)",
+  border: "1px solid #2a2a2a",
   letterSpacing: "0.5px",
 };

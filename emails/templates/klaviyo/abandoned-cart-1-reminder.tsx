@@ -6,9 +6,9 @@ import {
   Column,
   Hr,
 } from "@react-email/components";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
-import { SecondaryButton } from "../components/SecondaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { SecondaryButton } from "../../components/SecondaryButton";
 import * as React from "react";
 
 const CF_IMG = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
@@ -184,7 +184,7 @@ export default function AbandonedCartReminder() {
         <Text style={styles.testimonialQuote}>
           &ldquo;The Ring One tracks my sleep and the app shows me exactly what to improve. I have never felt more in control of my health.&rdquo;
         </Text>
-        <Text style={styles.testimonialAuthor}>Sarah M. &mdash; Verified Customer</Text>
+        <Text style={styles.testimonialAuthor}>Fatima A. &mdash; Verified Customer</Text>
       </Section>
 
       {/* Spacer */}

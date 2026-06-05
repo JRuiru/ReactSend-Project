@@ -8,14 +8,18 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
 
 const IMAGES = {
   hero: `${CDN}/lifestyle-sun-portrait/public`,
+  appPhones: `${CDN}/app-hero-triple-phones/public`,
+  ring: `${CDN}/ring-gold-hands-portrait/public`,
+  scale: `${CDN}/scale-black-nutritionist/public`,
+  bp: `${CDN}/bp-black-poster/public`,
 };
 
 export default function ReEngagementEmail() {
@@ -50,6 +54,15 @@ export default function ReEngagementEmail() {
 
       {/* ── What you're missing ── */}
       <Text style={sectionLabel}>WHAT YOU HAVE BEEN MISSING</Text>
+
+      <Section style={appPreviewCard}>
+        <Img
+          src={IMAGES.appPhones}
+          width="480"
+          alt="SeeMyHealth app dashboard"
+          style={appPreviewImage}
+        />
+      </Section>
 
       <Section style={missedCard}>
         <Row>
@@ -134,6 +147,47 @@ export default function ReEngagementEmail() {
 
       <Hr style={divider} />
 
+      {/* ── Device ecosystem strip ── */}
+      <Text style={sectionLabel}>YOUR DEVICES MISS YOU TOO</Text>
+      <Text style={ecosystemIntro}>
+        Your devices are ready to sync the moment you open the app. Pick up
+        where you left off, or explore something new.
+      </Text>
+
+      <Section style={ecosystemGrid}>
+        <Row>
+          <Column style={ecoCol}>
+            <Img src={IMAGES.ring} width="160" alt="Ring One" style={ecoImage} />
+            <Text style={ecoName}>Ring One</Text>
+            <a href={`${BASE_URL}/shop/ring-one`} style={ecoShopLink}>Shop</a>
+          </Column>
+          <Column style={ecoCol}>
+            <Img src={IMAGES.scale} width="160" alt="The Scale" style={ecoImage} />
+            <Text style={ecoName}>The Scale</Text>
+            <a href={`${BASE_URL}/shop/the-scale`} style={ecoShopLink}>Shop</a>
+          </Column>
+          <Column style={ecoCol}>
+            <Img src={IMAGES.bp} width="160" alt="BP Monitor" style={ecoImage} />
+            <Text style={ecoName}>BP Monitor</Text>
+            <a href={`${BASE_URL}/shop/bp-monitor`} style={ecoShopLink}>Shop</a>
+          </Column>
+        </Row>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Testimonial ── */}
+      <Section style={testimonialSection}>
+        <Text style={testimonialQuote}>"</Text>
+        <Text style={testimonialText}>
+          I took a two-week break and was surprised how much data was waiting
+          for me when I came back. My health trends picked right up.
+        </Text>
+        <Text style={testimonialAuthor}>David M., member since 2024</Text>
+      </Section>
+
+      <Hr style={divider} />
+
       {/* ── Referral ── */}
       <Section style={referralCard}>
         <Text style={referralHeading}>Bring a friend, restart together</Text>
@@ -142,7 +196,7 @@ export default function ReEngagementEmail() {
           a friend and hold each other accountable.
         </Text>
         <Section style={ctaCenter}>
-          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={referralButton}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}&name={{first_name}}`} style={referralButton}>
             Invite a Friend
           </Button>
         </Section>
@@ -161,6 +215,31 @@ export default function ReEngagementEmail() {
           <PrimaryButton href={BASE_URL}>
             Open SeeMyHealth
           </PrimaryButton>
+        </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── App download ── */}
+      <Section style={downloadSection}>
+        <Text style={downloadHeading}>Download the app</Text>
+        <Text style={downloadText}>
+          Available on iOS and Android. Your health data syncs
+          automatically across all your devices.
+        </Text>
+        <Section style={{ textAlign: "center" as const, marginTop: "16px" }}>
+          <Row>
+            <Column align="center" style={storeCol}>
+              <Button href="https://apps.apple.com/app/seemyhealth" style={storeButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={storeCol}>
+              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={storeButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
         </Section>
       </Section>
 
@@ -204,7 +283,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -227,19 +306,19 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
@@ -259,7 +338,7 @@ const missedNumCol = {
 const missedNum = {
   fontSize: "20px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "1",
 };
@@ -273,7 +352,7 @@ const missedTitle = {
 
 const missedDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "21px",
   margin: "0",
 };
@@ -284,7 +363,7 @@ const newFeatureCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const featureItem = {
@@ -292,7 +371,7 @@ const featureItem = {
 };
 
 const cardDivider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "16px 0",
 };
 
@@ -303,7 +382,7 @@ const newBadge = {
   letterSpacing: "1.5px",
   textTransform: "uppercase" as const,
   margin: "0 0 6px 0",
-  backgroundColor: "rgba(255, 255, 255, 0.08)",
+  backgroundColor: "#1f1f1f",
   padding: "3px 8px",
   borderRadius: "4px",
   display: "inline-block" as const,
@@ -318,7 +397,7 @@ const newTitle = {
 
 const newDesc = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "20px",
   margin: "0",
 };
@@ -330,7 +409,7 @@ const referralCard = {
   borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const referralHeading = {
@@ -342,13 +421,13 @@ const referralHeading = {
 
 const referralText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
 };
 
 const referralButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -358,7 +437,7 @@ const referralButton = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 // ── CTA ──
@@ -377,7 +456,7 @@ const ctaHeading = {
 
 const ctaText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0",
   textAlign: "center" as const,
@@ -390,12 +469,140 @@ const ctaCenter = {
 
 const footerNote = {
   fontSize: "12px",
-  color: "rgba(255, 255, 255, 0.25)",
+  color: "#404040",
   textAlign: "center" as const,
   margin: "0",
 };
 
 const linkStyle = {
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   textDecoration: "underline",
+};
+
+// ── App preview ──
+
+const appPreviewCard = {
+  borderRadius: "12px",
+  overflow: "hidden" as const,
+  marginBottom: "20px",
+  backgroundColor: "#141414",
+  border: "1px solid #1a1a1a",
+};
+
+const appPreviewImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+};
+
+// ── Ecosystem strip ──
+
+const ecosystemIntro = {
+  fontSize: "15px",
+  color: "#8a8a8a",
+  lineHeight: "24px",
+  margin: "0 0 20px 0",
+};
+
+const ecosystemGrid = {
+  textAlign: "center" as const,
+};
+
+const ecoCol = {
+  width: "33.33%",
+  verticalAlign: "top" as const,
+  padding: "0 4px",
+};
+
+const ecoImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "8px",
+  backgroundColor: "#141414",
+};
+
+const ecoName = {
+  fontSize: "13px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "8px 0 4px 0",
+  textAlign: "center" as const,
+};
+
+const ecoShopLink = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "#6b6b6b",
+  textDecoration: "underline",
+  letterSpacing: "0.5px",
+};
+
+// ── Testimonial ──
+
+const testimonialSection = {
+  textAlign: "center" as const,
+  padding: "8px 0",
+};
+
+const testimonialQuote = {
+  fontSize: "48px",
+  color: "#2a2a2a",
+  margin: "0",
+  lineHeight: "1",
+  fontFamily: "Georgia, serif",
+};
+
+const testimonialText = {
+  fontSize: "15px",
+  fontStyle: "italic" as const,
+  color: "#a3a3a3",
+  lineHeight: "24px",
+  margin: "0 0 12px 0",
+};
+
+const testimonialAuthor = {
+  fontSize: "13px",
+  color: "#5e5e5e",
+  margin: "0",
+  fontWeight: "600" as const,
+};
+
+// ── App download ──
+
+const downloadSection = {
+  textAlign: "center" as const,
+};
+
+const downloadHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 6px 0",
+  textAlign: "center" as const,
+};
+
+const downloadText = {
+  fontSize: "14px",
+  color: "#6b6b6b",
+  lineHeight: "22px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const storeCol = {
+  width: "50%",
+  padding: "0 4px",
+};
+
+const storeButton = {
+  backgroundColor: "transparent",
+  color: "#a3a3a3",
+  padding: "10px 20px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid #2a2a2a",
+  letterSpacing: "0.5px",
 };

@@ -8,14 +8,18 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
 
 const IMAGES = {
   hero: `${CDN}/ring-yoga/public`,
+  lifestyle: `${CDN}/ring-fitness-body/public`,
+  ring: `${CDN}/ring-gold-hands-portrait/public`,
+  scale: `${CDN}/scale-black-nutritionist/public`,
+  bp: `${CDN}/bp-black-poster/public`,
 };
 
 export default function StreakMilestoneEmail() {
@@ -140,6 +144,21 @@ export default function StreakMilestoneEmail() {
 
       <Hr style={divider} />
 
+      {/* ── Lifestyle Image ── */}
+      <Section style={lifestyleSection}>
+        <Img
+          src={IMAGES.lifestyle}
+          width="560"
+          alt="Stay consistent with SeeMyHealth"
+          style={lifestyleImage}
+        />
+        <Text style={lifestyleCaption}>
+          Consistency is the ultimate superpower.
+        </Text>
+      </Section>
+
+      <Hr style={divider} />
+
       {/* ── Quote ── */}
       <Section style={quoteSection}>
         <Text style={quoteMark}>"</Text>
@@ -175,10 +194,55 @@ export default function StreakMilestoneEmail() {
           and build streaks together.
         </Text>
         <Section style={ctaCenter}>
-          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={inviteCta}>
+          <Button href={`${BASE_URL}/invite?ref={{user_id}}&name={{first_name}}`} style={inviteCta}>
             Invite a Friend
           </Button>
         </Section>
+      </Section>
+
+      <Hr style={divider} />
+
+      {/* ── Ecosystem Strip ── */}
+      <Text style={ecosystemHeading}>Level up your tracking</Text>
+      <Section style={ecosystemStrip}>
+        <Row>
+          <Column align="center" style={ecosystemCol}>
+            <Img
+              src={IMAGES.ring}
+              width="160"
+              alt="SeeMyHealth Ring"
+              style={ecosystemImage}
+            />
+            <Text style={ecosystemName}>Smart Ring</Text>
+            <Button href={`${BASE_URL}/shop/ring`} style={ecosystemShopLink}>
+              Shop
+            </Button>
+          </Column>
+          <Column align="center" style={ecosystemCol}>
+            <Img
+              src={IMAGES.scale}
+              width="160"
+              alt="SeeMyHealth Scale"
+              style={ecosystemImage}
+            />
+            <Text style={ecosystemName}>Smart Scale</Text>
+            <Button href={`${BASE_URL}/shop/scale`} style={ecosystemShopLink}>
+              Shop
+            </Button>
+          </Column>
+          <Column align="center" style={ecosystemCol}>
+            <Img
+              src={IMAGES.bp}
+              width="160"
+              alt="SeeMyHealth Blood Pressure Monitor"
+              style={ecosystemImage}
+            />
+            <Text style={ecosystemName}>BP Monitor</Text>
+            <Button href={`${BASE_URL}/shop/bp-monitor`} style={ecosystemShopLink}>
+              Shop
+            </Button>
+          </Column>
+        </Row>
       </Section>
 
       <Hr style={divider} />
@@ -192,6 +256,25 @@ export default function StreakMilestoneEmail() {
           <PrimaryButton href={`${BASE_URL}/app`}>
             Keep the Streak Alive
           </PrimaryButton>
+        </Section>
+      </Section>
+
+      {/* ── App Store Buttons ── */}
+      <Section style={{ textAlign: "center" as const, marginTop: "24px" }}>
+        <Text style={storeLabel}>GET THE APP</Text>
+        <Section style={{ textAlign: "center" as const, marginTop: "12px" }}>
+          <Row>
+            <Column align="center" style={storeCol}>
+              <Button href="https://apps.apple.com/app/seemyhealth" style={storeButton}>
+                App Store
+              </Button>
+            </Column>
+            <Column align="center" style={storeCol}>
+              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={storeButton}>
+                Google Play
+              </Button>
+            </Column>
+          </Row>
         </Section>
       </Section>
 
@@ -227,7 +310,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -244,7 +327,7 @@ const heroCount = {
 const heroSub = {
   fontSize: "14px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "4px",
   margin: "4px 0 0 0",
 };
@@ -259,19 +342,19 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 16px 0",
@@ -283,7 +366,7 @@ const statsCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "20px 24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
   textAlign: "center" as const,
 };
 
@@ -303,13 +386,13 @@ const statValue = {
 const statLabel = {
   fontSize: "10px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   letterSpacing: "1.5px",
   margin: "0",
 };
 
 const statDivider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "8px 0",
 };
 
@@ -319,11 +402,11 @@ const milestoneCard = {
   backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "8px 24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const milestoneRow = {
-  borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+  borderBottom: "1px solid #1a1a1a",
   padding: "14px 0",
 };
 
@@ -355,7 +438,7 @@ const milestoneName = {
 
 const milestoneSub = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   margin: "2px 0 0 0",
 };
 
@@ -367,7 +450,7 @@ const quoteSection = {
 
 const quoteMark = {
   fontSize: "48px",
-  color: "rgba(255, 255, 255, 0.1)",
+  color: "#222222",
   margin: "0",
   lineHeight: "1",
   fontFamily: "Georgia, serif",
@@ -376,14 +459,14 @@ const quoteMark = {
 const quoteText = {
   fontSize: "15px",
   fontStyle: "italic" as const,
-  color: "rgba(255, 255, 255, 0.55)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0 0 8px 0",
 };
 
 const quoteAuthor = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   margin: "0",
   fontWeight: "600" as const,
 };
@@ -395,7 +478,7 @@ const challengeCard = {
   borderRadius: "12px",
   padding: "28px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const challengeHeading = {
@@ -407,7 +490,7 @@ const challengeHeading = {
 
 const challengeText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
 };
@@ -441,14 +524,14 @@ const inviteHeading = {
 
 const inviteText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
   textAlign: "center" as const,
 };
 
 const inviteCta = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -458,7 +541,7 @@ const inviteCta = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 // ── CTA ──
@@ -469,7 +552,7 @@ const ctaSection = {
 
 const ctaText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0",
   textAlign: "center" as const,
@@ -478,4 +561,101 @@ const ctaText = {
 const ctaCenter = {
   textAlign: "center" as const,
   margin: "20px 0 0 0",
+};
+
+// ── Lifestyle image ──
+
+const lifestyleSection = {
+  textAlign: "center" as const,
+};
+
+const lifestyleImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+};
+
+const lifestyleCaption = {
+  fontSize: "13px",
+  fontStyle: "italic" as const,
+  color: "#6b6b6b",
+  margin: "12px 0 0 0",
+  textAlign: "center" as const,
+};
+
+// ── Ecosystem strip ──
+
+const ecosystemHeading = {
+  fontSize: "18px",
+  fontWeight: "700" as const,
+  color: "#f5f5f5",
+  margin: "0 0 16px 0",
+  textAlign: "center" as const,
+};
+
+const ecosystemStrip = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "20px 12px",
+  border: "1px solid #1a1a1a",
+  textAlign: "center" as const,
+};
+
+const ecosystemCol = {
+  width: "33.33%",
+  padding: "0 4px",
+  verticalAlign: "top" as const,
+};
+
+const ecosystemImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "8px",
+};
+
+const ecosystemName = {
+  fontSize: "13px",
+  fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "10px 0 4px 0",
+};
+
+const ecosystemShopLink = {
+  backgroundColor: "transparent",
+  color: "#fb923c",
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  textDecoration: "underline",
+  padding: "0",
+  letterSpacing: "0.5px",
+};
+
+// ── App Store buttons ──
+
+const storeLabel = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  color: "#5e5e5e",
+  letterSpacing: "3px",
+  textTransform: "uppercase" as const,
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const storeCol = {
+  width: "50%",
+  padding: "0 4px",
+};
+
+const storeButton = {
+  backgroundColor: "transparent",
+  color: "#a3a3a3",
+  padding: "10px 20px",
+  borderRadius: "50px",
+  fontSize: "12px",
+  fontWeight: "600" as const,
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid #2a2a2a",
+  letterSpacing: "0.5px",
 };

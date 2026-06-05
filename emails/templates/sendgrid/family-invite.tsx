@@ -8,8 +8,8 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
@@ -58,61 +58,47 @@ export default function FamilyInviteEmail() {
           You're in control
           ══════════════════════════════════════════════════════════ */}
       <Text style={sectionLabel}>YOU ARE IN CONTROL</Text>
+
+      <Img
+        src={`${CDN}/app-hubby-progress/public`}
+        width="480"
+        alt="Family sharing settings"
+        style={controlImage}
+      />
+
       <Text style={sectionSubtext}>
         Nothing is shared by default. You choose exactly what each family
         member can see, and you can change it anytime.
       </Text>
 
-      {/* Permission grid - 2 column */}
+      {/* Permission grid - 2 column, compact */}
       <Section style={permGrid}>
         <Row>
           <Column style={permCell}>
             <Section style={permCard}>
               <Text style={permName}>Heart Health</Text>
-              <Text style={permDesc}>Blood pressure, heart rate, HRV, SpO2</Text>
             </Section>
           </Column>
           <Column style={permSpacer} />
-          <Column style={permCell}>
-            <Section style={permCard}>
-              <Text style={permName}>Body Composition</Text>
-              <Text style={permDesc}>Weight, BMI, body fat, muscle mass</Text>
-            </Section>
-          </Column>
-        </Row>
-      </Section>
-
-      <Section style={permGrid}>
-        <Row>
           <Column style={permCell}>
             <Section style={permCard}>
               <Text style={permName}>Sleep</Text>
-              <Text style={permDesc}>Patterns, quality, duration tracking</Text>
             </Section>
           </Column>
-          <Column style={permSpacer} />
+        </Row>
+      </Section>
+
+      <Section style={permGrid}>
+        <Row>
           <Column style={permCell}>
             <Section style={permCard}>
               <Text style={permName}>Activity</Text>
-              <Text style={permDesc}>Steps, exercise, daily fitness metrics</Text>
             </Section>
           </Column>
-        </Row>
-      </Section>
-
-      <Section style={permGrid}>
-        <Row>
+          <Column style={permSpacer} />
           <Column style={permCell}>
             <Section style={permCard}>
               <Text style={permName}>Nutrition</Text>
-              <Text style={permDesc}>Meals, calories, dietary tracking</Text>
-            </Section>
-          </Column>
-          <Column style={permSpacer} />
-          <Column style={permCell}>
-            <Section style={permCard}>
-              <Text style={permName}>Mental Health</Text>
-              <Text style={permDesc}>Mood, stress, journal wellness</Text>
             </Section>
           </Column>
         </Row>
@@ -120,58 +106,29 @@ export default function FamilyInviteEmail() {
 
       <Section style={permGrid}>
         <Row>
+          <Column style={permCell}>
+            <Section style={permCard}>
+              <Text style={permName}>Body Composition</Text>
+            </Section>
+          </Column>
+          <Column style={permSpacer} />
           <Column style={permCell}>
             <Section style={permCard}>
               <Text style={permName}>Blood Health</Text>
-              <Text style={permDesc}>Glucose, haemoglobin, lipid levels</Text>
-            </Section>
-          </Column>
-          <Column style={permSpacer} />
-          <Column style={permCell}>
-            <Section style={permCard}>
-              <Text style={permName}>Medical Records</Text>
-              <Text style={permDesc}>History, diagnoses, lab results</Text>
             </Section>
           </Column>
         </Row>
       </Section>
 
-      <Section style={permGrid}>
-        <Row>
-          <Column style={permCell}>
-            <Section style={permCard}>
-              <Text style={permName}>Appointments</Text>
-              <Text style={permDesc}>Upcoming visits, doctor schedules</Text>
-            </Section>
-          </Column>
-          <Column style={permSpacer} />
-          <Column style={permCell}>
-            <Section style={permCard}>
-              <Text style={permName}>Goals</Text>
-              <Text style={permDesc}>Health goals, targets, progress</Text>
-            </Section>
-          </Column>
-        </Row>
-      </Section>
-
-      <Section style={permGrid}>
-        <Row>
-          <Column style={permCell}>
-            <Section style={permCard}>
-              <Text style={permName}>Health Events</Text>
-              <Text style={permDesc}>Alerts and health incidents</Text>
-            </Section>
-          </Column>
-          <Column style={permSpacer} />
-          <Column style={permCell} />
-        </Row>
-      </Section>
+      <Text style={moreCategories}>
+        and 5 more categories including mental health, medical records,
+        appointments, goals, and health events.
+      </Text>
 
       <Section style={toggleExplainer}>
         <Text style={toggleText}>
           Each category has its own on/off toggle per family member.
           Everything is <strong style={{ color: "#f5f5f5" }}>off by default</strong>.
-          You turn on only what you want to share.
         </Text>
       </Section>
 
@@ -182,56 +139,64 @@ export default function FamilyInviteEmail() {
           ══════════════════════════════════════════════════════════ */}
       <Text style={sectionLabel}>SECURITY</Text>
 
-      <Section style={securityCard}>
-        <Text style={securityHeading}>Secured with Face ID</Text>
+      <Section style={securityCardOuter}>
+        <Img
+          src={`${CDN}/ring-phantom-black-poster/public`}
+          width="560"
+          alt="Security"
+          style={securityImage}
+        />
+        <Section style={securityBody}>
+          <Text style={securityHeading}>Secured with Face ID</Text>
 
-        <Section style={securityItem}>
-          <Row>
-            <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
-            <Column>
-              <Text style={securityText}>
-                <strong style={{ color: "#f5f5f5" }}>Biometric lock</strong> on
-                all family settings. No one can change your sharing preferences
-                without your face or fingerprint.
-              </Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={securityItem}>
+            <Row>
+              <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
+              <Column>
+                <Text style={securityText}>
+                  <strong style={{ color: "#f5f5f5" }}>Biometric lock</strong> on
+                  all family settings. No one can change your sharing preferences
+                  without your face or fingerprint.
+                </Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={securityItem}>
-          <Row>
-            <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
-            <Column>
-              <Text style={securityText}>
-                <strong style={{ color: "#f5f5f5" }}>Auto-lock after 10 seconds.</strong> Leave
-                the settings screen and it locks automatically.
-              </Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={securityItem}>
+            <Row>
+              <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
+              <Column>
+                <Text style={securityText}>
+                  <strong style={{ color: "#f5f5f5" }}>Auto-lock after 10 seconds.</strong> Leave
+                  the settings screen and it locks automatically.
+                </Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={securityItem}>
-          <Row>
-            <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
-            <Column>
-              <Text style={securityText}>
-                <strong style={{ color: "#f5f5f5" }}>End-to-end encrypted.</strong> Only
-                you and authorized family members can see shared data.
-              </Text>
-            </Column>
-          </Row>
-        </Section>
+          <Section style={securityItem}>
+            <Row>
+              <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
+              <Column>
+                <Text style={securityText}>
+                  <strong style={{ color: "#f5f5f5" }}>End-to-end encrypted.</strong> Only
+                  you and authorized family members can see shared data.
+                </Text>
+              </Column>
+            </Row>
+          </Section>
 
-        <Section style={securityItem}>
-          <Row>
-            <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
-            <Column>
-              <Text style={securityText}>
-                <strong style={{ color: "#f5f5f5" }}>Remove anytime.</strong> Disconnect
-                a family member instantly. All shared access is revoked.
-              </Text>
-            </Column>
-          </Row>
+          <Section style={securityItem}>
+            <Row>
+              <Column style={checkCol}><Text style={checkText}>&#x25CF;</Text></Column>
+              <Column>
+                <Text style={securityText}>
+                  <strong style={{ color: "#f5f5f5" }}>Remove anytime.</strong> Disconnect
+                  a family member instantly. All shared access is revoked.
+                </Text>
+              </Column>
+            </Row>
+          </Section>
         </Section>
       </Section>
 
@@ -303,44 +268,67 @@ export default function FamilyInviteEmail() {
 
       <Hr style={divider} />
 
-      {/* ── App download for new users ── */}
-      <Section style={downloadCard}>
-        <Text style={downloadHeading}>New to SeeMyHealth?</Text>
-        <Text style={downloadText}>
-          Download the app to accept the invitation and start sharing
-          health data with your family.
-        </Text>
-        <Section style={storeRow}>
-          <Row>
-            <Column align="center" style={storeCol}>
-              <Button href="https://apps.apple.com/app/seemyhealth" style={storeButton}>
-                App Store
-              </Button>
-            </Column>
-            <Column align="center" style={storeCol}>
-              <Button href="https://play.google.com/store/apps/details?id=ai.seemyhealth" style={storeButton}>
-                Google Play
-              </Button>
-            </Column>
-          </Row>
-        </Section>
-      </Section>
+      {/* ══════════════════════════════════════════════════════════
+          Device ecosystem strip
+          ══════════════════════════════════════════════════════════ */}
+      <Text style={ecosystemHeading}>Track health together</Text>
+      <Text style={ecosystemSubtext}>
+        Each device adds a new dimension to your family's health picture.
+      </Text>
 
-      <Hr style={divider} />
+      <Section style={ecosystemStrip}>
+        <Row>
+          {/* Ring */}
+          <Column style={deviceCol}>
+            <Section style={deviceCard}>
+              <Img
+                src={`${CDN}/ring-gold-hands-portrait/public`}
+                width="160"
+                alt="SeeMyHealth Ring"
+                style={deviceImage}
+              />
+              <Text style={deviceBadgeOrange}>WEARABLE</Text>
+              <Text style={deviceName}>The Ring</Text>
+              <Button href={`${BASE_URL}/products/ring`} style={exploreBtnOrange}>
+                Explore
+              </Button>
+            </Section>
+          </Column>
 
-      {/* ── Device ecosystem ── */}
-      <Section style={ecosystemSection}>
-        <Text style={ecosystemHeading}>Track health together</Text>
-        <Text style={ecosystemText}>
-          SeeMyHealth devices capture sleep, heart rate, blood pressure,
-          hydration, and blood markers. Everything syncs to one app your
-          whole family can use.
-        </Text>
-        <Section style={ctaCenter}>
-          <Button href={`${BASE_URL}/shop`} style={ecosystemButton}>
-            Explore Devices
-          </Button>
-        </Section>
+          {/* Scale */}
+          <Column style={deviceCol}>
+            <Section style={deviceCard}>
+              <Img
+                src={`${CDN}/scale-black-nutritionist/public`}
+                width="160"
+                alt="SeeMyHealth Scale"
+                style={deviceImage}
+              />
+              <Text style={deviceBadgeBlue}>BODY COMP</Text>
+              <Text style={deviceName}>The Scale</Text>
+              <Button href={`${BASE_URL}/products/scale`} style={exploreBtnBlue}>
+                Explore
+              </Button>
+            </Section>
+          </Column>
+
+          {/* BP Monitor */}
+          <Column style={deviceCol}>
+            <Section style={deviceCard}>
+              <Img
+                src={`${CDN}/bp-black-poster/public`}
+                width="160"
+                alt="SeeMyHealth BP Monitor"
+                style={deviceImage}
+              />
+              <Text style={deviceBadgeRed}>VITALS</Text>
+              <Text style={deviceName}>BP Monitor</Text>
+              <Button href={`${BASE_URL}/products/bp-monitor`} style={exploreBtnRed}>
+                Explore
+              </Button>
+            </Section>
+          </Column>
+        </Row>
       </Section>
 
       <Hr style={divider} />
@@ -389,7 +377,7 @@ const heroOverlay = {
 const heroLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -412,7 +400,7 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0",
 };
 
@@ -422,14 +410,14 @@ const ctaCenter = {
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "28px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 8px 0",
@@ -437,7 +425,7 @@ const sectionLabel = {
 
 const sectionSubtext = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0 0 20px 0",
 };
@@ -460,9 +448,23 @@ const permSpacer = {
 const permCard = {
   backgroundColor: "#141414",
   borderRadius: "10px",
-  padding: "14px 12px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
-  height: "72px",
+  padding: "12px 14px",
+  border: "1px solid #1a1a1a",
+};
+
+const controlImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px",
+  marginBottom: "16px",
+};
+
+const moreCategories = {
+  fontSize: "13px",
+  color: "#5e5e5e",
+  textAlign: "center" as const,
+  margin: "4px 0 16px 0",
+  lineHeight: "20px",
 };
 
 const permName = {
@@ -472,12 +474,6 @@ const permName = {
   margin: "0 0 2px 0",
 };
 
-const permDesc = {
-  fontSize: "11px",
-  lineHeight: "16px",
-  color: "rgba(255, 255, 255, 0.35)",
-  margin: "0",
-};
 
 const toggleExplainer = {
   backgroundColor: "#141414",
@@ -485,23 +481,33 @@ const toggleExplainer = {
   padding: "16px 20px",
   marginTop: "12px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const toggleText = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "20px",
   margin: "0",
 };
 
 // ── Security ──
 
-const securityCard = {
-  backgroundColor: "#141414",
+const securityCardOuter = {
   borderRadius: "12px",
+  overflow: "hidden" as const,
+  border: "1px solid #1a1a1a",
+  backgroundColor: "#141414",
+};
+
+const securityImage = {
+  width: "100%",
+  display: "block" as const,
+  opacity: "0.4",
+};
+
+const securityBody = {
   padding: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
 };
 
 const securityHeading = {
@@ -522,7 +528,7 @@ const checkCol = {
 
 const checkText = {
   fontSize: "8px",
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   margin: "0",
   lineHeight: "22px",
 };
@@ -530,7 +536,7 @@ const checkText = {
 const securityText = {
   fontSize: "14px",
   lineHeight: "22px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   margin: "0",
 };
 
@@ -548,7 +554,7 @@ const stepNumCol = {
 const stepNum = {
   fontSize: "20px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "1",
 };
@@ -562,62 +568,12 @@ const stepTitle = {
 
 const stepDesc = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   margin: "0",
   lineHeight: "21px",
 };
 
-// ── Download ──
-
-const downloadCard = {
-  backgroundColor: "#141414",
-  borderRadius: "12px",
-  padding: "28px 24px",
-  textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
-};
-
-const downloadHeading = {
-  fontSize: "18px",
-  fontWeight: "700" as const,
-  color: "#f5f5f5",
-  margin: "0 0 6px 0",
-};
-
-const downloadText = {
-  fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
-  lineHeight: "22px",
-  margin: "0",
-};
-
-const storeRow = {
-  marginTop: "16px",
-};
-
-const storeCol = {
-  width: "50%",
-  padding: "0 4px",
-};
-
-const storeButton = {
-  backgroundColor: "transparent",
-  color: "rgba(255, 255, 255, 0.6)",
-  padding: "10px 20px",
-  borderRadius: "50px",
-  fontSize: "12px",
-  fontWeight: "600" as const,
-  textDecoration: "none",
-  display: "inline-block",
-  border: "1px solid rgba(255, 255, 255, 0.15)",
-  letterSpacing: "0.5px",
-};
-
-// ── Ecosystem ──
-
-const ecosystemSection = {
-  textAlign: "center" as const,
-};
+// ── Ecosystem strip ──
 
 const ecosystemHeading = {
   fontSize: "18px",
@@ -627,26 +583,94 @@ const ecosystemHeading = {
   textAlign: "center" as const,
 };
 
-const ecosystemText = {
+const ecosystemSubtext = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
-  margin: "0",
+  margin: "0 0 20px 0",
   textAlign: "center" as const,
 };
 
-const ecosystemButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
-  color: "#f5f5f5",
-  padding: "10px 24px",
-  borderRadius: "50px",
-  fontSize: "12px",
+const ecosystemStrip = {
+  marginBottom: "0",
+};
+
+const deviceCol = {
+  width: "33.33%",
+  verticalAlign: "top" as const,
+  padding: "0 4px",
+};
+
+const deviceCard = {
+  backgroundColor: "#141414",
+  borderRadius: "12px",
+  padding: "0 0 16px 0",
+  textAlign: "center" as const,
+  border: "1px solid #1a1a1a",
+  overflow: "hidden" as const,
+};
+
+const deviceImage = {
+  width: "100%",
+  display: "block" as const,
+  borderRadius: "12px 12px 0 0",
+};
+
+const deviceBadgeBase = {
+  fontSize: "9px",
+  fontWeight: "700" as const,
+  letterSpacing: "1.5px",
+  textTransform: "uppercase" as const,
+  margin: "12px 0 4px 0",
+  lineHeight: "1",
+};
+
+const deviceBadgeOrange = {
+  ...deviceBadgeBase,
+  color: "#F97316",
+};
+
+const deviceBadgeBlue = {
+  ...deviceBadgeBase,
+  color: "#3B82F6",
+};
+
+const deviceBadgeRed = {
+  ...deviceBadgeBase,
+  color: "#EF4444",
+};
+
+const deviceName = {
+  fontSize: "13px",
   fontWeight: "600" as const,
+  color: "#f5f5f5",
+  margin: "0 0 10px 0",
+};
+
+const exploreBtnBase = {
+  fontSize: "11px",
+  fontWeight: "600" as const,
+  padding: "6px 16px",
+  borderRadius: "50px",
   textDecoration: "none",
   display: "inline-block",
   letterSpacing: "0.5px",
-  textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  color: "#0a0a0a",
+};
+
+const exploreBtnOrange = {
+  ...exploreBtnBase,
+  backgroundColor: "#F97316",
+};
+
+const exploreBtnBlue = {
+  ...exploreBtnBase,
+  backgroundColor: "#3B82F6",
+};
+
+const exploreBtnRed = {
+  ...exploreBtnBase,
+  backgroundColor: "#EF4444",
 };
 
 // ── Final CTA ──
@@ -657,7 +681,7 @@ const finalCta = {
 
 const finalText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0",
   textAlign: "center" as const,

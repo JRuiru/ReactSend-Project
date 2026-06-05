@@ -9,9 +9,9 @@ import {
   Button,
 } from "@react-email/components";
 import * as React from "react";
-import { EmailLayout } from "../components/EmailLayout";
-import { PrimaryButton } from "../components/PrimaryButton";
-import { SecondaryButton } from "../components/SecondaryButton";
+import { EmailLayout } from "../../components/EmailLayout";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { SecondaryButton } from "../../components/SecondaryButton";
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
@@ -183,7 +183,7 @@ export default function WelcomeEmail() {
           <Text style={deviceBadge(DEVICE_COLORS.bp)}>VITAL SIGNS</Text>
           <Text style={deviceName}>The BP Monitor</Text>
           <Text style={deviceDesc}>
-            Clinical-grade blood pressure readings that sync directly to
+            Accurate blood pressure readings that sync directly to
             your health dashboard. Track trends over time.
           </Text>
           <Section style={{ marginTop: "16px" }}>
@@ -219,7 +219,7 @@ export default function WelcomeEmail() {
           <Text style={deviceBadge(DEVICE_COLORS.hema)}>BLOOD ANALYSIS</Text>
           <Text style={deviceName}>Hema One</Text>
           <Text style={deviceDesc}>
-            At-home blood analysis. Lab-level insights without the lab visit.
+            At-home blood analysis. Detailed insights without the lab visit.
             Know your numbers from the comfort of home.
           </Text>
           <Section style={{ marginTop: "16px" }}>
@@ -304,15 +304,15 @@ export default function WelcomeEmail() {
           Share SeeMyHealth and start your wellness journey together.
         </Text>
         <Section style={ctaCenter}>
-          <Button href={`${BASE_URL}/invite?ref={{user_id}}`} style={inviteButton}>
+          <PrimaryButton href={`${BASE_URL}/invite?ref={{user_id}}&name={{first_name}}`}>
             Invite a Friend
-          </Button>
+          </PrimaryButton>
         </Section>
         <Section style={shareRow}>
           <Row>
             <Column align="center" style={shareCol}>
               <Link
-                href="mailto:?subject=Join%20me%20on%20SeeMyHealth&body=Hey!%20I%20just%20joined%20SeeMyHealth%20and%20it%27s%20amazing.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
+                href="mailto:?subject=Join%20me%20on%20SeeMyHealth&body=Hey!%20I%20just%20joined%20SeeMyHealth%20and%20it%27s%20amazing.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}%26name%3D{{first_name}}"
                 style={shareLink}
               >
                 Email
@@ -320,7 +320,7 @@ export default function WelcomeEmail() {
             </Column>
             <Column align="center" style={shareCol}>
               <Link
-                href="sms:?body=Hey!%20I%20just%20joined%20SeeMyHealth.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
+                href="sms:?body=Hey!%20I%20just%20joined%20SeeMyHealth.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}%26name%3D{{first_name}}"
                 style={shareLink}
               >
                 SMS
@@ -328,7 +328,7 @@ export default function WelcomeEmail() {
             </Column>
             <Column align="center" style={shareCol}>
               <Link
-                href="https://wa.me/?text=Hey!%20I%20just%20joined%20SeeMyHealth.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}"
+                href="https://wa.me/?text=Hey!%20I%20just%20joined%20SeeMyHealth.%20Check%20it%20out%3A%20https%3A%2F%2Fseemyhealth.ai%2Finvite%3Fref%3D{{user_id}}%26name%3D{{first_name}}"
                 style={shareLink}
               >
                 WhatsApp
@@ -416,7 +416,7 @@ const heroOverlay = {
 const heroTagline = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.7)",
+  color: "#b3b3b3",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 4px 0",
@@ -444,14 +444,14 @@ const heading = {
 const paragraph = {
   fontSize: "16px",
   lineHeight: "26px",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   margin: "0 0 8px 0",
 };
 
 const sectionLabel = {
   fontSize: "11px",
   fontWeight: "600" as const,
-  color: "rgba(255, 255, 255, 0.35)",
+  color: "#5e5e5e",
   letterSpacing: "3px",
   textTransform: "uppercase" as const,
   margin: "0 0 8px 0",
@@ -467,13 +467,13 @@ const sectionHeading = {
 
 const sectionSubtext = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0 0 24px 0",
 };
 
 const divider = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "#1a1a1a",
   margin: "36px 0",
 };
 
@@ -488,7 +488,7 @@ const deviceCard = {
   borderRadius: "12px",
   overflow: "hidden" as const,
   marginBottom: "16px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
   backgroundColor: "#141414",
 };
 
@@ -520,7 +520,7 @@ const deviceName = {
 const deviceDesc = {
   fontSize: "14px",
   lineHeight: "22px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   margin: "0",
 };
 
@@ -571,7 +571,7 @@ const featureTitle = {
 const featureDesc = {
   fontSize: "13px",
   lineHeight: "20px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   margin: "0",
 };
 
@@ -582,7 +582,7 @@ const inviteSection = {
   borderRadius: "12px",
   padding: "36px 24px",
   textAlign: "center" as const,
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const inviteHeading = {
@@ -594,24 +594,11 @@ const inviteHeading = {
 
 const inviteText = {
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.5)",
+  color: "#8a8a8a",
   lineHeight: "24px",
   margin: "0",
 };
 
-const inviteButton = {
-  backgroundColor: "#ffffff",
-  color: "#0a0a0a",
-  padding: "14px 32px",
-  borderRadius: "50px",
-  fontSize: "14px",
-  fontWeight: "600" as const,
-  textDecoration: "none",
-  textAlign: "center" as const,
-  display: "inline-block",
-  letterSpacing: "0.5px",
-  textTransform: "uppercase" as const,
-};
 
 const shareRow = {
   marginTop: "16px",
@@ -623,7 +610,7 @@ const shareCol = {
 };
 
 const shareLink = {
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   fontSize: "12px",
   fontWeight: "600" as const,
   textDecoration: "underline",
@@ -636,7 +623,7 @@ const checklistCard = {
   borderRadius: "12px",
   padding: "24px",
   marginTop: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid #1a1a1a",
 };
 
 const checklistHeading = {
@@ -658,7 +645,7 @@ const checkNumCol = {
 const checkNum = {
   fontSize: "16px",
   fontWeight: "700" as const,
-  color: "rgba(255, 255, 255, 0.12)",
+  color: "#252525",
   margin: "0",
   lineHeight: "1",
 };
@@ -672,13 +659,13 @@ const checkTitle = {
 
 const checkDesc = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "20px",
   margin: "0",
 };
 
 const checklistButton = {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  backgroundColor: "#222222",
   color: "#f5f5f5",
   padding: "10px 24px",
   borderRadius: "50px",
@@ -688,7 +675,7 @@ const checklistButton = {
   display: "inline-block",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  border: "1px solid #222222",
 };
 
 // ── Social proof ──
@@ -708,7 +695,7 @@ const socialProofNumber = {
 
 const socialProofText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   margin: "4px 0 0 0",
 };
 
@@ -728,7 +715,7 @@ const downloadHeading = {
 
 const downloadText = {
   fontSize: "14px",
-  color: "rgba(255, 255, 255, 0.45)",
+  color: "#6b6b6b",
   lineHeight: "22px",
   margin: "0",
   textAlign: "center" as const,
@@ -741,14 +728,14 @@ const storeCol = {
 
 const storeButton = {
   backgroundColor: "transparent",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   padding: "10px 20px",
   borderRadius: "50px",
   fontSize: "12px",
   fontWeight: "600" as const,
   textDecoration: "none",
   display: "inline-block",
-  border: "1px solid rgba(255, 255, 255, 0.15)",
+  border: "1px solid #2a2a2a",
   letterSpacing: "0.5px",
 };
 
@@ -761,7 +748,7 @@ const testimonialSection = {
 
 const testimonialQuote = {
   fontSize: "48px",
-  color: "rgba(255, 255, 255, 0.15)",
+  color: "#2a2a2a",
   margin: "0",
   lineHeight: "1",
   fontFamily: "Georgia, serif",
@@ -770,14 +757,14 @@ const testimonialQuote = {
 const testimonialText = {
   fontSize: "15px",
   fontStyle: "italic" as const,
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "#a3a3a3",
   lineHeight: "24px",
   margin: "0 0 12px 0",
 };
 
 const testimonialAuthor = {
   fontSize: "13px",
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   margin: "0",
   fontWeight: "600" as const,
 };
