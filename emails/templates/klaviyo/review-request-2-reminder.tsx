@@ -9,7 +9,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 import { EmailLayout } from "../../components/EmailLayout";
-import { PrimaryButton } from "../../components/PrimaryButton";
+
 
 const CDN = "https://imagedelivery.net/NnC2JvU8j4bgBbmedVhjJg";
 const BASE_URL = "https://seemyhealth.ai";
@@ -75,17 +75,30 @@ export default function ReviewRequestReminder() {
 
       <Hr style={divider} />
 
-      {/* ── Review Card ── */}
+      {/* ── One-Click Star Rating ── */}
       <Section style={reviewCard}>
-        <Text style={reviewStars}>&#9733; &#9733; &#9733; &#9733; &#9733;</Text>
-        <Text style={reviewTitle}>Rate Your Experience</Text>
+        <Text style={reviewTitle}>Tap your rating</Text>
         <Text style={reviewDesc}>
-          Good or bad, we want to hear it. Your feedback helps us improve
-          and helps others decide.
+          One tap takes you straight to the review form with your rating
+          pre-filled. Good or bad, we want to hear it.
         </Text>
-        <PrimaryButton href={`${BASE_URL}/reviews`}>
-          Write a Review
-        </PrimaryButton>
+        <Section style={{ textAlign: "center" as const }}>
+          <Row style={{ display: "inline-block" as const }}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Column key={star} style={{ padding: "0 4px" }}>
+                <Button
+                  href={`${BASE_URL}/reviews?rating=${star}&product={{ event.ProductHandle|default:'' }}`}
+                  style={starButton}
+                >
+                  {"★".repeat(star)}{"☆".repeat(5 - star)}
+                </Button>
+              </Column>
+            ))}
+          </Row>
+        </Section>
+        <Text style={starHint}>
+          ← 1 star &nbsp;&nbsp;&nbsp; 5 stars →
+        </Text>
       </Section>
 
       {/* ── Footer Note ── */}
@@ -235,13 +248,6 @@ const reviewCard = {
   textAlign: "center" as const,
 };
 
-const reviewStars = {
-  fontSize: "28px",
-  color: "#F97316",
-  letterSpacing: "4px",
-  margin: "0 0 8px 0",
-};
-
 const reviewTitle = {
   fontSize: "20px",
   fontWeight: "700" as const,
@@ -254,6 +260,28 @@ const reviewDesc = {
   lineHeight: "22px",
   color: "#a3a3a3",
   margin: "0 0 16px 0",
+};
+
+// ── Star Buttons ──
+
+const starButton = {
+  backgroundColor: "#1a1a1a",
+  color: "#F97316",
+  padding: "10px 12px",
+  borderRadius: "8px",
+  fontSize: "16px",
+  textDecoration: "none",
+  display: "inline-block",
+  border: "1px solid #2a2a2a",
+  letterSpacing: "2px",
+  lineHeight: "1",
+};
+
+const starHint = {
+  fontSize: "11px",
+  color: "#525252",
+  textAlign: "center" as const,
+  margin: "8px 0 0 0",
 };
 
 // ── Footer ──

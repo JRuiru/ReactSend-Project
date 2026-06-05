@@ -16,14 +16,11 @@ export const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
 );
 
 const card = {
-  background: "linear-gradient(135deg, rgba(249,250,251,0.8) 0%, rgba(243,244,246,0.6) 100%)",
-  backdropFilter: "blur(10px)",
-  WebkitBackdropFilter: "blur(10px)",
+  backgroundColor: "#141414",
   borderRadius: "12px",
   padding: "24px",
   marginBottom: "12px",
-  border: "1px solid rgba(229, 231, 235, 0.6)",
-  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+  border: "1px solid #1a1a1a",
 };
 
 const iconStyle = {
@@ -33,13 +30,13 @@ const iconStyle = {
 const cardTitle = {
   fontSize: "16px",
   fontWeight: "bold" as const,
-  color: "#111827",
+  color: "#f5f5f5",
   margin: "0 0 4px 0",
 };
 
 const cardDescription = {
   fontSize: "14px",
   lineHeight: "22px",
-  color: "#6b7280",
+  color: "#8a8a8a",
   margin: "0",
 };

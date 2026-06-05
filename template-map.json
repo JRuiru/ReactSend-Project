@@ -88,5 +88,77 @@
     "subject": "Thanks {{first_name}}, we got your enquiry",
     "module": "enquiry-customer-acknowledgment",
     "sendgrid_template_id": "d-16be5978a560421da01f664ed3c022b7"
+  },
+  "booking-confirmed": {
+    "name": "Booking Confirmed",
+    "subject": "Your booking with {{provider_name}} is confirmed",
+    "module": "booking-confirmed",
+    "sendgrid_template_id": "d-d92882ef656c43f699d20506a7f8ac17"
+  },
+  "booking-cancelled": {
+    "name": "Booking Cancelled",
+    "subject": "Your booking with {{provider_name}} has been cancelled",
+    "module": "booking-cancelled",
+    "sendgrid_template_id": "d-fc873ff98d2c4d29a96863ad5bc2a7ec"
+  },
+  "payment-successful": {
+    "name": "Payment Successful",
+    "subject": "Payment of {{currency}} {{amount}} confirmed",
+    "module": "payment-successful",
+    "sendgrid_template_id": "d-d7bbb2106f854490b45125bb0a495039"
+  },
+  "payment-failed": {
+    "name": "Payment Failed",
+    "subject": "Payment for {{service_name}} could not be processed",
+    "module": "payment-failed",
+    "sendgrid_template_id": "d-76fcc55af40c488f8cd74cc0c33fac1a"
+  },
+  "payment-refunded": {
+    "name": "Payment Refunded",
+    "subject": "Refund of {{currency}} {{amount}} has been processed",
+    "module": "payment-refunded",
+    "sendgrid_template_id": "d-c8bb5383b1cc46c7976c327d3ff00c6a"
+  },
+  "provider-team-invite": {
+    "name": "Provider Team Invite",
+    "subject": "You have been invited to join {{practice_name}}",
+    "module": "provider-team-invite",
+    "sendgrid_template_id": "d-e354a68dffd14f94a8959d614e59d242"
+  },
+  "provider-member-removed": {
+    "name": "Provider Member Removed",
+    "subject": "You have been removed from {{practice_name}}",
+    "module": "provider-member-removed",
+    "sendgrid_template_id": "d-b6969e1858874464a902bfff69ea6589"
+  },
+  "provider-booking-created": {
+    "name": "Provider Booking Created",
+    "subject": "New booking from {{client_name}} for {{service_name}}",
+    "module": "provider-booking-created",
+    "sendgrid_template_id": "d-da51a24426664eeb9d4147ccb2efc61e"
+  },
+  "provider-booking-cancelled": {
+    "name": "Provider Booking Cancelled",
+    "subject": "Booking with {{client_name}} has been cancelled",
+    "module": "provider-booking-cancelled",
+    "sendgrid_template_id": "d-5876c18d08ea41deabbf6961eb1ec059"
+  },
+  "provider-booking-confirmed": {
+    "name": "Provider Booking Confirmed",
+    "subject": "Booking with {{client_name}} is confirmed and paid",
+    "module": "provider-booking-confirmed",
+    "sendgrid_template_id": "d-f51e2e068ee5439388d74203b01e33c6"
+  },
+  "provider-booking-reminder": {
+    "name": "Provider Booking Reminder",
+    "subject": "Upcoming: {{client_name}} in {{time_until}}",
+    "module": "provider-booking-reminder",
+    "sendgrid_template_id": "d-95ee38b6c99442e896cfb0f95b6118de"
+  },
+  "provider-payment-received": {
+    "name": "Provider Payment Received",
+    "subject": "Payment of {{currency}} {{amount}} received from {{client_name}}",
+    "module": "provider-payment-received",
+    "sendgrid_template_id": "d-ccff0b64443d4059a9775f069ca32dff"
   }
 }

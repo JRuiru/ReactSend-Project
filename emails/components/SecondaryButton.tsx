@@ -22,7 +22,7 @@ const button = {
   textDecoration: "none",
   textAlign: "center" as const,
   display: "inline-block",
-  border: "1px solid rgba(255, 255, 255, 0.2)",
+  border: "1px solid #333333",
   letterSpacing: "0.5px",
   textTransform: "uppercase" as const,
 };

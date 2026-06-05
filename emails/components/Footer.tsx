@@ -16,18 +16,18 @@ export const Footer = () => (
 );
 
 const hr = {
-  borderColor: "rgba(255, 255, 255, 0.08)",
+  borderColor: "#1f1f1f",
   margin: "40px 0 16px 0",
 };
 
 const footerText = {
   fontSize: "12px",
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "#5e5e5e",
   margin: "4px 0",
   textAlign: "center" as const,
 };
 
 const link = {
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   textDecoration: "underline",
 };

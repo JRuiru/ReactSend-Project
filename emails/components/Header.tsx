@@ -22,7 +22,7 @@ export const Header = ({ title }: HeaderProps) => (
 );
 
 const header = {
-  borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+  borderBottom: "1px solid #1f1f1f",
   paddingBottom: "24px",
   marginBottom: "32px",
 };
@@ -51,7 +51,7 @@ const logoText = {
 
 const titleStyle = {
   fontSize: "12px",
-  color: "rgba(255, 255, 255, 0.4)",
+  color: "#6b6b6b",
   margin: "2px 0 0 0",
   textTransform: "uppercase" as const,
   letterSpacing: "1.5px",
