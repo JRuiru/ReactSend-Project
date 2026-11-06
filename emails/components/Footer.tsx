@@ -1,11 +1,26 @@
 import { Hr, Section, Text, Link } from "@react-email/components";
 import * as React from "react";
 
-export const Footer = () => (
+interface FooterProps {
+  /** SendGrid templates pass "{{year}}", so the year is the send's, not the deploy's. */
+  year?: string;
+  /** SendGrid templates pass "{{support_email}}" for a line saying where to ask. */
+  supportEmail?: string;
+}
+
+export const Footer = ({ year, supportEmail }: FooterProps = {}) => (
   <Section>
     <Hr style={hr} />
+    {supportEmail && (
+      <Text style={footerText}>
+        Questions? We're at{" "}
+        <Link href={`mailto:${supportEmail}`} style={link}>
+          {supportEmail}
+        </Link>
+      </Text>
+    )}
     <Text style={footerText}>
-      &copy; {new Date().getFullYear()} SeeMyHealth. All rights reserved.
+      &copy; {year ?? new Date().getFullYear()} SeeMyHealth. All rights reserved.
     </Text>
     <Text style={footerText}>
       <Link href="https://seemyhealth.ai" style={link}>

@@ -6,10 +6,13 @@ import { Footer } from "./Footer";
 interface EmailLayoutProps {
   preview: string;
   title?: string;
+  /** Passed to the footer; SendGrid templates use `transactional` instead of setting these by hand. */
+  year?: string;
+  supportEmail?: string;
   children: React.ReactNode;
 }
 
-export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
+export const EmailLayout = ({ preview, title, year, supportEmail, children }: EmailLayoutProps) => (
   <Html>
     <Head>
       <meta name="color-scheme" content="dark" />
@@ -74,7 +77,7 @@ export const EmailLayout = ({ preview, title, children }: EmailLayoutProps) => (
         <Container style={container} className="email-container">
           <Header title={title} />
           {children}
-          <Footer />
+          <Footer year={year} supportEmail={supportEmail} />
         </Container>
       </Section>
     </Body>

@@ -3,8 +3,14 @@
  * as dynamic templates.
  *
  * Usage:
- *   npm run deploy              # deploy all templates
- *   npm run deploy -- welcome   # deploy a single template
+ *   npm run deploy                          # deploy all templates
+ *   npm run deploy -- client-welcome        # deploy one template
+ *   npm run deploy -- client-welcome provider-booking-created
+ *
+ * A template with a backend `type` takes its subject from the send: the backend renders the subject
+ * and passes it as the `subject` merge field, so its entry's subject is SUBJECT_FROM_SEND: the
+ * send's subject, or a plain one from a backend too old to send it. The ids
+ * print at the end as tfvars lines for `sendgrid_template_ids`.
  */
 import "dotenv/config";
 import sgClient from "@sendgrid/client";
@@ -20,12 +26,16 @@ if (!SENDGRID_API_KEY) {
 
 sgClient.setApiKey(SENDGRID_API_KEY);
 
+const SUBJECT_FROM_SEND = "{{#if subject}}{{{subject}}}{{else}}A note from SeeMyHealth{{/if}}";
+
 const MAP_PATH = path.resolve(__dirname, "../template-map.json");
 
 interface TemplateEntry {
   name: string;
   subject: string;
   module: string;
+  /** The backend notification type this template sends for (cmh-golang Docs/sendgrid-templates.md). */
+  type?: string;
   sendgrid_template_id: string | null;
 }
 
@@ -44,6 +54,11 @@ async function deployTemplate(key: string, entry: TemplateEntry) {
   );
   const Component = mod.default;
   const html = await render(Component());
+  const text = await render(Component(), { plainText: true });
+
+  if (entry.type && entry.subject !== SUBJECT_FROM_SEND) {
+    throw new Error(`"${key}" sends for ${entry.type}, so its subject must be ${SUBJECT_FROM_SEND}`);
+  }
 
   let templateId = entry.sendgrid_template_id;
 
@@ -65,6 +80,17 @@ async function deployTemplate(key: string, entry: TemplateEntry) {
     method: "GET",
     url: `/v3/templates/${templateId}`,
   });
+
+  // The map's name is the one SendGrid shows ("Client: …" / "Provider: …"), so a renamed entry
+  // renames the template it already has rather than leaving the old name in the dashboard.
+  if ((templateData as any).name !== entry.name) {
+    await sgClient.request({
+      method: "PATCH",
+      url: `/v3/templates/${templateId}`,
+      body: { name: entry.name },
+    });
+    console.log(`  Renamed to "${entry.name}"`);
+  }
   const versions = (templateData as any).versions || [];
   const activeVersion = versions.find((v: any) => v.active === 1);
 
@@ -78,6 +104,7 @@ async function deployTemplate(key: string, entry: TemplateEntry) {
         name: `${key} — ${new Date().toISOString()}`,
         subject: entry.subject,
         html_content: html,
+        plain_content: text,
       },
     });
   } else {
@@ -90,6 +117,7 @@ async function deployTemplate(key: string, entry: TemplateEntry) {
         name: `${key} — ${new Date().toISOString()}`,
         subject: entry.subject,
         html_content: html,
+        plain_content: text,
       },
     });
   }
@@ -100,12 +128,13 @@ async function deployTemplate(key: string, entry: TemplateEntry) {
 
 async function main() {
   const map = loadMap();
-  const target = process.argv[2]; // optional: deploy a single template
+  const targets = process.argv.slice(2); // optional: deploy only these
 
-  const keys = target ? [target] : Object.keys(map);
+  const keys = targets.length ? targets : Object.keys(map);
 
-  if (target && !map[target]) {
-    console.error(`Template "${target}" not found in template-map.json`);
+  const unknown = keys.filter((k) => !map[k]);
+  if (unknown.length) {
+    console.error(`Not in template-map.json: ${unknown.join(", ")}`);
     process.exit(1);
   }
 
@@ -122,11 +151,10 @@ async function main() {
 
   saveMap(map);
 
-  console.log("\n--- Template IDs (for your FastAPI backend) ---");
+  console.log("\n--- sendgrid_template_ids (cmh-golang tfvars) ---");
   for (const key of keys) {
-    if (map[key].sendgrid_template_id) {
-      console.log(`  ${key}: ${map[key].sendgrid_template_id}`);
-    }
+    const { type, sendgrid_template_id: id } = map[key];
+    if (type && id) console.log(`  ${type} = "${id}"`);
   }
   console.log();
 }

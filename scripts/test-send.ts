@@ -2,7 +2,7 @@
  * Send a test email using a rendered React Email template.
  *
  * Usage:
- *   npm run test-send -- welcome you@email.com
+ *   npm run test-send -- client-welcome you@email.com
  *   npm run test-send -- password-reset you@email.com
  *   npm run test-send -- appointment-reminder you@email.com
  */
@@ -29,11 +29,11 @@ const templateMap = JSON.parse(fs.readFileSync(MAP_PATH, "utf-8"));
 
 // Test data for each template — SendGrid {{variables}} get replaced with these
 const TEST_DATA: Record<string, Record<string, string>> = {
-  welcome: {
+  "client-welcome": {
     first_name: "John",
     user_id: "test-user-123",
   },
-  "appointment-reminder": {
+  "client-booking-reminder": {
     first_name: "John",
     doctor_name: "Dr. Sarah Chen",
     doctor_specialty: "Cardiologist",
@@ -62,7 +62,7 @@ const TEST_DATA: Record<string, Record<string, string>> = {
     longest_streak: "22",
     improvement: "+34%",
   },
-  "family-invite": {
+  "client-family-request": {
     first_name: "Sarah",
     inviter_name: "John",
     invite_id: "invite-001",
@@ -73,7 +73,7 @@ const TEST_DATA: Record<string, Record<string, string>> = {
     reset_token: "test-token-abc123",
     expiry_time: "30 minutes",
   },
-  "health-report": {
+  "client-health-report": {
     first_name: "John",
     report_period: "Apr 1 – Apr 30, 2026",
     report_period_label: "month",
@@ -117,15 +117,6 @@ const TEST_DATA: Record<string, Record<string, string>> = {
     avg_mood: "Good",
     journal_count: "12",
     mood_streak: "8",
-  },
-  "device-connected": {
-    first_name: "John",
-    device_name: "The Ring One",
-    device_category: "WEARABLE",
-    tracking_1: "Sleep duration and quality",
-    tracking_2: "Heart rate and HRV",
-    tracking_3: "SpO2 and temperature",
-    tracking_4: "Steps, calories, and activity",
   },
   "challenge-invite": {
     first_name: "John",
@@ -219,7 +210,7 @@ async function main() {
     for (const key of Object.keys(templateMap)) {
       console.log(`  ${key}`);
     }
-    console.log("\nExample: npm run test-send -- welcome john@example.com\n");
+    console.log("\nExample: npm run test-send -- client-welcome john@example.com\n");
     process.exit(0);
   }
 

@@ -19,8 +19,9 @@ const IMAGES = {
   hero: `${CDN}/challenge-accepted/public`,
   challengeCard: `${CDN}/app-community-challenges/public`,
   lifestyle: `${CDN}/ring-fitness-body/public`,
-  appStore: `${CDN}/badge-app-store/public`,
-  googlePlay: `${CDN}/badge-google-play/public`,
+  // The official badges, served by the website (an email cannot draw SVG, so PNG).
+  appStore: `${BASE_URL}/badges/download-on-the-app-store.png`,
+  googlePlay: `${BASE_URL}/badges/get-it-on-google-play.png`,
 };
 
 export default function ChallengeInviteEmail() {
@@ -233,7 +234,7 @@ export default function ChallengeInviteEmail() {
               <a href={`${BASE_URL}/download/android`}>
                 <Img
                   src={IMAGES.googlePlay}
-                  width="120"
+                  width="155"
                   alt="Get it on Google Play"
                   style={appBadge}
                 />
